@@ -1,11 +1,16 @@
 *{
 	margin:0;
 }
-body {
-
+p {
+	display: inline;
+	width: auto;
 }
 li{
 	list-style:none;
+}
+a{
+	color: inherit; 
+ 	text-decoration: inherit; 
 }
 
 /*Navigation Bar*/
@@ -13,9 +18,17 @@ li{
 	background-color:white;
 	display:block;
 	float:left;
-	width: 21vw;
+	width:21vw;
+	max-width: 340px;
+	min-width: 240px;
 	height: 100vh;
 	box-shadow: 5px 0px 10px #f0f0f0;
+}
+.nav_bar svg{
+	height: 2em;
+}
+.nav_bar p{
+	margin-left: 8px;
 }
 .main_nav{
 	position: relative;
@@ -30,10 +43,14 @@ li{
 .nav_bar li{
 	font-family : Arial Black;
 	font-style : strong;
-	display:block;
+	font-size: 1em;
+	align-items: center ;
+	display:flex;
 	margin:21px 0px;
-	padding: 21px;
+	padding: 13px;
 	width:13vw;
+	max-width:210px;
+	min-width: 130px;
 	border-radius:5px;
 	box-shadow: 5px 0px 10px #dbdbdb;
 }
