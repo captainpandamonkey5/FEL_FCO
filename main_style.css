@@ -17,9 +17,15 @@ li{
 	height: 100vh;
 	box-shadow: 5px 0px 10px #f0f0f0;
 }
-.nav_bar ul{
-	position:relative;
+.main_nav{
+	position: relative;
+	display:block;
 	top:8vh;
+}
+.misc_nav{
+	position: absolute;
+	display:block;
+	bottom:0;
 }
 .nav_bar li{
 	font-family : Arial Black;
@@ -30,9 +36,4 @@ li{
 	width:13vw;
 	border-radius:5px;
 	box-shadow: 5px 0px 10px #dbdbdb;
-}
-.misc_nav{
-	position:relative;
-	display:block;
-	bottom:0;
 }
