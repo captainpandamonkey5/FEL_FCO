@@ -1,0 +1,11 @@
+#report_btn{
+    background-color: rgb(41, 41, 41);
+    color:white
+}
+#report_btn path, #report_btn svg,  #report_btn rect{
+    fill:white;
+}
+
+table, th, td {
+    border: 1px solid rgb(41, 41, 41);
+  }

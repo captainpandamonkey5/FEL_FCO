@@ -3,15 +3,7 @@
 		
 		<title>AJC Bike Shop MIS</title>
 		<link rel="stylesheet" href="main_style.css">
-		<style>
-            #report_btn{
-                background-color: rgb(41, 41, 41);
-                color:white
-            }
-            #report_btn path, #report_btn svg,  #report_btn rect{
-                fill:white;
-            }
-        </style>
+		<link rel="stylesheet" href="report_style.css">
     </head>
     <body>
 
@@ -45,7 +37,36 @@
 		</div>
 
 		<div class="main_section">
-			<!--Your Code Starts here-->>
+			<div class="report_header">
+				<input type="text" id = "idSearch" name="idSearch" placeholder="Search for Order ID">
+				<input type="date" id = "dateSearch" name="dateSearch">
+			</div>
+			<div class="report_table"> 
+				<table>
+					<tr>
+						<th>OrderNo</th>
+						<th>CustomerName</th>
+						<th>OrderDate</th>
+						<th>Order</th>
+						<th>TotalCost</th>
+						<th>Payment</th>
+						<th>Balance</th>
+						<th>Status</th>
+						<th>Remarks</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
 		</div>
         
     </body>
