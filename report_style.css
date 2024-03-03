@@ -64,25 +64,41 @@ input:focus {
 #search_btn path, #search_btn svg,  #search_btn rect{
     fill:white;
 }
-#search_btn{
+.main_section button{
     border-radius: 10px;
     color: #ffffff;
     background: #2C586E;
     padding: 10px;
     text-decoration: none;
     margin: auto;
+    transition: .3s ease;
+}
+.main_section button:hover{
+    background-color: #BED0DB;
+    color: #000000;
 }
 
-.report_header{
+.report_search{
     width: 80%;
     margin: 21px auto;
-
+}
+.report_header{
+    width: auto;
+    padding: 21px 30px;
+    z-index: -1;
+    box-shadow: 0px 5px 5px #dbdbdb;
 }
 .report_table{
     width: 80%;
     margin: 0 auto;
     overflow: auto;
-    
+}
+
+.report_title{
+    font-family: Arial ;
+    font-size: 36PX;
+    margin: 32px 0;
+    color: #2C586E ;
 }
 
 .main_section{

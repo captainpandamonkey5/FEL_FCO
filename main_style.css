@@ -28,6 +28,7 @@ body{
 	height: 100vh;
 	box-shadow: 5px 0px 10px #f0f0f0;
 	position: relative;
+	z-index: 2;
 }
 .nav_bar svg{
 	height: 2em;
