@@ -46,10 +46,12 @@ body{
 	bottom:0;
 }
 .nav_bar li{
+	background-color: #9AC1F0;
+	color: white;
 	font-family : Arial Black;
 	font-style : strong;
 	font-size: 1em;
-	align-items: center ;
+	align-items: center;
 	display:flex;
 	margin:21px 0px;
 	padding: 13px;
@@ -65,4 +67,46 @@ body{
 	position: relative;
 	height: 100vh;
 	width: 79vw;
+}
+
+/*Home Section*/
+.home_section{
+	position: relative;
+	height: 100vh;
+	width: 79vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background color
+}
+
+.home_section p {
+	white-space: pre-wrap;
+	border-radius: 25px;
+	background-color: #9AC1F0;
+	color: white;
+	padding: 10px 50px;
+	display: inline-block;
+	text-align: center; 
+	font-family: "Courier New";
+	font-size: 32px;
+	position: relative;
+	z-index: 2;
+}
+
+.home_section img {
+	max-width: 700px;
+	width: 700px;
+	height: 600px;
+	position: absolute;
+	left: 17%;
+	z-index: 1;
+	border-radius: 50px;
+}
+
+/*Inventory Section*/
+
+.inv_section {
+
 }
