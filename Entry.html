@@ -4,10 +4,37 @@
 		<title>AJC Bike Shop MIS</title>
 		<link rel="stylesheet" href="main_style.css">
     </head>
+
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      html, body, .wrapper{
+        height: 100%
+      }
+      body {
+        display: grid;
+        place-items: center;
+        margin: 0;
+        padding: 24px;
+        background-color: #2c586e;
+        background-size: cover;
+        animation: rotate 6s infinte alternate linear;
+      }
+    </style>
+
     <body>
 
         <!-- 1st screen to be seen, for login / signup-->
-		
+        <div class="login_Body">
+          <h2>Login</h2>
+          <form class="login_Form">
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <a href="forgetPass">Forget your password?</a>
+            <button type="submit">LOG IN</button>
+          </form>
+        </div>
 		
         
     </body>
