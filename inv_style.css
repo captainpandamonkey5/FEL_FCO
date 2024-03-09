@@ -1,24 +1,25 @@
-.inventory_section{
-	position: relative;
-	height: 100vh;
-	width: 79%;
-	max-width: 1200px;
+.inventory_section_container {
+	max-height: 700px;
+	max-width: 700px;
+	overflow-y: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin: 0 auto;
+}
+
+.inventory_section{
+	width: 700px;
 	text-align: center;
 }
 
 .inventory_section p {
 	white-space: pre-wrap;
-	border-radius: 25px;
-	background-color: #9AC1F0;
-	color: white;
+	background-color: #DCC894;
+	color: black;
 	padding: 10px 5%;
 	font-family: "Courier New";
-	font-size: 2.3vw;
-	position: relative;
-	z-index: 2;
-	margin-left: 3%;
-	margin-top: 40%;
+	font-size: 1.75vw;
+	border: 1px solid black;
+	display: inline-block;
 }

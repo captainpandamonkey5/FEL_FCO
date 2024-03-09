@@ -46,8 +46,8 @@ body{
 	bottom:0;
 }
 .nav_bar li{
-	background-color: #9AC1F0;
-	color: white;
+	background-color: white;
+	color: black;
 	font-family : Arial Black;
 	font-style : strong;
 	font-size: 1em;
