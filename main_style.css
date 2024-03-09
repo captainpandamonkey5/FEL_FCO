@@ -141,3 +141,11 @@ body{
 	color: #3c7997;
 }
 /*End of Login CSS*/
+
+/*Start of Account Settings CSS*/
+.accountSetting_Body {
+	display: flex;
+}
+
+
+/*End of Account Settings CSS*/
