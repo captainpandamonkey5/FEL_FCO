@@ -148,8 +148,7 @@ body{
     display: flex;
     width: 500px;
     margin: 0 0 24px;
-	box-sizing: border-box;
-	
+	border: 1rem solid black;
   }
   
   .accountSettings_body > h2 {
