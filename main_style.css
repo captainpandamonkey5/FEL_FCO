@@ -72,11 +72,11 @@ body{
 .login_Body{
     position: relative;
     z-index: 3;
-	width: 50%;
+	width: 725px;
     margin: auto;
     padding: 50px 20px 25px;
     border-radius: 1.25rem;
-    background-color: #8da1af;
+    background-color: #dcc894;
     text-align: center;
 }
 
@@ -84,6 +84,14 @@ body{
 	font-size: 40px;
 	font-weight: 600;
 	margin: 0 0 24px;
+}
+
+.login_Body > h3 {
+	font-size: 16px;
+	color: grey;
+	font-weight: 500;
+	margin: 0 0 16px;
+	font-size: 1rem;
 }
 
 .login_Form {
