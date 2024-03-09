@@ -1,0 +1,23 @@
+.developers_section {
+	height: auto;
+	width: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.developers_section p {
+	white-space: pre-wrap;
+	background-color: #9AC1F0;
+	color: black;
+	padding: 10px 5px 5%;
+	font-family: "Courier New";
+	font-size: 1vw;
+	display: inline-block;
+	margin-top: 100%;
+}
+
+.developers_img{
+
+}
