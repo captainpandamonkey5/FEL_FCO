@@ -1,23 +1,36 @@
 .developers_section {
-	height: auto;
-	width: auto;
+	height: 70%;
+	width: 70%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 0 auto;
+	margin-top: 14%;
 }
 
 .developers_section p {
 	white-space: pre-wrap;
 	background-color: #9AC1F0;
 	color: black;
-	padding: 10px 5px 5%;
+	padding: 10px 5px 1%;
 	font-family: "Courier New";
 	font-size: 1vw;
 	display: inline-block;
-	margin-top: 100%;
+	box-shadow: 5px 0px 10px gray;
+	margin: 1%;
 }
 
 .developers_img{
 
+}
+
+@media only screen and (max-width: 768px) {
+    .developers_section {
+        width: 70%;
+	margin-top: 10%;
+    }
+    
+    .developers_section p {
+        font-size: 1.75vw;
+    }
 }
