@@ -196,7 +196,7 @@ body {
   padding: 0;
 }
 
-button {
+//button {
   font-size: inherit;
   border: none;
   transition: all 0.15s ease-out;
@@ -208,10 +208,12 @@ figure {
 
   img {
     border-radius: 40px 40px 40px 40px;
-    padding: 10px;
+    padding: 13px;
     display: block;
-    height: 50%;
-    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    
   }
 }
 
@@ -247,10 +249,12 @@ h2, h3 {
   display: flex;
   align-items: stretch;
 
-  button {
-    flex: 1 0 auto;
+  //for all,bikes,acc.
+  <button> {  
+    flex: 10 10 auto;
     padding: $base-padding * 2;
     background: rgba(255, 255, 255, 0.5);
+    
 
     &:last-child {
       border-radius: 0 $border-radius $border-radius 0;
@@ -268,7 +272,8 @@ h2, h3 {
 }
 
 .pos-search {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-top: 30px;
   
   input {
     width: 100%;
@@ -328,11 +333,13 @@ h2, h3 {
       text-align: right;
     }
     
+    //for cart
     button {
       padding: $base-padding/2 $base-padding;
       background-color: grey;
       border-radius: $border-radius;
       text-align: right;
+    
       
       svg {
         display: block;
@@ -372,6 +379,7 @@ h2, h3 {
 
       img {
         width: 3rem;
+      
       }
     }
     
@@ -386,7 +394,7 @@ h2, h3 {
     
   }
   
-  button.confirm {
+  button.confirm {    //confirm in cart
     align-self: end;
     background-color: green;
     color: #fff;
@@ -431,12 +439,9 @@ h2, h3 {
     align-self: start;
 
     button {
-      height: 100%;
       background-color: $color-light-grey;
-      border: 5px grey;
-      border-radius: $border-radius;
-      color: $color-grey-blue;
       padding: 0;
+      
 
       &:hover,
       &:focus {
@@ -465,10 +470,10 @@ h2, h3 {
       padding-bottom: 1rem;
 
       img,
-      svg {
+      //svg {
         border: 10px black;
-        width: 75%;
-        height: auto;
+        width: 50%;
+        height: 50%;
         object-fit: cover;
       }
     }
@@ -476,7 +481,7 @@ h2, h3 {
     h3 {
       margin: 0;
       margin: 0.5rem;
-      font-size: 1.25rem;
+      font-size: 13px;
     }
 
     div {
@@ -495,4 +500,3 @@ h2, h3 {
     
     
   }
-}
