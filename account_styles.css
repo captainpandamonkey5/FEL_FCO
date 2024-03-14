@@ -1,52 +1,78 @@
-.accountSettings_body {
-    position: relative;
-    display: flex;
-    width: 500px;
-    margin: 0 0 24px;
-	border: 1rem solid black;
-  }
-  
-  .accountSettings_body > h2 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-  }
-  
-  .security_form {
-    width: 100%;
-    margin: 0;
-    display: grid;
-    gap: 20px;
-  }
-  
-  .settings_form > label {
-    font-size: 16px;
-    font-weight: 500;
-    margin-left: 0.5rem;
-  }
-  
-  .settings_form > input, .settings_form > button {
-    width: 100%;
-    height: 40px;
-    gap: 16px;
-  }
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-left: 20rem;
+}
 
-  .settings_form > input {
-    padding: 8px;
-    border-radius: 16px;
-    border: 1px solid black;
-    margin-top: 5px;
-    margin-bottom: 27px;
-  }
+.accountSetting_Body {
+  display: flex;
+  flex-direction: column;
+}
 
-  .settings_form > button {
-    border-radius: 1rem;
-    background-color: #dd9f52;
-    font-size: 16px;
-    margin-bottom: 16px;
-  }
+.accountSetting_body > h2 {
+  font-size: 24px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  width: 100%;
+}
 
-  .settings_form > button:hover{
-    border: 2px solid #dcc894;
-  }
+.security_form {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 20px;
+}
+
+.password_form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-right: 15rem;
+}
+
+.username_form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: 5rem;
+}
+
+.password_form > label,
+.username_form > label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+
+.password_form > input,
+.username_form > input,
+.password_form > button,
+.username_form > button {
+  width: 250%;
+  height: 40px;
+}
+
+.password_form > input,
+.username_form > input {
+  padding: 8px;
+  border-radius: 16px;
+  border: 1px solid black;
+  margin-top: 5px;
+  margin-bottom: 27px;
+}
+
+.password_form > button,
+.username_form > button {
+  border-radius: 1rem;
+  background-color: #dd9f52;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.password_form > button:hover,
+.username_form > button:hover {
+  border: 2px solid #dcc894;
+}
