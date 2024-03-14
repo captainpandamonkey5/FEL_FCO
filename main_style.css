@@ -60,68 +60,6 @@ body{
 	//box-shadow: 5px 0px 10px #bed0db;
 }
 
-/*Main Section*/
-.main_section{
-	position: relative;
-	height: 100vh;
-	width: 79vw;
-}
-
-/*Start of Account Settings CSS*/
-.accountSettings_body {
-    position: relative;
-    display: flex;
-    width: 500px;
-    margin: 0 0 24px;
-	border: 1rem solid black;
-  }
-  
-  .accountSettings_body > h2 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-  }
-  
-  .security_form {
-    width: 100%;
-    margin: 0;
-    display: grid;
-    gap: 20px;
-  }
-  
-  .settings_form > label {
-    font-size: 16px;
-    font-weight: 500;
-    margin-left: 0.5rem;
-  }
-  
-  .settings_form > input, .settings_form > button {
-    width: 100%;
-    height: 40px;
-    gap: 16px;
-  }
-
-  .settings_form > input {
-    padding: 8px;
-    border-radius: 16px;
-    border: 1px solid black;
-    margin-top: 5px;
-    margin-bottom: 27px;
-  }
-
-  .settings_form > button {
-    border-radius: 1rem;
-    background-color: #dd9f52;
-    font-size: 16px;
-    margin-bottom: 16px;
-  }
-
-  .settings_form > button:hover{
-    border: 2px solid #dcc894;
-  }
-/*End of Account Settings CSS*/
-
 /*Start of Account Manager Settings CSS*/
 
 .accountManager_Body {
