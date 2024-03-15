@@ -60,54 +60,6 @@ body{
 	//box-shadow: 5px 0px 10px #bed0db;
 }
 
-/*Start of Account Manager Settings CSS*/
-
-.accountManager_Body {
-	padding: 20px;
-	font-family: Arial, sans-serif;
-	max-width: 400px;
-	margin: 0 auto;
-  }
-  
-  .accountManager_Body > h2 {
-	text-align: center;
-  }
-  
-  .admin_Form {
-	margin-top: 20px;
-  }
-  
-  .adminSetting_Form > label {
-	display: grid;
-	margin-bottom: 5px;
-  }
-  
-  .adminSetting_Form > input {
-	width: 100%;
-	padding: 10px;
-	border: 2px solid black;
-	border-radius: 3px;
-	margin-bottom: 10px;
-  }
-  
-  .adminSetting_Form > input:hover {
-	border-color: #8da1af;
-  }
-  
-  .adminSetting_Form > button {
-	width: 100%;
-	padding: 10px;
-	background-color: #2c586e;
-	color: #fff;
-	border: none;
-	border-radius: 3px;
-  }
-  
-  .adminSetting_Form > button:hover {
-	border-color: 2px solid #8da1af;
-  }
-
-/*End of Account Manager Settings CSS*/
 base-padding: 0.75rem;
 border-radius: 0.4rem;
 color-lightest-grey: #f6f9fc;
