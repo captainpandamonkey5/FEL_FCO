@@ -1,0 +1,123 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	margin: 0 auto;
+	padding-bottom: 30rem;
+  }
+  .accountManager_Body {
+	font-family: Arial, sans-serif;
+  }
+  
+  .accountManager_Body > h2 {
+	text-align: left;
+  }
+  
+  .admin_Form {
+	margin-top: 20px;
+  }
+  
+  .adminSetting_Form > label {
+	display: grid;
+	margin-bottom: 5px;
+  }
+  
+  .adminSetting_Form > input {
+	width: 100%;
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 3px;
+	margin-bottom: 10px;
+  }
+  
+  .adminSetting_Form > input:hover,
+  .adminSetting_Form > button:hover {
+	border-color: #8da1af;
+	background-color: #476370;
+  }
+  
+  .adminSetting_Form > button {
+	width: 100%;
+	padding: 10px;
+	background-color: #2c586e;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+  }
+  
+  .adminSetting_Form > input {
+	margin-right: 10px;
+  }
+  
+  .searchedData_Table {
+	margin-top: 20px;
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid black;
+  }
+  
+  .searchedData_Table th,
+  .searchedData_Table td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+  }
+  
+  .searchedData_Table th {
+	background-color: #f2f2f2;
+  }
+  
+  .searchedData_Table > button {
+	width: 50%;
+	padding: 5px;
+	background-color: #2c586e;
+	color: white;
+	border: none;
+	border-radius: 3px;
+  }
+  
+  .tableDiv > table,
+  tr,
+  th,
+  td {
+	border: 1px solid black !important;
+	text-align: center;
+	border-collapse: collapse;
+	border-style: none;
+  }
+  .tableDiv > ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background: rgb(77, 77, 77);
+  }
+  .tableDiv > li {
+	float: left;
+	font-family: "Trebuchet MS";
+  }
+  .tableDiv > li a {
+	display: block;
+	color: grey;
+	text-align: center;
+	padding: 16px;
+	text-decoration: none;
+  }
+  .tableDiv > a:hover {
+	background-color: grey;
+	color: white;
+	text-decoration: underline;
+  }
+  .tableDiv {
+	background-color: antiquewhite;
+  }
+  .button_container {
+	  display: flex;
+	  gap: 10px;
+  }
+  
+  .button_container > button {
+	  flex: 1;
+  }
+  
