@@ -1,102 +1,65 @@
 .developers_section {
-	height: 70%;
+	height: 80%;
 	width: 70%;
 	display: flex;
-	justify-content: center;
+	position: relative;
+	justify-content: space-between;
 	align-items: center;
 	margin: 0 auto;
-	margin-top: 14%;
+	margin-top: 5%;
+	background-color: 2C586E;
+	border-radius: 40px;
+	overflow: hidden;
+}
+
+.developer_card {
+	width: 100%;
+	height: 20%;
+	margin: 20px;
 }
 
 .developers_section p {
 	white-space: pre-wrap;
-	background-color: #9AC1F0;
+	background-color: DBE9FA;
 	color: black;
 	padding: 10px 5px 1%;
-	font-family: "Courier New";
-	font-size: 1vw;
+	font-family: "Georgia";
+	font-size: 1.20vw;
 	display: inline-block;
-	box-shadow: 5px 0px 10px gray;
-	margin: 1%;
+	text-align: center;
+	box-shadow: 3px 1px 3px 1px lightgray;
+	border-radius: 20px;
 }
 
-@media only screen and (max-width: 768px) {
-    .developers_section {
-        width: 70%;
-	margin-top: 10%;
-    }
-    
-    .developers_section p {
-        font-size: 1.75vw;
-    }
-}
-
-.developers_img1{
-	width: 15%;
-	height: 25%;
-	position: absolute;
-	bottom: 47%;
-	left: 27.4%;
+.developers_img {
+	max-width: 100%;
+	max-height: 90%;
+	margin-left: 3%;
+	position: relative;
 	border-radius: 30px;
-	box-shadow: 5px 5px 10px 2px gray;
+	box-shadow: 2px 2px 2px 2px lightgray;
 }
 
-.developers_img2{
-	width: 15%;
-	height: 25%;
-	position: absolute;
-	bottom: 47%;
-	left: 44.4%;
-	border-radius: 30px;
-	box-shadow: 5px 5px 10px 2px gray;
-}
+@media screen and (max-width: 768px) {
+	.developers_section {
+		height: auto;
+        	width: auto;
+        	flex-direction: column;
+        	align-items: center;
+	}
 
-.developers_img3{
-	width: 15%;
-	height: 25%;
-	position: absolute;
-	bottom: 47%;
-	left: 78.4%;
-	border-radius: 30px;
-	box-shadow: 5px 5px 10px 2px gray;
-}
+	.developer_card {
+        	width: 100%;
+        	height: auto;
+        	margin: 10px 0;
+	}
+	.developers_section p{
+		font-size: 2vw;
+	}
 
-.developers_img4{
-	width: 15%;
-	height: 25%;
-	position: absolute;
-	bottom: 47%;
-	left: 61.4%;
-	border-radius: 30px;
-	box-shadow: 5px 5px 10px 2px gray;
-}
-
-@media only screen and (max-width: 768px) {
-    .developers_img1 {
-	max-width: 95px;
-        width: auto;
-        bottom: 67%;
-        left: 38%;
-    }
-
-    .developers_img2 {
-	max-width: 95px;
-        width: auto;
-        bottom: 67%;
-        left: 53.5%;
-    }
-
-    .developers_img3 {
-	max-width: 95px;
-        width: auto;
-        bottom: 67%;
-        left: 69%;
-    }
-
-    .developers_img4 {
-	max-width: 95px;
-        width: auto;
-        bottom: 67%;
-        left: 84.5%;
-    }
+    	.developers_img {
+		max-width: 30%;
+        	height: auto;
+		border-radius: 30px;
+	}
 }
