@@ -7,29 +7,37 @@
 	align-items: center;
 	margin: 0 auto;
 	margin-top: 5%;
-	box-shadow: 5px 0px 10px gray;
+	box-shadow: 1px 1px 1px 1px grey;
 }
 
 .inventory_section{
 	width: 100%;
 	height: 100%;
-	text-align: center;	
 }
 
-.inventory_section p {
-	white-space: pre-wrap;
-	background-color: white;
-	color: black;
-	padding: 10px 5%;
-	font-family: "Courier New";
-	font-size: 1vw;
+.inventory_section table {
+        border-collapse: collapse;
+        width: 100%;
+}
+
+.inventory_section th{
+	background-color: 8DA1AF;
 	border: 1px solid black;
-	display: inline-block;
-	width: 23.04%;
+	padding: 10px;
+	text-align: center;
+	font-family: Lato;
+}
+
+.inventory_section td{
+	background-color: BED0DB;
+	border: 1px solid black;
+	padding: 7px;
+	text-align: center;
+	font-family: Lato;
 }
 
 @media screen and (max-width: 768px) {
-	.inventory_section p {
-		width: calc(24.28% - 5px);
+	.inventory_section table {
+		width: 100%;
 	}
 }

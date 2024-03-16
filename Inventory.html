@@ -49,30 +49,65 @@
 		<div class="inventory_section_container">
 
 		<div class="inventory_section">
-			<p style="background-color: #DCC894;">Product</p><p style="background-color: #DCC894;">Stocked Amount</p><p style="background-color: #DCC894;">Order</p> <br>
-			<p>Saddle</p><p>10</p><p>- 0 +</p> <br>
-			<p>Grip</p><p>10</p><p>- 0 +</p> <br>
-			<p>Pedal </p><p>6</p><p>- 0 +</p> <br>
-			<p>Axle</p><p>4</p><p>- 0 +</p> <br>
-			<p>Brake</p><p>8</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
-			<p> </p><p>0</p><p>- 0 +</p> <br>
+			<table>
+            			<tr>
+                			<th>Product</td>
+                			<th>Stocked Amount</td>
+                			<th>Amount</td>
+            			</tr>
+            			<tr>
+                			<td>Saddle</td>
+                			<td class="stocked-amount">10</td>
+                			<td class="amount-container">
+						<button class="change-stock-btn decrease-stock-btn">-</button>
+						<input type="number" class="custom-stock-input" min="1" value="1">
+						<button class="change-stock-btn increase-stock-btn">+</button>
+					</td>
+            			</tr>
+            			<tr>
+                			<td>Grip</td>
+                			<td class="stocked-amount">10</td>
+					<td class="amount-container">
+						<button class="change-stock-btn decrease-stock-btn">-</button>
+						<input type="number" class="custom-stock-input" min="1" value="1">
+						<button class="change-stock-btn increase-stock-btn">+</button>
+					</td>
+            			</tr>
+            			<tr>
+                			<td>Pedal</td>
+					<td class="stocked-amount">6</td>
+					<td class="amount-container">
+						<button class="change-stock-btn decrease-stock-btn">-</button>
+						<input type="number" class="custom-stock-input" min="1" value="1">
+						<button class="change-stock-btn increase-stock-btn">+</button>
+					</td>
+            			</tr>
+            			<tr>
+                			<td>Axle</td>
+					<td class="stocked-amount">4</td>
+					<td class="amount-container">
+						<button class="change-stock-btn decrease-stock-btn">-</button>
+						<input type="number" class="custom-stock-input" min="1" value="1">
+						<button class="change-stock-btn increase-stock-btn">+</button>
+					</td>
+            			</tr>
+            			<tr>
+                			<td>Brake</td>
+					<td class="stocked-amount">8</td>
+					<td class="amount-container">
+						<button class="change-stock-btn decrease-stock-btn">-</button>
+						<input type="number" class="custom-stock-input" min="1" value="1">
+						<button class="change-stock-btn increase-stock-btn">+</button>
+					</td>
+            			</tr>
+			</table>
 		</div>
 		
 		</div>
-        
-    </body>
+
+	<script src="inventory.js">
+	</script>
+
+</body>
 
 </html>
