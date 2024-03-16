@@ -76,40 +76,10 @@ body {
 }
 
 
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #8da1af;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-}
-
-input[type=submit] {
-  background-color: #2c586e;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #2c586e;
-}
-
-
 .container {
   border-radius: 5px;
   background-color: #dcc894;
   padding: 10px;
-}
-
-
-.column {
-  float: left;
-  width: 50%;
-  margin-top: 6px;
-  padding: 20px;
 }
 
 
@@ -129,10 +99,9 @@ input[type=submit]:hover {
 
 .box{
   background-color: #bed0db;
-  width: 1000px;
+  width: 1150px;
+  height: 500px;
   border: 10px solid #2c586e;
-  padding: 30px;
+  padding: 50px;
   margin: 20px;
 }
-
-
