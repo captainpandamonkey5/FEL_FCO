@@ -19,14 +19,14 @@ body{
 
 /*Navigation Bar*/
 .nav_bar{
-	background-color:white;
+	background-color:#bed0db;
 	display:block;
 	float:left;
 	width:21vw;
 	max-width: 340px;
 	min-width: 240px;
 	height: 100vh;
-	box-shadow: 5px 0px 10px #f0f0f0;
+	//box-shadow: 5px 0px 10px #bed0db;
 	position: relative;
 }
 .nav_bar svg{
@@ -57,191 +57,336 @@ body{
 	max-width:210px;
 	min-width: 130px;
 	border-radius:5px;
-	box-shadow: 5px 0px 10px #dbdbdb;
+	//box-shadow: 5px 0px 10px #bed0db;
 }
 
-/*Main Section*/
-.main_section{
-	position: relative;
-	height: 100vh;
-	width: 79vw;
+base-padding: 0.75rem;
+border-radius: 0.4rem;
+color-lightest-grey: #f6f9fc;
+color-light-grey: #e6ebf1;
+color-grey-blue: #525f7f;
+color-green: #00bc81;
+
+/* Boilerplate */
+ {
+  box-sizing: border-box;
 }
 
-/* Start of Login CSS*/
-
-.login_Body{
-    position: relative;
-    z-index: 3;
-	width: 725px;
-    margin: auto;
-    padding: 50px 20px 25px;
-    border-radius: 1.25rem;
-    background-color: #dcc894;
-    text-align: center;
+html {
+  font-family: sans-serif;
+  font-size: 1em;
+  line-height: 1.5;
+  background-color: #8da1af;
+  color: rgb(11, 11, 12);
 }
 
-.login_Body > h2{
-	font-size: 40px;
-	font-weight: 600;
-	margin: 0 0 24px;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
-.login_Body > h3 {
-	font-size: 16px;
-	color: grey;
-	font-weight: 500;
-	margin: 0 0 16px;
-	font-size: 1rem;
+//button {
+  font-size: inherit;
+  border: none;
+  transition: all 0.15s ease-out;
 }
 
-.login_Form {
-	width: 100%;
-	margin: 0;
-	display: grid;
-	gap: 20px;
+figure {
+  margin: 12px;
+  overflow: hidden;
+
+  img {
+    border-radius: 40px 40px 40px 40px;
+    padding: 13px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    
+  }
 }
 
-.login_Form > input, .login_Form > button {
-	width: 100%;
-	height: 50px;
+h2, h3 {
+  line-height: 1.3;
 }
 
-.login_Form > input {
-	border: 2px transparent;
-	font-size: 16px;
-	padding: 16px;
-	border-radius: 1rem;
-}
 
-.login_Form > input:hover {
-	border: 2px solid #dd9f52;
-}
+.pos {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto minmax(16rem, 20rem);
+  overflow: hidden;
 
-.login_Form > button {
-	border: 2px transparent;
-	font-size: 16px;
-	padding: 16px;
-	border-radius: 1rem;
-	letter-spacing: 2px;
-}
-
-.login_Form > button:hover {
-	border: 2px solid #dcc894;
-	background: #dd9f52;
-	color: #f0f0f0;
-}
-
-.login_Form > a {
-	text-decoration: underline;
-	color: #2c586e;
-	font-size: 1rem;
-}
-
-.login_Form a:hover {
-	color: #3c7997;
-}
-/*End of Login CSS*/
-
-/*Start of Account Settings CSS*/
-.accountSettings_body {
-    position: relative;
-    display: flex;
-    width: 500px;
-    margin: 0 0 24px;
-	border: 1rem solid black;
+  > * {
+    align-self: start;
   }
   
-  .accountSettings_body > h2 {
-    font-size: 24px;
-    font-weight: 600;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;   
+  }
+}
+
+.pos-categories {
+  position: fixed;
+  left: $base-padding;
+  bottom: $base-padding;
+  z-index: 99;
+  width: calc(100% - 22rem);
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: stretch;
+
+  //for all,bikes,acc.
+  <button> {  
+    flex: 10 10 auto;
+    padding: $base-padding * 2;
+    background: rgba(255, 255, 255, 0.5);
+    
+
+    &:last-child {
+      border-radius: 0 $border-radius $border-radius 0;
+    }
+
+    &:first-child {
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+
+    &.active {
+      color: #444a7a;
+      background-color: #89acda(115, 81, 22, 0.95);
+    }
+  }
+}
+
+.pos-search {
+  margin-bottom: 15px;
+  margin-top: 30px;
+  
+  input {
+    width: 100%;
+    padding: 15px;
+    font-size: inherit;
+    margin-left: 20px;
     margin-bottom: 20px;
-    border: 1px solid transparent;
+    border: none;
+    border-radius: $border-radius;
+    background-color: $color-light-grey;
+    -webkit-appearance: none;
+    
+    &:focus, &:active {
+      background-color: #fff;
+    }
+    
+  }
+}
+
+.pos-products {
+  height: 100vh;
+  overflow-y: scroll;
+  padding: $base-padding;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pos-cart {
+  background: #fff;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: grid;
+  align-items: left;
+  grid-template-rows: 6rem 10 10;
+  
+  Overflow
+  height: 100vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  
+  header {
+    border-bottom: 2px solid $color-lightest-grey;
+    padding: $base-padding * 2 $base-padding;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > * {
+      flex: 1 1 auto;
+    }
+    
+    time {
+      font-weight: normal;
+    }
+    
+    span {
+      text-align: right;
+    }
+    
+    //for cart
+    button {
+      padding: $base-padding/2 $base-padding;
+      background-color: grey;
+      border-radius: $border-radius;
+      text-align: right;
+    
+      
+      svg {
+        display: block;
+        fill: rgb(8, 8, 10);
+      }
+
+      &:active {
+        background-color:rgba(38, 0, 255, 0.356);
+        
+        svg {
+          fill: #fff;
+        }
+        
+      }
+    }
   }
   
-  .security_form {
-    width: 100%;
+  h2, h3 {
     margin: 0;
-    display: grid;
-    gap: 20px;
+    font-size: 1.25rem;
+    display: inline-block;
   }
   
-  .settings_form > label {
-    font-size: 16px;
-    font-weight: 500;
-    margin-left: 0.5rem;
-  }
   
-  .settings_form > input, .settings_form > button {
-    width: 100%;
-    height: 40px;
-    gap: 16px;
-  }
+  li {
+    padding: $base-padding;
+    //font: 12px;
+    display: flex;
+    align-items: center;
+    
+    > * {
+      flex: 5 5 3rem;
+    }
 
-  .settings_form > input {
-    padding: 8px;
-    border-radius: 16px;
-    border: 1px solid black;
-    margin-top: 5px;
-    margin-bottom: 27px;
-  }
+    figure {
+      margin-right: 10px;
 
-  .settings_form > button {
-    border-radius: 1rem;
-    background-color: #dd9f52;
-    font-size: 16px;
-    margin-bottom: 16px;
+      img {
+        width: 3rem;
+      
+      }
+    }
+    
+    > span {
+      flex: 5;
+    }
+    
+    h3 {
+      display: block;
+      font-size: 1rem;
+    }
+    
   }
+  
+  button.confirm {    //confirm in cart
+    align-self: end;
+    background-color: green;
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0 $base-padding $base-padding $base-padding;
+    border-radius: $border-radius;
+    padding: 10px;
+    line-height: 1;
+    
+    &::after {
+      content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="rgb(255,255,255)" d="M0 3.795l2.995-2.98 11.132 11.185-11.132 11.186-2.995-2.981 8.167-8.205-8.167-8.205zm18.04 8.205l-8.167 8.205 2.995 2.98 11.132-11.185-11.132-11.186-2.995 2.98 8.167 8.206z"/></svg>');
+      float: right;
+      line-height: 1;
+      width: 1.5rem;
+      opacity: 0.7;
+      transform: translateY(1px);
+    }
+    
+    svg {
+      float: right;
+      fill: #2c586e;
+      opacity: 0.7;
+    }
+ 
+    
+    &:active {         
+      &::after {
+        content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" stroke="rgb(255,255,255)" viewBox="0 0 44 44"><g fill="none" fill-rule="evenodd" stroke-width="2"><circle cx="22" cy="22" r="1"><animate attributeName="r" begin="0s" calcMode="spline" dur="1.8s" keySplines="0.165, 0.84, 0.44, 1" keyTimes="0; 1" repeatCount="indefinite" values="1; 20"/><animate attributeName="stroke-opacity" begin="0s" calcMode="spline" dur="1.8s" keySplines="0.3, 0.61, 0.355, 1" keyTimes="0; 1" repeatCount="indefinite" values="1; 0"/></circle><circle cx="22" cy="22" r="1"><animate attributeName="r" begin="-0.9s" calcMode="spline" dur="1.8s" keySplines="0.165, 0.84, 0.44, 1" keyTimes="0; 1" repeatCount="indefinite" values="1; 20"/><animate attributeName="stroke-opacity" begin="-0.9s" calcMode="spline" dur="1.8s" keySplines="0.3, 0.61, 0.355, 1" keyTimes="0; 1" repeatCount="indefinite" values="1; 0"/></circle></g></svg>');
+        opacity: 1;
+      }
+    }
+  }
+}
 
-  .settings_form > button:hover{
-    border: 2px solid #dcc894;
-  }
-/*End of Account Settings CSS*/
+.pos-products-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  
+  grid-gap: $base-padding;
 
-/*Start of Account Manager Settings CSS*/
+  > li {
+    align-self: start;
 
-.accountManager_Body {
-	padding: 20px;
-	font-family: Arial, sans-serif;
-	max-width: 400px;
-	margin: 0 auto;
-  }
-  
-  .accountManager_Body > h2 {
-	text-align: center;
-  }
-  
-  .admin_Form {
-	margin-top: 20px;
-  }
-  
-  .adminSetting_Form > label {
-	display: grid;
-	margin-bottom: 5px;
-  }
-  
-  .adminSetting_Form > input {
-	width: 100%;
-	padding: 10px;
-	border: 2px solid black;
-	border-radius: 3px;
-	margin-bottom: 10px;
-  }
-  
-  .adminSetting_Form > input:hover {
-	border-color: #8da1af;
-  }
-  
-  .adminSetting_Form > button {
-	width: 100%;
-	padding: 10px;
-	background-color: #2c586e;
-	color: #fff;
-	border: none;
-	border-radius: 3px;
-  }
-  
-  .adminSetting_Form > button:hover {
-	border-color: 2px solid #8da1af;
-  }
+    button {
+      background-color: $color-light-grey;
+      padding: 0;
+      
 
-/*End of Account Manager Settings CSS*/
+      &:hover,
+      &:focus {
+        background-color: #dcc894;
+
+        svg {
+          fill: white;
+          transform: scale(1.4);
+        }
+      }
+
+      &:focus {
+        outline: none;
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+
+    figure {
+      background: #8da1af;
+      border-radius: $border-radius;
+      overflow: hidden;
+      padding-bottom: 1rem;
+
+      img,
+      //svg {
+        border: 10px black;
+        width: 50%;
+        height: 50%;
+        object-fit: cover;
+      }
+    }
+
+    h3 {
+      margin: 0;
+      margin: 0.5rem;
+      font-size: 13px;
+    }
+
+    div {
+      padding: 0.5rem;
+      text-align: left;
+      line-height: 2rem;
+      font-weight: bold;
+    }
+
+    svg {
+      float: right;
+      fill: blue;
+      margin-top: 0.25rem;
+      transition: all 0.15s ease-out;
+    }
+    
+    
+  }

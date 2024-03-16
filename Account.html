@@ -2,6 +2,7 @@
   <head>
     <title>AJC Bike Shop MIS</title>
     <link rel="stylesheet" href="main_style.css" />
+    <link rel="stylesheet" href="account_styles.css" />
     <style>
       #acc_btn {
         background-color: rgb(41, 41, 41);
@@ -144,21 +145,23 @@
       </ul>
     </div>
 
-    <div class="accountSetting_Body">
-      <!--Your Code Starts here-->
-      <h2>Account Settings</h2>
-      <form class="security_form">
-        <div class="settings_form">
-          <label for="password">Change Password</label>
-          <input type="password" placeholder="Old Password" />
-          <input type="password" placeholder="New Password" />
-          <button type="submit">Save Changes</button>
-
-          <label for="username">Change Username</label>
-          <input type="text" placeholder="New Username" />
-          <button type="submit">Save Changes</button>
-        </div>
-      </form>
+    <div class="container">
+      <div class="accountSetting_Body">
+        <h2>Account Settings</h2>
+        <form class="security_form">
+          <div class="password_form">
+            <label for="password">Change Password</label>
+            <input type="password" placeholder="Old Password" />
+            <input type="password" placeholder="New Password" />
+            <button type="submit">Save Changes</button>
+          </div>
+          <div class="username_form">
+            <label for="username">Change Username</label>
+            <input type="text" placeholder="New Username" />
+            <button type="submit">Save Changes</button>
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>
