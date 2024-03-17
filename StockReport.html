@@ -3,19 +3,11 @@
 		
 		<title>AJC Bike Shop MIS</title>
 		<link rel="stylesheet" href="main_style.css">
-		<style>
-            #report_btn{
-                background-color: rgb(41, 41, 41);
-                color:white
-            }
-            #report_btn path, #report_btn svg,  #report_btn rect{
-                fill:white;
-            }
-        </style>
+		<link rel="stylesheet" href="report_style.css">
     </head>
     <body>
 
-        <!-- lists all report about inventory, when they bopught an item, etc -->
+        <!-- lists all report about transactions or order -->
 		
 		<div class="nav_bar">
 			<ul class="main_nav">
@@ -45,7 +37,55 @@
 		</div>
 
 		<div class="main_section">
-			<!--Your Code Starts here-->>
+			<div class="report_header">
+				<div class="report_title">Reports</div>
+				<hr/>
+				<div class="report_nav">
+					<button id="orderreport_btn">Order History</button>
+					<button id="salesreport_btn">Sales Report</button>
+					<button id="stockreport_btn">Stock History</button>
+				</div>
+			</div>
+			<div class="report_search">
+				<p>Stock History</p>
+				<input type="date" id = "dateSearch" name="dateSearch">
+				<input type="text" id = "idSearch" name="idSearch" placeholder="Search for Order ID">
+				<button id="search_btn"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" id="search"><path d="M46.599 40.236L36.054 29.691C37.89 26.718 39 23.25 39 19.5 39 8.73 30.27 0 19.5 0S0 8.73 0 19.5 8.73 39 19.5 39c3.75 0 7.218-1.11 10.188-2.943l10.548 10.545a4.501 4.501 0 0 0 6.363-6.366zM19.5 33C12.045 33 6 26.955 6 19.5S12.045 6 19.5 6 33 12.045 33 19.5 26.955 33 19.5 33z"></path></svg></button>
+			</div>
+			<div class="report_table"> 
+				<table cellspacing="0">
+					<tr>
+						<th>OrderNo</th>
+						<th>ProductOrdered</th>
+						<th>SupplierName</th>
+						<th>OrderDate</th>
+						<th>QuantityOrdered</th>
+						<th>CostPerUnit</th>
+						<th>TotalCost</th>
+					</tr>
+					<tr>
+						<td>ewggggweg</td>
+						<td>sdfsdfsdfsdfs</td>
+						<td>sdfsdf</td>
+						<td>ggsd</td>
+						<td>sadg asd</td>
+						<td>sadgas </td>
+						<td>sdag</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td> </td>
+						<td></td>
+						<td> </td>
+						<td> </td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+			<div class="report_table_footer"> 
+				<p>Showing XXX Orders</p>
+			</div>
 		</div>
         
     </body>
