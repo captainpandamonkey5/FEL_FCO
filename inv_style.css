@@ -1,4 +1,4 @@
-.main_container {
+.main_section {
 	background-color: white;
 	height: 100%;
 	width: 100%;
@@ -47,7 +47,7 @@
 
 
 
-.main_container button{
+.main_section button{
 	border-radius: 7px;
     color: rgb(41, 41, 41);
     text-decoration: none;
@@ -55,12 +55,12 @@
 	background-color: white;
 	border: 0px;
 }
-.main_container svg{
+.main_section svg{
     height: 2em;
     width: 2em;
     fill: #2c586e;
 }   
-.main_container path, .main_container svg,  .main_container rect{
+.main_section path, .main_section svg,  .main_section rect{
     fill:#2c586e;
 }
 
@@ -87,7 +87,7 @@
 	background: transparent;
 }
 
-.main_container button:hover,
+.main_section button:hover,
 #decQty_btn:hover,
 #addQty_btn:hover,
 #addItem_btn:hover {
