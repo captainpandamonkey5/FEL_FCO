@@ -1,0 +1,103 @@
+.main_section {
+	background-color: white;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	box-shadow: 1px 1px 1px 1px grey;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+}
+
+.inv_misc{
+	height: 80%;
+}
+
+.inventory_section{
+	height: 80%;
+	width: 80%;
+	overflow-y: auto;
+}
+
+.inventory_section table {
+        border-collapse: collapse;
+        width: 100%;
+}
+
+.inventory_section th{
+	background-color: 8DA1AF;
+	border: 1px solid black;
+	padding: 10px;
+	text-align: center;
+}
+
+.inventory_section td{
+	background-color: white;
+	border: 1px solid black;
+	padding: 7px;
+	text-align: center;
+}
+.inventory_section td p{
+	margin: 3;
+	height: 100%;
+	width: 100%;
+}
+
+
+
+.main_section button{
+	border-radius: 7px;
+    color: rgb(41, 41, 41);
+    text-decoration: none;
+    transition: .3s ease;
+	background-color: white;
+	border: 0px;
+}
+.main_section svg{
+    height: 2em;
+    width: 2em;
+    fill: #2c586e;
+}   
+.main_section path, .main_section svg,  .main_section rect{
+    fill:#2c586e;
+}
+
+#decQty_btn, #addQty_btn, #addItem_btn{
+	border-radius: 7px;
+    color: #ffffff;
+    background: #2C586E;
+    padding: 5px;
+	width: 2em;
+	height: 2em;
+    text-decoration: none;
+	font-family: arial black;
+	font-weight: bolder;
+}
+#addItem_btn svg{
+	height: 3em;
+    width: 3em;
+}
+#addItem_btn{
+	position: relative;
+	width: fit-content;
+	height:  fit-content;
+	margin-top: 0;
+	background: transparent;
+}
+
+.main_section button:hover,
+#decQty_btn:hover,
+#addQty_btn:hover,
+#addItem_btn:hover {
+    background-color: #e6e6e6;
+}
+
+
+
+@media screen and (max-width: 768px) {
+	.inventory_section table {
+		width: 100%;
+	}
+}
