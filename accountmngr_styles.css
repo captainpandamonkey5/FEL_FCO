@@ -1,10 +1,10 @@
-.container {
+.main_section {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	height: 100%;
-	margin: 0 auto;
-	padding-bottom: 30rem;
+	margin-top: -50px;
+
   }
   .accountManager_Body {
 	font-family: Arial, sans-serif;
@@ -12,6 +12,7 @@
   
   .accountManager_Body > h2 {
 	text-align: left;
+	font-size: 32px;
   }
   
   .admin_Form {
@@ -21,6 +22,7 @@
   .adminSetting_Form > label {
 	display: grid;
 	margin-bottom: 5px;
+	font-size: 20px;
   }
   
   .adminSetting_Form > input {
@@ -29,9 +31,14 @@
 	border: 2px solid black;
 	border-radius: 3px;
 	margin-bottom: 10px;
+	transition: 0.2s ease-out;
+	font-size: 16px;
   }
   
-  .adminSetting_Form > input:hover,
+  .adminSetting_Form > input:hover{
+	border-color: #8da1af;
+  }
+
   .adminSetting_Form > button:hover {
 	border-color: #8da1af;
 	background-color: #476370;
@@ -44,6 +51,7 @@
 	color: #fff;
 	border: none;
 	border-radius: 3px;
+	font-size: 16px;
   }
   
   .adminSetting_Form > input {
@@ -62,6 +70,7 @@
 	padding: 8px;
 	text-align: left;
 	border-bottom: 1px solid #ddd;
+	font-size: 16px;
   }
   
   .searchedData_Table th {
