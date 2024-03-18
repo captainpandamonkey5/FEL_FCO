@@ -26,7 +26,7 @@ body{
 	max-width: 340px;
 	min-width: 240px;
 	height: 100vh;
-	box-shadow: 5px 0px 10px #f0f0f0;
+	box-shadow: 5px 0px 10px #00000023;
 	position: relative;
 	z-index: 2;
 }
@@ -60,7 +60,10 @@ body{
 	max-width:210px;
 	min-width: 130px;
 	border-radius:5px;
-	box-shadow: 5px 0px 10px #dbdbdb;
+	box-shadow: 5px 0px 10px #00000023;
+}
+.nav_bar li:hover{
+	background-color: #dbdbdb;
 }
 
 /*Main Section*/
@@ -70,3 +73,4 @@ body{
 	width: 79vw;
 	/* background-color: #8da1af; */
 }
+
