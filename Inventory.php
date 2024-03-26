@@ -109,12 +109,22 @@
 							
 				</table>
 			</div>
+			<div class="addItem_form" id="addItem_form">
+				<h2>Add a Product</h2>
+				<form action="" method="post" id="productForm">
+					<input type="text" name="prodName" placeholder="Product Name">
+					<input type="text" name="prodCategory" placeholder="Category">
+					<input type="number" step="0.01" name="prodPrice" placeholder="Price">
+					<input type="text" name="prodDescriptiion" placeholder="Descripition">
+					<button id="submitItem_btn">Submit</button>
+				</form>	
+			</div>
 		
 		</div>
 
-	<script src="inventory.js">
+		<script src="inventory.js"> 
 	</script>
 
-</body>
+	</body>
 
 </html>

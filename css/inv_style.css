@@ -54,21 +54,21 @@
 .main_section svg{
     height: 2em;
     width: 2em;
-    fill: #2c586e;
+    fill: #00141f;
 }   
 .main_section path, .main_section svg,  .main_section rect{
     fill:#2c586e;
 }
 
-#decQty_btn, #addQty_btn, #addItem_btn{
+#decQty_btn, #addQty_btn, #addItem_btn, #submitItem_btn{
 	border-radius: 7px;
     color: #ffffff;
     background: #2C586E;
-    padding: 5px;
-	width: 2em;
+    padding: 0.7rem;
+	width: auto;
 	height: 2em;
     text-decoration: none;
-	font-family: arial black;
+	font-family: 'Lucida Console';
 	font-weight: bolder;
 }
 #addItem_btn svg{
@@ -86,10 +86,43 @@
 .main_section button:hover,
 #decQty_btn:hover,
 #addQty_btn:hover,
-#addItem_btn:hover {
+#addItem_btn:hover,
+#submitItem_btn:hover {
     background-color: #e6e6e6;
 }
 
+.addItem_form{
+	position: fixed;
+	display: none;
+	z-index: 2;
+	background-color: white;
+	box-shadow: 5px 0px 20px #0000009c;
+	width: fit-content;
+	height: fit-content;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	border-radius: 1.25rem;
+
+}
+.addItem_form input{
+	border: 2px solid #ebebeb;
+	font-family: inherit;
+	font-size: 18px;
+	border-radius: 1.25rem;
+	transition: all 0.4s;
+	display: block;
+	padding: 1rem;
+	margin: 0.5rem;
+}
+.addItem_form h2{
+	display: block;
+	margin: 0.5rem;
+}
+.addItem_form button{
+	font-size: 18px;
+	margin: 1rem;
+}
 
 
 @media screen and (max-width: 768px) {

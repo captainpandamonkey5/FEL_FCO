@@ -20,3 +20,13 @@ document.addEventListener("click", function(event) {
         stockLabel.textContent = currentStock;
     }
 });
+
+document.getElementById("addItem_btn").addEventListener("click", function(){
+    document.querySelector(".addItem_form").style.display = "flex";
+})
+
+document.addEventListener("click",e => {
+    if(!document.querySelector(".addItem_form").contains(e.target) && !document.querySelector("#addItem_btn").contains(e.target)){
+        document.querySelector(".addItem_form").style.display = "none";
+    }
+})
