@@ -1,3 +1,10 @@
+<?php
+	require_once('includes/inv_db.php');
+	$selectAllQuery = "SELECT * FROM product";
+	$stmnt = $pdo -> prepare ($selectAllQuery);
+	$results = $stmnt -> fetchAll();  
+?>
+
 <html>
     <head>
 		
