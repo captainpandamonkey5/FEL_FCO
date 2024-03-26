@@ -2,7 +2,8 @@
 
     require_once('main_db.php');
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
+    function insertItem (){
+        global $pdo;
         try{
             $prodName = $_POST["prodName"];
             $prodCategory = $_POST["prodCategory"];
@@ -24,9 +25,44 @@
         }catch(PDOException $e){
             die( "Insert failed " . $e->getMessage());
         }
+    }
+
+    function deleteItem (){
+        global $pdo;
+        $id = $_POST["id"];
+        try{
+            
+
+            $delQuery = "DELETE FROM product WHERE ProductID = ? ";
+
+            $stmnt = $pdo -> prepare ($delQuery);
+            $stmnt->execute([$id]);
+
+            $pdo=null;
+            $stmnt=null;
+
+            header("Location: ../Inventory.php");
+            die();
+
+        }catch(PDOException $e){
+             echo $id ;
+            die( "Delete failed " . $e->getMessage());
+        }
+    }
+
+
+    
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
         
+        if(isset($_POST["insertItem"])){
+            insertItem();
+        }
+        if(isset($_POST["deleteItem"])){
+            deleteItem();
+        }
 
     }else{
         header("Location: ../Inventory.php");
-        die( "Insert failed " . $e->getMessage());
+        die( "Failed " . $e->getMessage());
     }
