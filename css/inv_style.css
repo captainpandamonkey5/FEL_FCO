@@ -18,8 +18,9 @@
 }
 
 .inventory_section table {
-        border-collapse: collapse;
-        width: 100%;
+	border-collapse: collapse;
+	width: 100%;
+	table-layout:fixed;
 }
 
 .inventory_section th{
@@ -34,6 +35,7 @@
 	border: 1px solid black;
 	padding: 7px;
 	text-align: center;
+	overflow:auto;
 }
 .inventory_section td p{
 	margin: 3;

@@ -1,14 +1,19 @@
 <?php
-	require_once('includes/inv_db.php');
+	require_once('includes/main_db.php');
 	$selectAllQuery = "SELECT * FROM product";
 	$stmnt = $pdo -> prepare ($selectAllQuery);
-	$results = $stmnt -> fetchAll();  
+	$stmnt->execute();
+	$results = $stmnt -> fetchAll(); 
+	
+	$pdo=null;
+    $stmnt=null;
 ?>
 
 <html>
     <head>
 		
 		<title>AJC Bike Shop MIS</title>
+		<link rel="shortcut icon" href="#">
 		<link rel="stylesheet" href="css/main_style.css">
 		<link rel="stylesheet" href="css/inv_style.css">
 		<style>
@@ -74,42 +79,46 @@
 			<div class="inventory_section">
 				<table>
 							<tr>
-								<th>ProductID</th>
+								<th style="width:7%">ProductID</th>
 								<th>Name </th> 
-								<th>Category </th> 
+								<th style="width:10%">Category </th> 
 								<th>Price</th>
 								<th>Description</th>
 								<th>Quantity</th>
-								<th>Actions</th>
+								<th style="width:7%">Actions</th>
 							</tr>
-							<tr>
-								<td><p>10001</p></td>
-								<td><p>Saddle X6 PRO++ Ultra</p>
-									<button >
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pencil"><path d="M8.661 19.113 3 21l1.887-5.661ZM20.386 7.388a2.1 2.1 0 0 0 0-2.965l-.809-.809a2.1 2.1 0 0 0-2.965 0L6.571 13.655l3.774 3.774Z"></path></svg>								</button>
-								</td>
-								<td><p>Saddle</p>
-									<button >
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pencil"><path d="M8.661 19.113 3 21l1.887-5.661ZM20.386 7.388a2.1 2.1 0 0 0 0-2.965l-.809-.809a2.1 2.1 0 0 0-2.965 0L6.571 13.655l3.774 3.774Z"></path></svg>								</button>
-								</td>
-								<td ><p>PHP 400.00</p>
-									<button>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pencil"><path d="M8.661 19.113 3 21l1.887-5.661ZM20.386 7.388a2.1 2.1 0 0 0 0-2.965l-.809-.809a2.1 2.1 0 0 0-2.965 0L6.571 13.655l3.774 3.774Z"></path></svg>			
-									</button>	
-								</td>
-								<td>
-									<p>Lorem ipsum dolor is et at</p>
-								</td>
-								<td ><p>10</p>
-									<button id="decQty_btn">-</button>
-									<button id="addQty_btn">+</button>
-								</td>
-								<td>
-									<button >
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" id="delete"><path fill="#000" d="M15 3a1 1 0 0 1 1 1h2a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2h2a1 1 0 0 1 1-1h6Z"></path><path fill="#000" fill-rule="evenodd" d="M6 7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Zm3.5 2a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Zm5 0a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Z" clip-rule="evenodd"></path></svg>								</button>	
-								</td>
-								
-							</tr>
+							
+							<?php
+								foreach ($results as $row){
+							?>
+								<tr>
+									<td><p><?php echo $row["ProductID"] ?></p></td>
+									<td><p><?php echo $row["ProductName"] ?></p>
+									</td>
+									<td><p><?php echo $row["Category"] ?></p>
+									</td>
+									<td ><p>PHP <?php echo $row["Price"] ?></p>
+										
+									</td>
+									<td>
+										<p><?php echo $row["ProductDesc"] ?></p>
+									</td>
+									<td ><p><?php echo $row["Quantity"] ?></p>
+										<button id="decQty_btn">-</button>
+										<button id="addQty_btn">+</button>
+									</td>
+									<td>
+										<button>
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pencil"><path d="M8.661 19.113 3 21l1.887-5.661ZM20.386 7.388a2.1 2.1 0 0 0 0-2.965l-.809-.809a2.1 2.1 0 0 0-2.965 0L6.571 13.655l3.774 3.774Z"></path></svg>			
+										</button>	
+										<button >
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" id="delete"><path fill="#000" d="M15 3a1 1 0 0 1 1 1h2a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2h2a1 1 0 0 1 1-1h6Z"></path><path fill="#000" fill-rule="evenodd" d="M6 7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Zm3.5 2a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Zm5 0a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Z" clip-rule="evenodd"></path></svg>								</button>	
+									</td>
+								</tr>
+
+							<?php
+								}
+							?>
 							
 
 							
@@ -118,11 +127,11 @@
 			</div>
 			<div class="addItem_form" id="addItem_form">
 				<h2>Add a Product</h2>
-				<form action="" method="post" id="productForm">
+				<form action="includes/inv_db.php" method="post" id="productForm">
 					<input type="text" name="prodName" placeholder="Product Name">
 					<input type="text" name="prodCategory" placeholder="Category">
 					<input type="number" step="0.01" name="prodPrice" placeholder="Price">
-					<input type="text" name="prodDescriptiion" placeholder="Descripition">
+					<input type="text" name="prodDescription" placeholder="Descripition">
 					<button id="submitItem_btn">Submit</button>
 				</form>	
 			</div>
