@@ -45,12 +45,35 @@
             die();
 
         }catch(PDOException $e){
-             echo $id ;
+            echo $id ;
             die( "Delete failed " . $e->getMessage());
         }
     }
 
+    function updateItem () {
+	global $pdo;
+    	try{
+	    $id = $_POST["id"];
+            $prodName = $_POST["prodName"];
+            $prodCategory = $_POST["prodCategory"];
+            $prodPrice = $_POST["prodPrice"];
+            $prodDescription = $_POST["prodDescription"];
+        
+            $updateQuery = "UPDATE product SET ProductName=?, Category=?, Price=?, ProductDesc=? WHERE ProductID=?";
+        
+            $stmnt = $pdo->prepare($updateQuery);
+            $stmnt->execute([$prodName, $prodCategory, $prodPrice, $prodDescription, $id]);
+        
+            $pdo = null;
+            $stmnt = null;
 
+            header("Location: ../Inventory.php");
+            die();
+
+        } catch(PDOException $e){
+            die("Update failed: " . $e->getMessage());
+        }
+    }
     
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -60,6 +83,9 @@
         }
         if(isset($_POST["deleteItem"])){
             deleteItem();
+        }
+	if(isset($_POST["updateItem"])){
+	    updateItem($_POST["prodName"], $_POST["prodCategory"], $_POST["prodPrice"], $_POST["prodDescription"], $_POST["id"]);
         }
 
     }else{

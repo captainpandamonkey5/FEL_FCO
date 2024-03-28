@@ -111,7 +111,7 @@
 										<form action="includes/inv_db.php" method="post">
 											<input type="hidden" name ="id" value="<?php echo $row['ProductID']?>">
 											
-											<button >
+											<button id="editItem_btn">
 												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pencil"><path d="M8.661 19.113 3 21l1.887-5.661ZM20.386 7.388a2.1 2.1 0 0 0 0-2.965l-.809-.809a2.1 2.1 0 0 0-2.965 0L6.571 13.655l3.774 3.774Z"></path></svg>			
 											</button>	
 											<button type="submit" name="deleteItem">
@@ -138,6 +138,17 @@
 					<input type="text" name="prodDescription" placeholder="Descripition">
 					<button id="submitItem_btn" type="submit" name="insertItem">Submit</button>
 				</form>	
+			</div>
+			<div class="editItem_form" id="editItem_form">
+    				<h3>Edit Product</h3>
+    				<form action="includes/inv_db.php" method="post" id="editProductForm">
+        				<input type="hidden" name="productId" id="edit_prod_id">
+        				<input type="text" name="prodName" id="edit_prod_name" placeholder="Product Name">
+        				<input type="text" name="prodCategory" id="edit_prod_category" placeholder="Category">
+        				<input type="number" step="0.01" name="prodPrice" id="edit_prod_price" placeholder="Price">
+        				<input type="text" name="prodDescription" id="edit_prod_description" placeholder="Description">
+        				<button id="submitItem_btn" type="submit" name="updateItem">Update</button>
+   				</form>
 			</div>
 		
 		</div>
