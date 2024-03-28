@@ -1,4 +1,4 @@
-.login_Body{
+#login_Body{
 	position: relative;
 	z-index: 3;
 	width: 35%;
@@ -9,14 +9,14 @@
 	text-align: center;
   }
   
-  .login_Body > h1 {
+  #login_Body > h1 {
 	font-size: 56px;
 	font-weight: 700;
 	margin: 0 0 10px;
 	color: #dd9f52;
   }
   
-  .login_Body > h2{
+  #login_Body > h2{
 	font-size: 36px;
 	font-weight: 600;
 	margin: 0 0 12px;
@@ -66,10 +66,78 @@
   .login_Form > button:hover {
 	background: #10449A;
   }
+
+  .signup_Body{
+    position: relative;
+    z-index: 3;
+    width: 35%;
+    margin: 0 20px;
+    padding: 40px 20px 28px;
+    border-radius: 1.25rem;
+    background: #fff;
+    text-align: center;
+    }
+    
+   .signup_Body > h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    color: #dd9f52;
+    }
+    
+   .signup_Body > h2{
+    font-size: 36px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    }
+    
+    #signup_Form {
+    width: 100%;
+    margin: 0;
+    display: grid;
+    gap: 16px;
+    }
+    
+    #signup_Form > input, #signup_Form > button {
+    width: 100%;
+    height: 50px;
+    }
+    
+    #signup_Form > input {
+    border: 2px solid #ebebeb;
+    font-family: inherit;
+    font-size: 15px;
+    padding: 0 16px;
+    border-radius: 1.25rem;
+    transition: all 0.4s;
+    }
+    
+    #signup_Form > input:hover {
+    border: 2px solid #d3a738;
+    }
+    
+    #signup_Form > button {
+    cursor: pointer;
+    width: 100%;
+    padding: 0 16px;
+    border-radius: 1.25rem;
+    background: #216ce7;
+    color: #f9f9f9;
+    border: 0;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: all 0.4s;
+    }
+    
+    #signup_Form > button:hover {
+    background: #10449A;
+    }
   
   @keyframes rotate{
 	100%{
 		background-position: 15% 50%;
 	}
   }
-  

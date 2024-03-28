@@ -3,6 +3,7 @@
 		
 		<title>AJC Bike Shop MIS</title>
 		<link rel="stylesheet" href="css/entry_styles.css">
+    <script src="Entry.js"></script>
     </head>
     <style>
       * {
@@ -36,6 +37,17 @@
           <input type="text" placeholder="Username" />
           <input type="password" placeholder="Password" />
           <button type="submit"><b>LOGIN</b></button>
+        </form>
+      </div>
+
+      <div class="signup_Body">
+        <h1>AJC Bike Shop</h1>
+        <h2>Sign Up</h2>
+        <form id="signup_Form" class="signup_Body">
+          <input type="name" placeholder="Name" />
+          <input type="text" placeholder="Username" />
+          <input type="password" placeholder="Password" />
+          <button type="submit"><b>SIGNUP</b></button>
         </form>
       </div>
     </body>
