@@ -33,19 +33,6 @@ document.addEventListener("click",e => {
 
 document.getElementById("editItem_btn").addEventListener("click", function(){
     document.querySelector(".editItem_form").style.display = "flex";
-
-    var row = this.parentNode.parentNode;
-    var productId = row.querySelector("input[name='id']").value;
-    var prodName = row.querySelector(".prodName").textContent;
-    var prodCategory = row.querySelector(".prodCategory").textContent;
-    var prodPrice = row.querySelector(".prodPrice").value;
-    var prodDescription = row.querySelector(".prodDescription").textContent;
-
-    document.querySelector(".editItem_form input[name='id']").value = productId;
-    document.querySelector(".editItem_form input[name='prodName']").value = prodName;
-    document.querySelector(".editItem_form input[name='prodCategory']").value = prodCategory;
-    document.querySelector(".editItem_form input[name='prodPrice']").value = prodPrice;
-    document.querySelector(".editItem_form input[name='prodDescription']").value = prodDescription;
 });
 
 document.addEventListener("click",e => {

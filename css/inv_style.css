@@ -89,7 +89,7 @@
 #decQty_btn:hover,
 #addQty_btn:hover,
 #addItem_btn:hover,
-#submitItem_btn:hover {
+#submitItem_btn:hover{
     background-color: #e6e6e6;
 }
 

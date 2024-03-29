@@ -85,10 +85,9 @@
             deleteItem();
         }
 	if(isset($_POST["updateItem"])){
-	    updateItem($_POST["prodName"], $_POST["prodCategory"], $_POST["prodPrice"], $_POST["prodDescription"], $_POST["id"]);
-        }
-
+	    updateItem();
     }else{
         header("Location: ../Inventory.php");
         die( "Failed " . $e->getMessage());
     }
+}
