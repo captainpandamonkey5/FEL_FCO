@@ -63,7 +63,7 @@ if (isset($_SESSION["user"])) {
     <form class="login_Form" method="POST" action="login.php">
         <input type="text" placeholder="Username" name="username" />
         <input type="password" placeholder="Password" name="password" />
-        <label> Don't have an account? <a href="signup.php"> Sign Up here</a></label>
+        <label> Don't have an account? <a href="Registration.php"> Sign Up here</a></label>
         <button type="submit" value="login" name="login"><b>LOGIN</b></button>
     </form>
 </div>

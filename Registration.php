@@ -95,7 +95,7 @@ if (isset($_SESSION["user"])) {
           <input type="text" name="username" placeholder="Username" />
           <input type="password" name="password" placeholder="Password" />
           <input type="password" name="repeat_password" placeholder="Repeat Password" />
-          <label>Already have an account? <a href="login.php">Login here</a></label>
+          <label>Already have an account? <a href="Entry.php">Login here</a></label>
           <button type="submit" value="Register" name="submit"><b>SIGNUP</b></button>
         </form>
       </div>
