@@ -50,30 +50,36 @@
         }
     }
 
-    function updateItem () {
-	global $pdo;
-    	try{
-	    $id = $_POST["id"];
+    function updateItem() {
+    	$servername = "127.0.0.1";
+    	$username = "root";
+    	$password = ""; // Assuming no password set
+    	$dbname = "ajcbikeshop_db"; // Replace this with the correct database name
+
+    	try {
+            $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $id = $_POST["id"];
             $prodName = $_POST["prodName"];
             $prodCategory = $_POST["prodCategory"];
             $prodPrice = $_POST["prodPrice"];
             $prodDescription = $_POST["prodDescription"];
-        
+
             $updateQuery = "UPDATE product SET ProductName=?, Category=?, Price=?, ProductDesc=? WHERE ProductID=?";
-        
             $stmnt = $pdo->prepare($updateQuery);
             $stmnt->execute([$prodName, $prodCategory, $prodPrice, $prodDescription, $id]);
-        
+
             $pdo = null;
             $stmnt = null;
 
             header("Location: ../Inventory.php");
             die();
 
-        } catch(PDOException $e){
-            die("Update failed: " . $e->getMessage());
-        }
-    }
+      	    } catch(PDOException $e) {
+        	die("Update failed: " . $e->getMessage());
+    	    }
+	}
     
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){

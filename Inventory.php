@@ -142,12 +142,12 @@
 			<div class="editItem_form" id="editItem_form">
     				<h3>Edit Product</h3>
     				<form action="includes/inv_db.php" method="post" id="editProductForm">
-        				<input type="hidden" name="productId" id="edit_prod_id">
-        				<input type="text" name="prodName" id="edit_prod_name" placeholder="Product Name">
-        				<input type="text" name="prodCategory" id="edit_prod_category" placeholder="Category">
-        				<input type="number" step="0.01" name="prodPrice" id="edit_prod_price" placeholder="Price">
-        				<input type="text" name="prodDescription" id="edit_prod_description" placeholder="Description">
-        				<button id="editItem_btn" type="submit" name="updateItem">Update</button>
+        				<input type="hidden" name="id" id="edit_prod_id" value="<?php echo $row["ProductID"]; ?>">
+        				<input type="text" name="prodName" id="edit_prod_name" value="<?php echo $row["ProductName"] ?>">
+        				<input type="text" name="prodCategory" id="edit_prod_category" value="<?php echo $row["Category"] ?>">
+        				<input type="number" step="0.01" name="prodPrice" id="edit_prod_price" value="<?php echo $row["Price"] ?>">
+        				<input type="text" name="prodDescription" id="edit_prod_description" value="<?php echo $row["ProductDesc"] ?>">
+        				<button id="editItem_submit_btn" type="submit" name="updateItem">Update</button>
    				</form>
 			</div>
 		
