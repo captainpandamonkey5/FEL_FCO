@@ -51,15 +51,8 @@
     }
 
     function updateItem() {
-    	$servername = "127.0.0.1";
-    	$username = "root";
-    	$password = ""; // Assuming no password set
-    	$dbname = "ajcbikeshop_db"; // Replace this with the correct database name
-
+	global $pdo;
     	try {
-            $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             $id = $_POST["id"];
             $prodName = $_POST["prodName"];
             $prodCategory = $_POST["prodCategory"];
@@ -80,9 +73,33 @@
         	die("Update failed: " . $e->getMessage());
     	    }
 	}
-    
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
+    function getItem() {
+    	global $pdo;
+    	try {
+            $id = $_GET["id"];
+
+            $selectQuery = "SELECT * FROM product WHERE ProductID=?";
+            $stmnt = $pdo->prepare($selectQuery);
+            $stmnt->execute([$id]);
+            $item = $stmnt->fetch(PDO::FETCH_ASSOC);
+
+            $pdo = null;
+            $stmnt = null;
+
+        } catch(PDOException $e) {
+            die("Failed to fetch item: " . $e->getMessage());
+        }
+    }
+
+    if($_SERVER["REQUEST_METHOD"] == "GET") {
+    	if(isset($_GET["id"])) {
+            getItem();
+    	} else {
+            header("Location: ../Inventory.php");
+            die();
+    }
+} elseif($_SERVER["REQUEST_METHOD"] == "POST"){
         
         if(isset($_POST["insertItem"])){
             insertItem();
@@ -93,7 +110,7 @@
 	if(isset($_POST["updateItem"])){
 	    updateItem();
     }else{
-        header("Location: ../Inventory.php");
-        die( "Failed " . $e->getMessage());
+	header("Location: ../Inventory.php");
+        die("Failed " . $e->getMessage());
     }
 }

@@ -31,12 +31,14 @@ document.addEventListener("click",e => {
     }
 })
 
-document.getElementById("editItem_btn").addEventListener("click", function(){
+document.querySelectorAll(".editItem_btn").forEach(function(button) {
+    button.addEventListener("click", function() {
         document.querySelector(".editItem_form").style.display = "flex";
+    })
 })
 
 document.addEventListener("click", e => {
-    if(!document.querySelector(".editItem_form").contains(e.target) && !document.querySelector("#editItem_btn").contains(e.target)){
+    if(!document.querySelector(".editItem_form").contains(e.target) && !document.querySelector(".editItem_btn").contains(e.target)){
             document.querySelector(".editItem_form").style.display = "none";
     }
 })
