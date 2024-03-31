@@ -69,3 +69,32 @@ function updateTotalCost() {
     // Update the total cost input field
     document.getElementById('add_prod_totalcost').value = totalCost.toFixed(2); // Limiting to 2 decimal places
 }
+
+// for deducing qty item
+document.querySelectorAll(".decQty_btn").forEach((button) => {
+    button.addEventListener("click", function() {
+        let itemID = button.value;
+        // Get today's date
+        const today = new Date();
+
+        // Format the date to YYYY-MM-DD (required format for input type="date")
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Adding 1 because January is 0
+        const day = String(today.getDate()).padStart(2, '0');
+
+        // Set the value of the input element
+        const dateInput = document.getElementById('dec_prod_date');
+        dateInput.value = `${year}-${month}-${day}`;
+
+        document.getElementById("dec_prod_id").setAttribute('value',itemID);
+
+        document.querySelector(".decQty_form").style.display = "flex";
+    })
+    
+})
+
+document.addEventListener("click", e => {
+    if(!document.querySelector(".decQty_form").contains(e.target) && !e.target.matches(".decQty_btn")){
+            document.querySelector(".decQty_form").style.display = "none";
+    }
+})

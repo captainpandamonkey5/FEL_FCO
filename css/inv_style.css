@@ -62,7 +62,7 @@
     fill:#2c586e;
 }
 
-button.decQty_btn , button.addQty_btn , #addItem_btn, button.submitItem_btn {
+button.decQty_btn , button.addQty_btn,  button.decQty_btn, #addItem_btn, button.submitItem_btn {
 	border-radius: 7px;
     color: #ffffff;
     background: #2C586E;
@@ -87,13 +87,14 @@ button.decQty_btn , button.addQty_btn , #addItem_btn, button.submitItem_btn {
 
 .main_section button:hover,
 button.decQty_btn:hover,
-button.addQty_btn:hover,
+button.addQty_btn:hover
+button.decQty_btn:hover,
 #addItem_btn:hover,
 button.submitItem_btn:hover{
     background-color: #e6e6e6;
 }
 
-.addItem_form, .editItem_form, .addQty_form{
+.addItem_form, .editItem_form, .addQty_form, .decQty_form{
 	position: fixed;
 	display: none;
 	z-index: 2;
@@ -107,7 +108,7 @@ button.submitItem_btn:hover{
 	border-radius: 1.25rem;
 
 }
-.addItem_form input,  .editItem_form input, .addQty_form input{
+.addItem_form input,  .editItem_form input, .addQty_form input, .decQty_form input{
 	border: 2px solid #ebebeb;
 	font-family: inherit;
 	font-size: 18px;
@@ -117,11 +118,11 @@ button.submitItem_btn:hover{
 	padding: 1rem;
 	margin: 0.5rem;
 }
-.addItem_form h2,  .editItem_form input, .addQty_form input{
+.addItem_form h2,  .editItem_form h2, .addQty_form h2, .decQty_form h2{
 	display: block;
 	margin: 0.5rem;
 }
-.addItem_form button,  .editItem_form button, .addQty_form button{
+.addItem_form button,  .editItem_form button, .addQty_form button, .decQty_form button{
 	font-size: 18px;
 	margin: 1rem;
 }

@@ -166,6 +166,17 @@
         				<button class="submitItem_btn" type="submit" name="addQty">Add</button>
    				</form>
 			</div>
+
+			<div class="decQty_form" id="decQty_form">
+					<?php?>
+    				<h2>Deduct Quantity</h2>
+    				<form action="includes/inv_db.php" method="post" id="decProductForm">
+        				<input type="number" name="prodId" id="dec_prod_id" value="" readonly>
+						<input type="date" name="prodDate" id="dec_prod_date" value="" readonly>
+						<input type="number" name="prodQty" id="dec_prod_qty" value="" placeholder="Quantity" step="1" required>
+        				<button class="submitItem_btn" type="submit" name="decQty">Deduce</button>
+   				</form>
+			</div>
 		
 		</div>
 
