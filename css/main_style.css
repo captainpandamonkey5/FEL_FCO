@@ -16,6 +16,9 @@ body{
 	width: 100vw;
 	display: flex;
 }
+path, svg, rect{
+	pointer-events: none;
+}
 
 /*Navigation Bar*/
 .nav_bar{

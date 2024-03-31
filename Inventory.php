@@ -1,7 +1,20 @@
+
+<?php
+	require_once('includes/main_db.php');
+	$selectAllQuery = "SELECT * FROM product";
+	$stmnt = $pdo -> prepare ($selectAllQuery);
+	$stmnt->execute();
+	$results = $stmnt -> fetchAll(); 
+	
+	$pdo=null;
+    $stmnt=null;
+?>
+
 <html>
     <head>
 		
 		<title>AJC Bike Shop MIS</title>
+		<link rel="shortcut icon" href="#">
 		<link rel="stylesheet" href="css/main_style.css">
 		<link rel="stylesheet" href="css/inv_style.css">
 		<style>
@@ -67,54 +80,109 @@
 			<div class="inventory_section">
 				<table>
 							<tr>
-								<th>ProductID</th>
+								<th style="width:7%">ProductID</th>
 								<th>Name </th> 
-								<th>Category </th> 
+								<th style="width:10%">Category </th> 
 								<th>Price</th>
 								<th>Description</th>
 								<th>Quantity</th>
-								<th>Actions</th>
-							</tr>
-							<tr>
-								<td><p>10001</p></td>
-								<td><p>Saddle X6 PRO++ Ultra</p>
-									<button >
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pencil"><path d="M8.661 19.113 3 21l1.887-5.661ZM20.386 7.388a2.1 2.1 0 0 0 0-2.965l-.809-.809a2.1 2.1 0 0 0-2.965 0L6.571 13.655l3.774 3.774Z"></path></svg>								</button>
-								</td>
-								<td><p>Saddle</p>
-									<button >
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pencil"><path d="M8.661 19.113 3 21l1.887-5.661ZM20.386 7.388a2.1 2.1 0 0 0 0-2.965l-.809-.809a2.1 2.1 0 0 0-2.965 0L6.571 13.655l3.774 3.774Z"></path></svg>								</button>
-								</td>
-								<td ><p>PHP 400.00</p>
-									<button>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pencil"><path d="M8.661 19.113 3 21l1.887-5.661ZM20.386 7.388a2.1 2.1 0 0 0 0-2.965l-.809-.809a2.1 2.1 0 0 0-2.965 0L6.571 13.655l3.774 3.774Z"></path></svg>			
-									</button>	
-								</td>
-								<td>
-									<p>Lorem ipsum dolor is et at</p>
-								</td>
-								<td ><p>10</p>
-									<button id="decQty_btn">-</button>
-									<button id="addQty_btn">+</button>
-								</td>
-								<td>
-									<button >
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" id="delete"><path fill="#000" d="M15 3a1 1 0 0 1 1 1h2a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2h2a1 1 0 0 1 1-1h6Z"></path><path fill="#000" fill-rule="evenodd" d="M6 7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Zm3.5 2a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Zm5 0a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Z" clip-rule="evenodd"></path></svg>								</button>	
-								</td>
-								
+								<th style="width:7%">Actions</th>
 							</tr>
 							
+							<?php
+								foreach ($results as $row){
+							?>
+								<tr>
+									<td><p><?php echo $row["ProductID"] ?></p></td>
+									<td><p><?php echo $row["ProductName"] ?></p>
+									</td>
+									<td><p><?php echo $row["Category"] ?></p>
+									</td>
+									<td ><p>PHP <?php echo $row["Price"] ?></p>
+										
+									</td>
+									<td>
+										<p><?php echo $row["ProductDesc"] ?></p>
+									</td>
+									<td ><p><?php echo $row["Quantity"] ?></p>
+										<button class="decQty_btn" value="<?php echo $row['ProductID']?>" >-</button>
+										<button class="addQty_btn" value="<?php echo $row['ProductID']?>" >+</button>
+									</td>
+									<td>
+										<form action="includes/inv_db.php" method="get">
+											<input type="hidden" name ="id" value="<?php echo $row['ProductID']?>">
+											
+											<button type="button" class="editItem_btn" name ="passItem" value="<?php echo $row['ProductID']?>">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pencil"><path d="M8.661 19.113 3 21l1.887-5.661ZM20.386 7.388a2.1 2.1 0 0 0 0-2.965l-.809-.809a2.1 2.1 0 0 0-2.965 0L6.571 13.655l3.774 3.774Z"></path></svg>			
+											</button>	
+											<button type="button" name="deleteItem">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" id="delete"><path fill="#000" d="M15 3a1 1 0 0 1 1 1h2a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2h2a1 1 0 0 1 1-1h6Z"></path><path fill="#000" fill-rule="evenodd" d="M6 7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Zm3.5 2a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Zm5 0a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Z" clip-rule="evenodd"></path></svg>								</button>	
+										</form>
+									</td>
+								</tr>
+
+							<?php
+								}
+							?>
 
 							
 							
 				</table>
 			</div>
+			<div class="addItem_form" id="addItem_form">
+				<h2>Add a Product</h2>
+				<form action="includes/inv_db.php" method="post" id="productForm">
+					<input type="text" name="prodName" placeholder="Product Name">
+					<input type="text" name="prodCategory" placeholder="Category">
+					<input type="number" step="0.01" name="prodPrice" placeholder="Price">
+					<input type="text" name="prodDescription" placeholder="Descripition">
+					<button class="submitItem_btn" type="submit" name="insertItem">Submit</button>
+				</form>	
+			</div>
+
+			<div class="editItem_form" id="editItem_form">
+					<?php?>
+    				<h2>Edit Product</h2>
+    				<form action="includes/inv_db.php" method="post" id="editProductForm">
+        				<input type="number" name="prodId" id="edit_prod_id" value="" readonly>
+        				<input type="text" name="prodName" id="edit_prod_name" value="" placeholder="Product Name">
+        				<input type="text" name="prodCategory" id="edit_prod_category" value="" placeholder="Category">
+        				<input type="number" step="0.01" name="prodPrice" id="edit_prod_price" value="" placeholder="Price">
+        				<input type="text" name="prodDescription" id="edit_prod_description" value="" placeholder="Descripition">
+        				<button class="submitItem_btn" type="submit" name="updateItem">Update</button>
+   				</form>
+			</div>
+
+			<div class="addQty_form" id="addQty_form">
+					<?php?>
+    				<h2>Add Quantity</h2>
+    				<form action="includes/inv_db.php" method="post" id="addProductForm">
+        				<input type="number" name="prodId" id="add_prod_id" value="" readonly>
+						<input type="date" name="prodDate" id="add_prod_date" value="" readonly>
+						<input type="text" name="prodSuppName" id="add_prod_suppname" value="" placeholder="Supplier Name">
+						<input type="number" name="prodQty" id="add_prod_qty" value="" placeholder="Quantity" step="1" required>
+						<input type="number" name="prodCost" id="add_prod_cost" value="" placeholder="Cost Per Unit" step="0.01" required>
+						<input type="number" name="prodTotalCost" id="add_prod_totalcost" value="" placeholder="Total Cost" step="0.01" required>
+        				<button class="submitItem_btn" type="submit" name="addQty">Add</button>
+   				</form>
+			</div>
+
+			<div class="decQty_form" id="decQty_form">
+					<?php?>
+    				<h2>Deduct Quantity</h2>
+    				<form action="includes/inv_db.php" method="post" id="decProductForm">
+        				<input type="number" name="prodId" id="dec_prod_id" value="" readonly>
+						<input type="date" name="prodDate" id="dec_prod_date" value="" readonly>
+						<input type="number" name="prodQty" id="dec_prod_qty" value="" placeholder="Quantity" step="1" required>
+        				<button class="submitItem_btn" type="submit" name="decQty">Deduce</button>
+   				</form>
+			</div>
 		
 		</div>
 
-	<script src="inventory.js">
+		<script src="inventory.js"> 
 	</script>
 
-</body>
+	</body>
 
 </html>
