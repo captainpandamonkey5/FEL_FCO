@@ -33,13 +33,16 @@ document.addEventListener("click",e => {
 
 document.querySelectorAll(".editItem_btn").forEach((button) => {
     button.addEventListener("click", function() {
+        let itemID = button.value;
+        document.getElementById("edit_prod_id").setAttribute('value',itemID);
+        console.log(edit_prod_id);
+
         document.querySelector(".editItem_form").style.display = "flex";
     })
+    
 })
 
 document.addEventListener("click", e => {
-    console.log(e.target);
-    console.log(e.target.matches(".editItem_btn"));
     if(!document.querySelector(".editItem_form").contains(e.target) && !e.target.matches(".editItem_btn")){
             document.querySelector(".editItem_form").style.display = "none";
     }

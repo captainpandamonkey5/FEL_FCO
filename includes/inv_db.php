@@ -1,6 +1,8 @@
+<context>
 <?php
 
     require_once('main_db.php');
+    global $selectedItem;
 
     function insertItem (){
         global $pdo;
@@ -29,7 +31,7 @@
 
     function deleteItem (){
         global $pdo;
-        $id = $_POST["id"];
+        $id = $_GET["id"];
         try{
             
 
@@ -41,7 +43,7 @@
             $pdo=null;
             $stmnt=null;
 
-            header("Location: ../Inventory.php");
+            header("Location: ../FEL_FCO/Inventory.php");
             die();
 
         }catch(PDOException $e){
@@ -53,7 +55,7 @@
     function updateItem() {
 	global $pdo;
     	try {
-            $id = $_POST["id"];
+            $id = $_POST["prodId"];
             $prodName = $_POST["prodName"];
             $prodCategory = $_POST["prodCategory"];
             $prodPrice = $_POST["prodPrice"];
@@ -66,6 +68,8 @@
             $pdo = null;
             $stmnt = null;
 
+            echo "tite";
+
             header("Location: ../Inventory.php");
             die();
 
@@ -74,43 +78,27 @@
     	    }
 	}
 
-    function getItem() {
-    	global $pdo;
-    	try {
-            $id = $_GET["id"];
+    
 
-            $selectQuery = "SELECT * FROM product WHERE ProductID=?";
-            $stmnt = $pdo->prepare($selectQuery);
-            $stmnt->execute([$id]);
-            $item = $stmnt->fetch(PDO::FETCH_ASSOC);
-
-            $pdo = null;
-            $stmnt = null;
-
-        } catch(PDOException $e) {
-            die("Failed to fetch item: " . $e->getMessage());
-        }
+    
+        
+    if(isset($_GET["deleteItem"])){
+        deleteItem();
     }
-
-    if($_SERVER["REQUEST_METHOD"] == "GET") {
-    	if(isset($_GET["id"])) {
-            getItem();
-    	} else {
-            header("Location: ../Inventory.php");
-            die();
-    }
-} elseif($_SERVER["REQUEST_METHOD"] == "POST"){
+     
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
         
         if(isset($_POST["insertItem"])){
             insertItem();
         }
-        if(isset($_POST["deleteItem"])){
-            deleteItem();
+        else if(isset($_POST["updateItem"])){
+            updateItem();
         }
-	if(isset($_POST["updateItem"])){
-	    updateItem();
-    }else{
-	header("Location: ../Inventory.php");
-        die("Failed " . $e->getMessage());
+        else{
+            header("Location: ../Inventory.php");
+            die("Failed ");
+        }
+
     }
-}
+
+	
