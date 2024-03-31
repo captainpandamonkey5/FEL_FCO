@@ -9,7 +9,7 @@ if (isset($_SESSION["user"])) {
 		
 		<title>AJC Bike Shop MIS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-		<link rel="stylesheet" href="entry_styles.css">
+		<link rel="stylesheet" href="css/entry_styles.css">
     <script src="Entry.js"></script>
     </head>
     <style>
@@ -40,7 +40,6 @@ if (isset($_SESSION["user"])) {
       <div class="signup_Body">
       <?php
         if (isset($_POST["submit"])) {
-            $fullname = $_POST["fullname"];
             $username = $_POST["username"];
             $password = $_POST["password"];
             $repeatPassword = $_POST["repeat_password"];
@@ -50,20 +49,20 @@ if (isset($_SESSION["user"])) {
             $errors = array();
 
             // any of these conditions are not true
-            if (empty($fullname) || empty($username) || empty($password) || empty($repeatPassword)) {
+            if ( empty($username) || empty($password) || empty($repeatPassword)) {
               array_push($errors, "All fields are required");
             }
             if (!filter_var($username, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z0-9]+$/")))) {
               array_push($errors, "Username already in use");
             }
-            if (strlen($password < 8)) {
+            if (strlen($password) < 3) {
                 array_push($errors, "Password must be atleast 8 characters long");
             }
             if ($password !== $repeatPassword) {
                 array_push($errors, "Password does not match");
             }
             require_once "database.php";
-            $sql = "SELECT * FROM users WHERE username = '$username'";
+            $sql = "SELECT * FROM user WHERE username = '$username'";
             $result = mysqli_query($conn, $sql);
             $rowCount = mysqli_num_rows($result);
             if ($rowCount>0) {
@@ -74,11 +73,11 @@ if (isset($_SESSION["user"])) {
                     echo "<div class='alert alert-danger'> $error </div>";
                 }
             } else {
-              $sql = "INSERT INTO users (full_name, username, password) VALUES ( ?, ?, ? )";
+              $sql = "INSERT INTO user ( UserName, Password, AccountType) VALUES ( ?, ?, 'user' )";
               $stmt = mysqli_stmt_init($conn);
               $prepareStmt = mysqli_stmt_prepare($stmt,$sql);
               if ($prepareStmt) {
-                  mysqli_stmt_bind_param($stmt,"sss",$fullname, $username, $passwordHash);
+                  $stmt->bind_param("ss", $username, $passwordHash);
                   mysqli_stmt_execute($stmt);
                   echo "<div class='alert alert-success'>You are registered successfully.</div>";
               }else{
@@ -90,8 +89,7 @@ if (isset($_SESSION["user"])) {
       ?>
         <h1>AJC Bike Shop</h1>
         <h2>Sign Up</h2>
-        <form id="signup_Form" class="signup_Body" action="signup.php" method="post">
-          <input type="name" name="fullname" placeholder="Full Name" />
+        <form id="signup_Form" class="signup_Body" action="" method="post">
           <input type="text" name="username" placeholder="Username" />
           <input type="password" name="password" placeholder="Password" />
           <input type="password" name="repeat_password" placeholder="Repeat Password" />

@@ -3,7 +3,7 @@
 $host = "localhost";
 $dbusername = "root";
 $dbpassword = "";
-$database = "ajcbikeshope_db";
+$database = "ajcbikeshop_db";
 
 $conn = mysqli_connect($host, $dbusername, $dbpassword, $database);
 
