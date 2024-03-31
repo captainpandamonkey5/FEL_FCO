@@ -68,7 +68,6 @@
             $pdo = null;
             $stmnt = null;
 
-            echo "tite";
 
             header("Location: ../Inventory.php");
             die();
@@ -77,6 +76,47 @@
         	die("Update failed: " . $e->getMessage());
     	    }
 	}
+
+    function addQty() {
+        global $pdo;
+            try {
+                $id = $_POST["prodId"];
+                $prodSuppName = $_POST["prodSuppName"];
+                $prodDate = $_POST["prodDate"];
+                $prodQty = $_POST["prodQty"];
+                $prodCost = $_POST["prodCost"];
+                $prodTotalCost = $_POST["prodTotalCost"];
+    
+                $query = "SELECT Quantity FROM product WHERE ProductID = :id";
+                $stmnt = $pdo->prepare($query);
+                $stmnt->bindParam(':id', $id);
+                $stmnt->execute();
+                $currentQty = $stmnt->fetchColumn();
+
+                $newQty = $currentQty + $prodQty;
+
+                $updateQuery = "UPDATE product SET Quantity = :newQty WHERE ProductID = :id";
+                $updateStmnt = $pdo->prepare($updateQuery);
+                $updateStmnt->bindParam(':newQty', $newQty);
+                $updateStmnt->bindParam(':id', $id);
+                $updateStmnt->execute();
+
+                $insertQuery = "INSERT INTO supplierorder ( ProductOrdered, SupplierName, OrderDate, QuantityOrdered, CostPerUnit, TotalCost) VALUES (?,?,?,?,?,?)";
+                $stmnt = $pdo -> prepare ($insertQuery);
+                $stmnt->execute([$id,$prodSuppName, $prodDate, $prodQty, $prodCost, $prodTotalCost]);
+
+        
+                $pdo = null;
+                $stmnt = null;
+    
+    
+                header("Location: ../Inventory.php");
+                die();
+    
+                  } catch(PDOException $e) {
+                die("Update failed: " . $e->getMessage());
+                }
+        }
 
     
 
@@ -93,6 +133,9 @@
         }
         else if(isset($_POST["updateItem"])){
             updateItem();
+        }
+        else if(isset($_POST["addQty"])){
+            addQty();
         }
         else{
             header("Location: ../Inventory.php");

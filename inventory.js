@@ -1,26 +1,4 @@
-document.addEventListener("click", function(event) {
-    if (event.target.classList.contains("change-stock-btn")) {
-        var targetRow = event.target.closest("tr");
-        var stockLabel = targetRow.querySelector(".stocked-amount");
-        var customInput = targetRow.querySelector(".custom-stock-input");
-
-        var currentStock = parseInt(stockLabel.textContent);
-        var changeAmount = parseInt(customInput.value) || 1;
-
-        if (event.target.classList.contains("decrease-stock-btn")) {
-            if (currentStock >= changeAmount) {
-                currentStock -= changeAmount;
-            } else {
-                alert("Stocked Amount cannot be less than the inputted amount");
-            }
-        } else if (event.target.classList.contains("increase-stock-btn")) {
-            currentStock += changeAmount;
-        }
-
-        stockLabel.textContent = currentStock;
-    }
-});
-
+// for adding item
 document.getElementById("addItem_btn").addEventListener("click", function(){
     document.querySelector(".addItem_form").style.display = "flex";
 })
@@ -31,11 +9,11 @@ document.addEventListener("click",e => {
     }
 })
 
+//for editing item
 document.querySelectorAll(".editItem_btn").forEach((button) => {
     button.addEventListener("click", function() {
         let itemID = button.value;
         document.getElementById("edit_prod_id").setAttribute('value',itemID);
-        console.log(edit_prod_id);
 
         document.querySelector(".editItem_form").style.display = "flex";
     })
@@ -47,3 +25,47 @@ document.addEventListener("click", e => {
             document.querySelector(".editItem_form").style.display = "none";
     }
 })
+
+// for adding qty item
+document.querySelectorAll(".addQty_btn").forEach((button) => {
+    button.addEventListener("click", function() {
+        let itemID = button.value;
+        // Get today's date
+        const today = new Date();
+
+        // Format the date to YYYY-MM-DD (required format for input type="date")
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Adding 1 because January is 0
+        const day = String(today.getDate()).padStart(2, '0');
+
+        // Set the value of the input element
+        const dateInput = document.getElementById('add_prod_date');
+        dateInput.value = `${year}-${month}-${day}`;
+
+        document.getElementById("add_prod_id").setAttribute('value',itemID);
+
+        document.querySelector(".addQty_form").style.display = "flex";
+    })
+    
+})
+
+document.addEventListener("click", e => {
+    if(!document.querySelector(".addQty_form").contains(e.target) && !e.target.matches(".addQty_btn")){
+            document.querySelector(".addQty_form").style.display = "none";
+    }
+})
+
+document.getElementById('add_prod_qty').addEventListener('input', updateTotalCost);
+document.getElementById('add_prod_cost').addEventListener('input', updateTotalCost);
+
+function updateTotalCost() {
+    // Get quantity and cost per unit values
+    const qty = parseFloat( document.getElementById('add_prod_qty').value);
+    const cost = parseFloat( document.getElementById('add_prod_cost').value);
+
+    // Compute total cost
+    const totalCost = isNaN(qty) || isNaN(cost) ? 0 : qty * cost;
+
+    // Update the total cost input field
+    document.getElementById('add_prod_totalcost').value = totalCost.toFixed(2); // Limiting to 2 decimal places
+}

@@ -62,7 +62,7 @@
     fill:#2c586e;
 }
 
-#decQty_btn, #addQty_btn, #addItem_btn, #submitItem_btn{
+button.decQty_btn , button.addQty_btn , #addItem_btn, button.submitItem_btn {
 	border-radius: 7px;
     color: #ffffff;
     background: #2C586E;
@@ -86,14 +86,14 @@
 }
 
 .main_section button:hover,
-#decQty_btn:hover,
-#addQty_btn:hover,
+button.decQty_btn:hover,
+button.addQty_btn:hover,
 #addItem_btn:hover,
-#submitItem_btn:hover{
+button.submitItem_btn:hover{
     background-color: #e6e6e6;
 }
 
-.addItem_form{
+.addItem_form, .editItem_form, .addQty_form{
 	position: fixed;
 	display: none;
 	z-index: 2;
@@ -107,7 +107,7 @@
 	border-radius: 1.25rem;
 
 }
-.addItem_form input{
+.addItem_form input,  .editItem_form input, .addQty_form input{
 	border: 2px solid #ebebeb;
 	font-family: inherit;
 	font-size: 18px;
@@ -117,47 +117,16 @@
 	padding: 1rem;
 	margin: 0.5rem;
 }
-.addItem_form h2{
+.addItem_form h2,  .editItem_form input, .addQty_form input{
 	display: block;
 	margin: 0.5rem;
 }
-.addItem_form button{
+.addItem_form button,  .editItem_form button, .addQty_form button{
 	font-size: 18px;
 	margin: 1rem;
 }
 
-.editItem_form{
-	position: fixed;
-	display: none;
-	z-index: 3;
-	background-color: white;
-	box-shadow: 5px 0px 20px #0000009c;
-	width: fit-content;
-	height: fit-content;
-	justify-content: center;
-	align-items: center;
-	padding: 1rem;
-	border-radius: 1.25rem;
 
-}
-.editItem_form input{
-	border: 2px solid #ebebeb;
-	font-family: inherit;
-	font-size: 18px;
-	border-radius: 1.25rem;
-	transition: all 0.4s;
-	display: block;
-	padding: 1rem;
-	margin: 0.5rem;
-}
-.editItem_form h3{
-	display: block;
-	margin: 0.5rem;
-}
-.editItem_form button{
-	font-size: 18px;
-	margin: 1rem;
-}
 
 
 @media screen and (max-width: 768px) {

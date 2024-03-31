@@ -105,8 +105,8 @@
 										<p><?php echo $row["ProductDesc"] ?></p>
 									</td>
 									<td ><p><?php echo $row["Quantity"] ?></p>
-										<button id="decQty_btn">-</button>
-										<button id="addQty_btn">+</button>
+										<button class="decQty_btn" value="<?php echo $row['ProductID']?>" >-</button>
+										<button class="addQty_btn" value="<?php echo $row['ProductID']?>" >+</button>
 									</td>
 									<td>
 										<form action="includes/inv_db.php" method="get">
@@ -136,20 +136,34 @@
 					<input type="text" name="prodCategory" placeholder="Category">
 					<input type="number" step="0.01" name="prodPrice" placeholder="Price">
 					<input type="text" name="prodDescription" placeholder="Descripition">
-					<button id="submitItem_btn" type="submit" name="insertItem">Submit</button>
+					<button class="submitItem_btn" type="submit" name="insertItem">Submit</button>
 				</form>	
 			</div>
 
 			<div class="editItem_form" id="editItem_form">
 					<?php?>
-    				<h3>Edit Product</h3>
+    				<h2>Edit Product</h2>
     				<form action="includes/inv_db.php" method="post" id="editProductForm">
         				<input type="number" name="prodId" id="edit_prod_id" value="" readonly>
-        				<input type="text" name="prodName" id="edit_prod_name" value="">
-        				<input type="text" name="prodCategory" id="edit_prod_category" value="">
-        				<input type="number" step="0.01" name="prodPrice" id="edit_prod_price" value="">
-        				<input type="text" name="prodDescription" id="edit_prod_description" value="">
-        				<button id="submitItem_btn" type="submit" name="updateItem">Update</button>
+        				<input type="text" name="prodName" id="edit_prod_name" value="" placeholder="Product Name">
+        				<input type="text" name="prodCategory" id="edit_prod_category" value="" placeholder="Category">
+        				<input type="number" step="0.01" name="prodPrice" id="edit_prod_price" value="" placeholder="Price">
+        				<input type="text" name="prodDescription" id="edit_prod_description" value="" placeholder="Descripition">
+        				<button class="submitItem_btn" type="submit" name="updateItem">Update</button>
+   				</form>
+			</div>
+
+			<div class="addQty_form" id="addQty_form">
+					<?php?>
+    				<h2>Add Quantity</h2>
+    				<form action="includes/inv_db.php" method="post" id="addProductForm">
+        				<input type="number" name="prodId" id="add_prod_id" value="" readonly>
+						<input type="date" name="prodDate" id="add_prod_date" value="" readonly>
+						<input type="text" name="prodSuppName" id="add_prod_suppname" value="" placeholder="Supplier Name">
+						<input type="number" name="prodQty" id="add_prod_qty" value="" placeholder="Quantity" step="1" required>
+						<input type="number" name="prodCost" id="add_prod_cost" value="" placeholder="Cost Per Unit" step="0.01" required>
+						<input type="number" name="prodTotalCost" id="add_prod_totalcost" value="" placeholder="Total Cost" step="0.01" required>
+        				<button class="submitItem_btn" type="submit" name="addQty">Add</button>
    				</form>
 			</div>
 		
