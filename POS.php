@@ -1,3 +1,14 @@
+
+<?php
+	require_once('includes/main_db.php');
+	$selectAllQuery = "SELECT * FROM product";
+	$stmnt = $pdo -> prepare ($selectAllQuery);
+	$stmnt->execute();
+	$results = $stmnt -> fetchAll(); 
+	
+	$pdo=null;
+  $stmnt=null;
+?>
 <html>
     <head>
     
@@ -74,21 +85,22 @@
     
       <ul class="pos-products-list">
 
-        <li>
-      
-          <button>
-            <figure><h2>ID: 1 </h2>
-              <h3>Specialized P.120 2023 BMX Bike</h3>
-              <p>Bike</p>
-            
-            </figure>
-            <div class="pos-product-price">
-              ₱40,660.00 <svg width="24" height="24" viewBox="0 0 24 24"><title>Add</title><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
-            </div>
-          </button>
-        </li>
+        <?php foreach ($results as $list){ ?>
 
-        
+          <li>
+            <button value="<?php echo $list['ProductID']?>" class="addToCart_btn" name ="addToCart">
+              <figure><h2><?php echo $list["ProductID"] ?></h2>
+                <h3><?php echo $list["ProductName"] ?></h3>
+                <p><?php echo $list["Category"] ?></p>
+              
+              </figure>
+              <div class="pos-product-price">
+                ₱ <?php echo $list["Price"] ?> <svg width="24" height="24" viewBox="0 0 24 24"><title>Add</title><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
+              </div>
+            </button>
+          </li>
+
+        <?php } ?>
       
       </ul>
 

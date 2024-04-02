@@ -47,7 +47,6 @@
             die();
 
         }catch(PDOException $e){
-            echo $id ;
             die( "Delete failed " . $e->getMessage());
         }
     }
