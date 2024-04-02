@@ -43,7 +43,7 @@
             $pdo=null;
             $stmnt=null;
 
-            header("Location: ../FEL_FCO/Inventory.php");
+            header("Location: ../Inventory.php");
             die();
 
         }catch(PDOException $e){
@@ -164,6 +164,7 @@
         
     if(isset($_GET["deleteItem"])){
         deleteItem();
+        echo "tite";
     }
      
     if($_SERVER["REQUEST_METHOD"] == "POST"){
