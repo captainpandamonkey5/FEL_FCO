@@ -73,11 +73,13 @@
       </form>
     
       <ul class="pos-products-list">
+
         <li>
       
           <button>
-            <figure><img src="https://www.tradeinn.com/f/14018/140182616/specialized-p.1-20-2023-bmx-bike.jpg" style="width:200px;height:200px;">
-              <h3>Specialized P.120 2023 BMX Bike </h3>
+            <figure><h2>ID: 1 </h2>
+              <h3>Specialized P.120 2023 BMX Bike</h3>
+              <p>Bike</p>
             
             </figure>
             <div class="pos-product-price">
@@ -86,55 +88,7 @@
           </button>
         </li>
 
-        <li>
-          <button>
-            <figure><img src="https://jbmultisports.com.ph/cdn/shop/products/Jari-satin-iron_470x509_crop_bottom.jpg?v=1639129503"style="width:200px;height:200px;" alt="">
-              <h3>Fuji Jari 2.5 Gravel Bike</h3>
-            </figure>
-            <div class="pos-product-price">
-              ₱62,300.00 <svg width="24" height="24" viewBox="0 0 24 24"><title>Add</title><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
-            </div>
-          </button>
-        </li>
-
-        <li>
-          <button>
-            <figure><img src="https://jbmultisports.com.ph/cdn/shop/products/Blackburn-DayBlazer65-1_470x509_crop_bottom.jpg?v=1642401586" style="width:200px;height:200px;"alt="">
-
-              <h3> Dayblazer 65 RearLight</h3>
-            
-            </figure>
-            <div class="pos-product-price">
-              ₱1 750.00 <svg width="24" height="24" viewBox="0 0 24 24"><title>Add</title><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
-            </div>
-          </button>
-        </li>
-      
-        <li>
-          <button>
-            <figure><img src="https://jbmultisports.com.ph/cdn/shop/products/Blackburn-DayBlazer65-1_470x509_crop_bottom.jpg?v=1642401586" style="width:200px;height:200px;"alt="">
-
-              <h3> Dayblazer 65 RearLight</h3>
-            
-            </figure>
-            <div class="pos-product-price">
-              ₱1 750.00 <svg width="24" height="24" viewBox="0 0 24 24"><title>Add</title><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
-            </div>
-          </button>
-        </li>
-
-        <li>
-          <button>
-            <figure><img src="https://jbmultisports.com.ph/cdn/shop/products/Blackburn-DayBlazer65-1_470x509_crop_bottom.jpg?v=1642401586" style="width:200px;height:200px;"alt="">
-
-              <h3> Dayblazer 65 RearLight</h3>
-            
-            </figure>
-            <div class="pos-product-price">
-              ₱1 750.00 <svg width="24" height="24" viewBox="0 0 24 24"><title>Add</title><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
-            </div>
-          </button>
-        </li>
+        
       
       </ul>
 
@@ -148,7 +102,7 @@
 
       <ul>
         <li>
-          <figure><img src="https://www.tradeinn.com/f/13638/136386882/galfer-wave-fixed-6b-system-brake-disc.jpg"  alt=""></figure>
+          <figure></figure>
           <span>
             <h3>Brake</h3>
           <small>Quantity: 1</small>
@@ -156,43 +110,9 @@
           </span>
           <b>₱1,275.49</b>
         </li>
+        
 
-        <li >
-          <figure><img src="https://www.tradeinn.com/f/13600/136003677/sram-gxp-bsa-team-bottom-bracket-cup.jpg" alt=""></figure>
-          <span>
-            <h3>Bottom Bracket</h3>
-            <small>Quantity: 2</small>
-          </span>
-          <b>₱1,778.99</b>
-        </li>
-
-        <li>
-          <figure><img src="https://www.tradeinn.com/f/13725/137257600/shimano-xt-m8100-mtb-chain.jpg" alt=""></figure>
-          <span>
-            <h3>Chain</h3>
-            <small>Quantity: 1</small>
-          </span>
-          <b>₱2036.99</b>
-        </li>
-
-        <li>
-          <figure><img src="https://www.tradeinn.com/f/13725/137257600/shimano-xt-m8100-mtb-chain.jpg" alt=""></figure>
-          <span>
-            <h3>Chain</h3>
-            <small>Quantity: 1</small>
-          </span>
-          <b>₱2036.99</b>
-        </li>
-
-        <li>
-          <figure><img src="https://www.tradeinn.com/f/13725/137257600/shimano-xt-m8100-mtb-chain.jpg" alt=""></figure>
-          <span>
-            <h3>Chain</h3>
-            <small>Quantity: 1</small>
-          </span>
-          <b>₱2036.99</b>
-        </li>
-
+        
 
       </ul>
       

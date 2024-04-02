@@ -228,7 +228,7 @@ h3 {
   background: #8da1af;
   border-radius: 5px;
   overflow: hidden;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .pos-products-list figure svg {
@@ -238,10 +238,22 @@ h3 {
   object-fit: cover;
 }
 
+.pos-products-list p {
+  font-size: 12px;
+  font-style:italic;
+  margin: 0;
+}
 .pos-products-list h3 {
   margin: 0;
   margin: 0.5rem;
-  font-size: 13px;
+  font-size: 14px;
+  width: 12rem;
+}
+.pos-products-list h2 {
+  background-color: white;
+  border: 4px solid #dd9f52;
+  padding: 0.5rem;
+  box-sizing: border-box;
 }
 
 .pos-products-list div {
