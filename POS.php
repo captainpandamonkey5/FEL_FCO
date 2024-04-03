@@ -1,13 +1,21 @@
 
 <?php
 	require_once('includes/main_db.php');
-	$selectAllQuery = "SELECT * FROM product";
-	$stmnt = $pdo -> prepare ($selectAllQuery);
+	$query = "SELECT * FROM product";
+	$stmnt = $pdo -> prepare ($query);
 	$stmnt->execute();
-	$results = $stmnt -> fetchAll(); 
+	$allProductResults = $stmnt -> fetchAll(); 
 	
+  $query = "SELECT DISTINCT Category FROM product";
+  $stmnt = $pdo -> prepare ($query);
+	$stmnt->execute();
+	$categoryResults = $stmnt -> fetchAll(PDO::FETCH_COLUMN); 
+
+
 	$pdo=null;
   $stmnt=null;
+
+  
 ?>
 <html>
     <head>
@@ -72,10 +80,11 @@
 
       <div class="pos-categories">
         <div class="btn-group">
-          <button class="button">All</button>
-          <button class="button">Bikes</button>
-          <button class="button">Accesories</button>
-          <button class="button">Bike Parts</button>
+
+          <?php foreach ($categoryResults as $list){ ?>
+            <button class="button"> <?php echo $list?> </button>
+          <?php } ?>
+
         </div>
       </div>
 
@@ -85,7 +94,7 @@
     
       <ul class="pos-products-list">
 
-        <?php foreach ($results as $list){ ?>
+        <?php foreach ($allProductResults as $list){ ?>
 
           <li>
             <button value="<?php echo $list['ProductID']?>" class="addToCart_btn" name ="addToCart">
