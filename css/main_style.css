@@ -19,6 +19,17 @@ body{
 path, svg, rect{
 	pointer-events: none;
 }
+button:hover{
+	background-color: #e6e6e6;
+}
+button{
+	border-radius: 7px;
+    color: rgb(41, 41, 41);
+    text-decoration: none;
+    transition: .3s ease;
+	background-color: white;
+	border: 0px;
+}
 
 /*Navigation Bar*/
 .nav_bar{
