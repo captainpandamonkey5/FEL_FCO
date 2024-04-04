@@ -8,7 +8,7 @@
 	$productSearch = $_POST["productsearch"];
         try{
             
-            $searchQuery = "SELECT * FROM product WHERE `ProductID` = :productsearch";
+            $searchQuery = "SELECT * FROM product WHERE `ProductID` = :productsearch OR `ProductName` = :productsearch";
 
             $stmt = $pdo->prepare($searchQuery);
             $stmt->bindParam(':productsearch', $productSearch);
