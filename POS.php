@@ -88,8 +88,8 @@
         </div>
       </div>
 
-      <form class="pos-search">
-        <input type="search" placeholder="Search items">
+      <form class="pos-search" method="POST" action="includes/pos_db.php">
+        <input id="search" type="text" name="productsearch" placeholder="Search items">
       </form>
     
       <ul class="pos-products-list">
