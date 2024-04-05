@@ -1,4 +1,3 @@
-<context>
 <?php
 
     require_once('main_db.php');

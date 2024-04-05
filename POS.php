@@ -86,9 +86,11 @@
       <div class="pos-categories">
         <div class="btn-group">
 
-          <?php foreach ($categoryResults as $list){ ?>
-            <button class="button"> <?php echo $list?> </button>
-          <?php } ?>
+          <form method="GET" action="">
+            <?php foreach ($categoryResults as $list){ ?>
+              <button type="submit" class="button" value="<?php echo $list?>" name="productsearch"> <?php echo $list?> </button>
+            <?php } ?>
+          </form>
 
         </div>
       </div>
