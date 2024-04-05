@@ -6,9 +6,12 @@
 	$stmnt->execute();
 	$allProductResults = $stmnt -> fetchAll(); 
 
+  require('includes/pos_db.php');
   if(isset($_GET["productsearch"])){
-    require('includes/pos_db.php');
     $allProductResults = productSearch();
+  }
+  if(isset($_GET["categorysearch"])){
+    $allProductResults = categorySearch();
   }
 	
   $query = "SELECT DISTINCT Category FROM product";
@@ -88,7 +91,7 @@
 
           <form method="GET" action="">
             <?php foreach ($categoryResults as $list){ ?>
-              <button type="submit" class="button" value="<?php echo $list?>" name="productsearch"> <?php echo $list?> </button>
+              <button type="submit" class="button" value="<?php echo $list?>" name="categorysearch"> <?php echo $list?> </button>
             <?php } ?>
           </form>
 
