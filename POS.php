@@ -5,6 +5,11 @@
 	$stmnt = $pdo -> prepare ($query);
 	$stmnt->execute();
 	$allProductResults = $stmnt -> fetchAll(); 
+
+  if(isset($_GET["productsearch"])){
+    require('includes/pos_db.php');
+    $allProductResults = productSearch();
+  }
 	
   $query = "SELECT DISTINCT Category FROM product";
   $stmnt = $pdo -> prepare ($query);
@@ -88,7 +93,7 @@
         </div>
       </div>
 
-      <form class="pos-search" method="POST" action="includes/pos_db.php">
+      <form class="pos-search" method="GET" action="">
         <input id="search" type="text" name="productsearch" placeholder="Search items">
       </form>
     
