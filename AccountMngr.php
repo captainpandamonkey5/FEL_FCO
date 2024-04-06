@@ -3,7 +3,7 @@
     <title>AJC Bike Shop MIS</title>
     <link rel="stylesheet" href="css/main_style.css" />
     <link rel="stylesheet" href="css/accountmngr_styles.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> // for jquery
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
       #acc_btn {
         background-color: rgb(41, 41, 41);
@@ -96,7 +96,7 @@
                 <tbody>
                   <?php
                     include("database.php");
-                    $query = "SELECT * FROM users";
+                    $query = "SELECT * FROM user";
                     $query_run = mysqli_query($conn, $query);
 
                     if (mysqli_num_rows($query_run) > 0)
