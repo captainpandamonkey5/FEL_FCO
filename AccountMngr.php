@@ -3,6 +3,7 @@
     <title>AJC Bike Shop MIS</title>
     <link rel="stylesheet" href="css/main_style.css" />
     <link rel="stylesheet" href="css/accountmngr_styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> // for jquery
     <style>
       #acc_btn {
         background-color: rgb(41, 41, 41);
@@ -71,40 +72,81 @@
         <h2>Account Manager</h2>
         <form class="admin_Form">
           <div class="adminSetting_Form">
-            <label for="User Search">Search User</label>
-            <input type="userid" placeholder="User ID" />
-            <button type="search">Search User</button>
-            <div class="searchedData_Table">
+            <form action="search_user.php" method="POST">
+              <label for="User Search">Search User</label>
+              <input type="text" class="form-control" id="live_search" name="search" placeholder="Search" />
+              <button type="submit">Search User</button>
+              <div class="searchedData_Table">
+            </form>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
             <div class="tableDiv">
               <table style="width: 100%">
-                <tr>
-                  <th><label for="User ID">User ID</label></th>
-                  <th><label for="Name">Name</label></th>
-                  <th>Delete</th>
-                  <th>View</th>
-                </tr>
-                <tr>
-                  <td>00001</td>
-                  <td>Sam</td>
-                  <div class="button_container">
-                    <td><button type="delete">Delete User</button></td>
-                    <td><button type="view">View User Activity</button></td>
-                  </div>
-                </tr>
-                <tr>
-                  <td>00002</td>
-                  <td>Jennie</td>
-                  <div class="button_container">
-                    <td><button type="delete">Delete User</button></td>
-                    <td><button type="view">View User Activity</button></td>
-                  </div>
-                </tr>
+                <thead>
+                  <tr>
+                    <th><label for="User ID">User ID</label></th>
+                    <th><label for="Username">Username</label></th>
+                    <th><label for="Role">Role</label></th>
+                    <th>Edit Role</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <?php
+                    include("database.php");
+                    $query = "SELECT * FROM users";
+                    $query_run = mysqli_query($conn, $query);
+
+                    if (mysqli_num_rows($query_run) > 0)
+                    {
+
+                      foreach ($query_run as $row) 
+                      {
+                        ?>
+                        <tr>
+                          <td><?= $row['id']; ?></td>
+                          <td><?= $row['username']; ?></td>
+                          <td>
+                            <?php
+                              if($row['AccountType']== '1')
+                              {
+                                echo 'Admin';
+                              }
+                              else if($row ['AccountType']== '0'){
+                                echo 'User';
+                              }
+                            ?>
+                          </td>
+                          <td>
+                              <form action="add_admin.php" method="POST">
+                                <button name="add_admin" value="<?= $row['id']; ?>" class="button_container">Add Admin</button>
+                              </form>
+                          </td>
+                          <td>
+                              <form action="delete_user.php" method="POST">
+                                <button type="submit" name="delete_user" value="<?= $row['id']; ?>" class="button_container">Delete</button>
+                              </form>
+                          </td>
+                        </tr>
+                        <?php
+                      }
+
+                    }
+                    else
+                    {
+                      ?>
+                        <tr>
+                          <td colspan="5">No Record Found</td>
+                        </tr>
+                      <?php
+
+                    }
+                    ?>
+                </tbody>
               </table>
             </div>
-          </div>
-          </div>
-        </form>
-      </div>
   </div>
   </body>
 </html>
