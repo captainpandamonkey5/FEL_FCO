@@ -153,37 +153,7 @@
       <button class="confirm"><span>₱6,870.46</span> </button>
     </section>
   </div>
-	<script>
-    	var hold_num = -1;  
-    	function hold(event) {
-      	    if(hold_num == -1)  
-             hold_num = setInterval(onHold, 1000);
-    	}
-    	
-	function release(event) {
-       	    if(hold_num != -1) {  
-            clearInterval(hold_num);
-            hold_num = -1;
-        }
-       // dito ilagay mangyayari kapag binitawan hold
-	var buttons = document.querySelectorAll('.addToCart_btn');
-       	    buttons.forEach(function(button) {
-         	button.style.backgroundColor = "white";
-            });
-        }
-    
-	function onHold() {
-        // dito ilagay mangyayari kapag hold
-       	var buttons = document.querySelectorAll('.addToCart_btn');
-       	    buttons.forEach(function(button) {
-		button.addEventListener("mousedown", hold);
-	        button.addEventListener("mouseup", release);
-	    	button.addEventListener("mouseout", release);
-		button.style.backgroundColor = "blue";
-            });
-	}
-
-	</script>
+	<script src="pos.js"></script>
   </body>
 
 </html>
