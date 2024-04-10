@@ -1,13 +1,15 @@
 var hold_num = -1;  
-var cartArray = []
+let cartArray = []
 
-function addToCartByArray(id,qty){
-    const existingItem = cartArray.find(item => item[0] === id);
+function addToCartByArray(id, qty) {
+    const existingItem = JSON.parse(localStorage.getItem('cartArray')).find(item => item[0] === id);
 
     if (existingItem) {
-        existingItem[1] =  existingItem[1]+qty;
+        existingItem[1] = existingItem[1]+qty;
+        sessionStorage.setItem('cartArray', JSON.stringify(cartArray));
     } else {
         cartArray.push([id, qty]);
+        sessionStorage.setItem('cartArray', JSON.stringify(cartArray));
     }
 }
 
@@ -36,8 +38,12 @@ function release(event) {
 }
 
 function onHold(button) {
-    
+    release();
     let quantity = prompt("Enter quantity:");
+    if(quantity!=null && quantity!=""){
+        addToCartByArray(button.value, quantity-1);
+    }
+    displayAllArray();
     
 }
 

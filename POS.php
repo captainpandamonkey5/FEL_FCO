@@ -1,5 +1,6 @@
 
 <?php
+
 	require_once('includes/main_db.php');
 	$query = "SELECT * FROM product";
 	$stmnt = $pdo -> prepare ($query);
