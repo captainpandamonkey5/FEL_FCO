@@ -2,13 +2,13 @@ var hold_num = -1;
 let cartArray = JSON.parse(sessionStorage.getItem('cartArray')) || [];
 refreshCartDiv();
 
-function addToCartByArray(id, qty) {
+function addToCartByArray(id, name, price, qty) {
     const existingItem = cartArray.find(item => item[0] === id);
 
     if (existingItem) {
-        existingItem[1] = existingItem[1] + qty;
+        existingItem[3] = existingItem[3] + qty;
     } else {
-        cartArray.push([id, qty]);
+        cartArray.push([id, name, price, qty]);
     }
 
     sessionStorage.setItem('cartArray', JSON.stringify(cartArray));
@@ -24,8 +24,10 @@ function displayAllArray(){
 
 function refreshCartDiv(){
     document.querySelector(".pos-cart-list-ul").innerHTML = "";
+
+
     cartArray.forEach(element => {
-        createListItem(element[0],123,element[1]);
+        createListItem(element[1],element[2] * element[3],element[3]);
     });
 }
 
@@ -49,7 +51,7 @@ function createListItem(prodName, prodPrice, prodQty) {
   
     // Add the price
     const priceElement = document.createElement('b');
-    priceElement.textContent = prodPrice;
+    priceElement.textContent = `₱ ${prodPrice}`;
     listItem.appendChild(priceElement);
   
     // Create the delete button
@@ -71,7 +73,11 @@ function createListItem(prodName, prodPrice, prodQty) {
 
 function hold(event) {
         let button = event.target.closest('.addToCart_btn');
-        addToCartByArray(button.value,1)
+        let btn_id = button.value;
+        let btn_name = button.querySelector('figure h3').innerHTML;
+        let btn_price = parseInt(button.querySelector('.pos-product-price').textContent.match(/\d+/)[0],10);
+        addToCartByArray(btn_id,btn_name,btn_price,1);
+        console.log(btn_price);
         if(hold_num == -1){
             hold_num = setInterval(() => onHold(button), 1000);
         }
@@ -90,7 +96,7 @@ function onHold(button) {
     release();
     let quantity = prompt("Enter quantity:");
     if(quantity!=null && quantity!=""){
-        addToCartByArray(button.value, quantity-1);
+        addToCartByArray(button.value,0,0, quantity-1);
     }
     displayAllArray();
     
