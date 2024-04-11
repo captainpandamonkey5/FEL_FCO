@@ -1,16 +1,16 @@
-var hold_num = -1;  
-let cartArray = []
+var hold_num = -1;
+let cartArray = JSON.parse(sessionStorage.getItem('cartArray')) || [];
 
 function addToCartByArray(id, qty) {
-    const existingItem = JSON.parse(localStorage.getItem('cartArray')).find(item => item[0] === id);
+    const existingItem = cartArray.find(item => item[0] === id);
 
     if (existingItem) {
-        existingItem[1] = existingItem[1]+qty;
-        sessionStorage.setItem('cartArray', JSON.stringify(cartArray));
+        existingItem[1] = existingItem[1] + qty;
     } else {
         cartArray.push([id, qty]);
-        sessionStorage.setItem('cartArray', JSON.stringify(cartArray));
     }
+
+    sessionStorage.setItem('cartArray', JSON.stringify(cartArray));
 }
 
 function displayAllArray(){
