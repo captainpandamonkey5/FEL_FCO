@@ -130,7 +130,7 @@
       <header>
         <h2>Current order </h2>
               <span>
-                <button>
+                <button id="clr-cart-btn">
                   <b>CLR</b>
                 </button>
               </span>

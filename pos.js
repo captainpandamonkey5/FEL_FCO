@@ -118,3 +118,9 @@ var buttons = document.querySelectorAll('.addToCart_btn');
         button.addEventListener("mouseup", release);
         button.addEventListener("mouseout", release);
     });
+
+document.getElementById("clr-cart-btn").addEventListener("click", e=>{
+    cartArray.splice (0,cartArray.length);
+    sessionStorage.setItem('cartArray', JSON.stringify(cartArray));
+    refreshCartDiv();
+})
