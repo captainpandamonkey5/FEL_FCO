@@ -64,6 +64,16 @@ function createListItem(prodName, prodPrice, prodQty) {
         <path fill="#000" fill-rule="evenodd" d="M6 7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Zm3.5 2a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Zm5 0a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Z" clip-rule="evenodd"></path>
       </svg>
     `;
+
+    deleteButton.addEventListener('click', function(event) {
+        const index = cartArray.findIndex(item => item[1] === prodName && item[2] * item[3] === prodPrice && item[3] === prodQty);
+    	    if (index !== -1) {
+        	cartArray.splice(index, 1);
+        	sessionStorage.setItem('cartArray', JSON.stringify(cartArray));
+        	refreshCartDiv();
+    	    }
+    });
+
     listItem.appendChild(deleteButton);
   
     // Return the list item element
