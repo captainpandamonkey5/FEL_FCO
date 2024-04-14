@@ -106,8 +106,8 @@
                       {
                         ?>
                         <tr>
-                          <td><?= $row['id']; ?></td>
-                          <td><?= $row['username']; ?></td>
+                          <td><?= $row['UserID']; ?></td>
+                          <td><?= $row['UserName']; ?></td>
                           <td>
                             <?php
                               if($row['AccountType']== '1')
@@ -121,12 +121,12 @@
                           </td>
                           <td>
                               <form action="add_admin.php" method="POST">
-                                <button name="add_admin" value="<?= $row['id']; ?>" class="button_container">Add Admin</button>
+                                <button name="add_admin" value="<?= $row['UserID']; ?>" class="button_container">Add Admin</button>
                               </form>
                           </td>
                           <td>
                               <form action="delete_user.php" method="POST">
-                                <button type="submit" name="delete_user" value="<?= $row['id']; ?>" class="button_container">Delete</button>
+                                <button type="submit" name="delete_user" value="<?= $row['UserID']; ?>" class="button_container">Delete</button>
                               </form>
                           </td>
                         </tr>
