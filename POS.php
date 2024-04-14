@@ -141,21 +141,32 @@
         <li>
           <figure></figure>
           <span>
-            <h3>Brake</h3>
-            <small>Quantity: 1</small>
           </span>
-          <b>₱1,275.49</b>
-          <button type="submit" name="deleteItem">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" id="delete"><path fill="#000" d="M15 3a1 1 0 0 1 1 1h2a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2h2a1 1 0 0 1 1-1h6Z"></path><path fill="#000" fill-rule="evenodd" d="M6 7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Zm3.5 2a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Zm5 0a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Z" clip-rule="evenodd"></path></svg>								
-          </button>	
+          <button type="submit" name="deleteItem"> </button>	
         </li>
-        
-
-        
 
       </ul>
       
-      <button class="confirm"><span>₱6,870.46</span> </button>
+      <button class="confirm" onclick="chkoutForm()"> <span> </span> </button>
+
+	<form id="checkoutForm" style="display:none;">
+
+	<label for="orderNo">Order No:</label> <input type="number" id="orderNo" name="orderNo"><br><br>
+
+	<label for="customername">Customer Name:</label> <input type="text" id="customername" name="customername"><br><br>
+
+	<label for="orderDate">Order Date:</label> <input type="text" id="orderDate" name="orderDate"><br><br>
+
+	<label for="totalcost">Total Cost:</label> <input type="number" id="totalcost" name="totalcost" readonly><br><br>
+
+	<label for="payment">Payment:</label> <input type="number" id="payment" name="payment"><br><br>
+
+	<label for="remarks">Remarks:</label> <textarea id="remarks" name="remarks"></textarea><br><br>
+
+        <button type="submit" onclick="return chkout()"> Checkout </button>
+
+      </form>
+
     </section>
   </div>
 	<script src="pos.js"></script>

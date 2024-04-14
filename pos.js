@@ -25,10 +25,41 @@ function displayAllArray(){
 function refreshCartDiv(){
     document.querySelector(".pos-cart-list-ul").innerHTML = "";
 
+    let totalPrice = 0;
 
     cartArray.forEach(element => {
         createListItem(element[1],element[2] * element[3],element[3]);
+	totalPrice += element[2] * element[3];
     });
+
+    document.querySelector(".confirm span").textContent = "₱ " + totalPrice;
+
+    document.getElementById("totalcost").value = totalPrice;
+
+    return totalPrice;
+}
+
+function chkoutForm() {
+    var form = document.getElementById("checkoutForm");
+    if (form.style.display === "none") {
+        form.style.display = "block";
+    } else {
+        form.style.display = "none";
+    }
+}
+
+function chkout() {
+    let totalPrice = refreshCartDiv();
+
+    let paymentInput = parseFloat(document.getElementById("payment").value);
+    // Compare cash amount with total price
+    if (paymentInput >= totalPrice) {
+        return true;
+    } else {
+        // Cash is lower than total price, prevent form submission
+        alert("Insufficient payment amount! Please enter a valid payment amount");
+        return false;
+    }
 }
 
 function createListItem(prodName, prodPrice, prodQty) {
