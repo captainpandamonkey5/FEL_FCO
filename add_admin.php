@@ -6,7 +6,7 @@ if (isset($_POST['add_admin']))
     $user_id = $_POST["add_admin"];
 
     // Update the account type from 0 to 1 (admin)
-    $query = "UPDATE user SET AccountType = 1 WHERE id = '$user_id'";
+    $query = "UPDATE user SET AccountType = 1 WHERE UserID = '$user_id'";
     $query_run = mysqli_query($conn, $query);
 
     if($query_run)
