@@ -1,4 +1,3 @@
-
 <?php
 
 	require_once('includes/main_db.php');
@@ -146,26 +145,26 @@
         </li>
 
       </ul>
-      
-      <button class="confirm" onclick="chkoutForm()"> <span> </span> </button>
+	
+	<button class="confirm" onclick="chkoutForm()" type="button"> <span> </span> </button>
 
-	<form id="checkoutForm" style="display:none;">
+	    <form id="checkoutForm" style="display:none;">
 
-	<label for="orderNo">Order No:</label> <input type="number" id="orderNo" name="orderNo"><br><br>
+		<label for="orderNo">Order No:</label> <input type="number" id="orderNo" name="orderNo"><br><br>
 
-	<label for="customername">Customer Name:</label> <input type="text" id="customername" name="customername"><br><br>
+		<label for="customername">Customer Name:</label> <input type="text" id="customername" name="customername"><br><br>
 
-	<label for="orderDate">Order Date:</label> <input type="text" id="orderDate" name="orderDate"><br><br>
+		<label for="orderDate">Order Date:</label> <input type="text" id="orderDate" name="orderDate"><br><br>
 
-	<label for="totalcost">Total Cost:</label> <input type="number" id="totalcost" name="totalcost" readonly><br><br>
+		<label for="totalcost">Total Cost:</label> <input type="number" id="totalcost" name="totalcost" readonly><br><br>
 
-	<label for="payment">Payment:</label> <input type="number" id="payment" name="payment"><br><br>
+		<label for="payment">Payment:</label> <input type="number" id="payment" name="payment"><br><br>
 
-	<label for="remarks">Remarks:</label> <textarea id="remarks" name="remarks"></textarea><br><br>
+		<label for="remarks">Remarks:</label> <textarea id="remarks" name="remarks"></textarea><br><br>
 
-        <button type="submit" onclick="return chkout()"> Checkout </button>
+		<button type="submit" onclick="return chkout()"> Checkout </button>
 
-      </form>
+            </form>
 
     </section>
   </div>

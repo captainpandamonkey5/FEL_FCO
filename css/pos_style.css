@@ -285,5 +285,65 @@ h3 {
 .pos-categories button:hover{
   background-color: #e6e6e6;
 }
-    
-  
+
+.confirm {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#checkoutForm {
+  position: fixed;
+  display: none;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 5px 0px 20px #0000009c;
+  width: 400px;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 1.25rem;
+  left: 50%;
+  top: 50%;
+  overflow-y:auto;
+  transform: translate(-50%, -50%);
+}
+
+#checkoutForm label {
+  margin-bottom: 1px;
+}
+
+#checkoutForm input,
+#checkoutForm textarea {
+  border: 2px solid #ebebeb;
+  font-family: inherit;
+  font-size: 18px;
+  border-radius: 1.25rem;
+  transition: all 0.4s;
+  display: block;
+  padding: 10px;
+  margin: 2px;
+  width: 300px;
+  height: auto;
+}
+
+#checkoutForm button {
+  background-color: #2C586E;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}

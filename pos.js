@@ -52,11 +52,11 @@ function chkout() {
     let totalPrice = refreshCartDiv();
 
     let paymentInput = parseFloat(document.getElementById("payment").value);
-    // Compare cash amount with total price
+    // Compare payment amount with total price
     if (paymentInput >= totalPrice) {
         return true;
     } else {
-        // Cash is lower than total price, prevent form submission
+        // Payment is lower than total price, prevent form submission
         alert("Insufficient payment amount! Please enter a valid payment amount");
         return false;
     }
