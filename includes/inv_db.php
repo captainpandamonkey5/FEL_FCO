@@ -1,7 +1,6 @@
 <?php
 
     require_once('main_db.php');
-    global $selectedItem;
 
     function insertItem (){
         global $pdo;

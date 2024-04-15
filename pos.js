@@ -41,6 +41,16 @@ function refreshCartDiv(){
 
 function chkoutForm() {
     var form = document.getElementById("checkoutForm");
+    
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); 
+    const day = String(today.getDate()).padStart(2, '0');
+
+    const dateInput = document.getElementById('orderDate');
+    dateInput.value = `${year}-${month}-${day}`;
+
     if (form.style.display === "none") {
         form.style.display = "block";
     } else {
@@ -54,6 +64,7 @@ function chkout() {
     let paymentInput = parseFloat(document.getElementById("payment").value);
     // Compare payment amount with total price
     if (paymentInput >= totalPrice) {
+
         return true;
     } else {
         // Payment is lower than total price, prevent form submission
