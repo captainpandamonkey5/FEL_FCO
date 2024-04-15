@@ -66,6 +66,51 @@
 		</div>
 
     <div class="main_section">
+    <?php
+
+// Check if the form is submitted
+if(isset($_POST['new_password'])) {
+    // Retrieve old and new passwords from the form
+    $old_password = $_POST['old_password'];
+    $new_password = $_POST['new_password'];
+
+    // Query to fetch the old password hash from the database
+    $chg_pwd = mysqli_query($conn_db, "SELECT * FROM `change` WHERE UserID ='1'") or die(mysqli_error($conn_db));
+    $chg_pwd1 = mysqli_fetch_array($chg_pwd);
+    $stored_hashed_password = $chg_pwd1['password'];
+
+    // Verify if the old password matches the stored hashed password
+    if(password_verify($old_password, $stored_hashed_password)) {
+        // Hash the new password
+        $hashedPassword = password_hash($new_password, PASSWORD_BCRYPT);
+
+        // Update the password in the database
+        $update_pwd = mysqli_query($conn_db, "UPDATE `change` SET password='$hashedPassword' WHERE UserID ='1'") or die(mysqli_error($conn_db));
+        // Display success message and redirect to Account.php
+        echo "<script>alert('Update Successfully'); window.location='Account.php'</script>";
+    } else {
+        // Display error message if the old password is incorrect
+        echo "<script>alert('Your old password is wrong'); window.location='Account.php'</script>";
+    }
+}
+
+if(isset($_POST['new_username'])) {
+    // Retrieve the new username from the form
+    $newUsername = $_POST['new_username'];
+
+    // Update the username in the database
+    $updateUsernameQuery = "UPDATE `change` SET UserName ='$newUsername' WHERE UserID ='1'";
+    $updateUsernameResult = mysqli_query($conn_db, $updateUsernameQuery);
+
+    if($updateUsernameResult) {
+        // Display success message and redirect to Account.php
+        echo "<script>alert('Username updated successfully'); window.location='Account.php'</script>";
+    } else {
+        // Display error message if the update fails
+        echo "<script>alert('Failed to update username'); window.location='Account.php'</script>";
+    }
+}
+?>
       <div class="accountSetting_Body">
         <h2>Account Settings</h2>
         <form class="security_form">
