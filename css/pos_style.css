@@ -305,15 +305,15 @@ h3 {
   background-color: white;
   box-shadow: 5px 0px 20px #0000009c;
   width: 400px;
-  height: 500px;
+  height: 550px;
   justify-content: center;
   align-items: center;
   padding: 1rem;
   border-radius: 1.25rem;
-  left: 50%;
   top: 50%;
-  overflow-y:auto;
+  left: 50%;
   transform: translate(-50%, -50%);
+  overflow-y:auto;
 }
 
 #checkoutForm label {

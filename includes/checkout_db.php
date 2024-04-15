@@ -28,6 +28,7 @@
 
             $pdo=null;
             $stmnt=null;
+            
 
             header("Location: ../POS.php");
             die();
@@ -41,11 +42,9 @@
         
         if(isset($_POST["checkoutOrder"])){
             checkoutOrder();
-            echo "tite";
         }
         else{
             header("Location: ../POS.php");
-            echo "titfe";
             die("Failed ");
         }
 

@@ -1,5 +1,8 @@
 var hold_num = -1;
 let cartArray = JSON.parse(sessionStorage.getItem('cartArray')) || [];
+const getthelocation = cartArray.getthelocation;
+console.log(getthelocation);
+
 refreshCartDiv();
 
 function addToCartByArray(id, name, price, qty) {
@@ -39,6 +42,15 @@ function refreshCartDiv(){
     return totalPrice;
 }
 
+function refreshForm(){
+    document.querySelector(".order-inputs").innerHTML = "";
+
+    cartArray.forEach(element => {
+        createInputItem(element[0],element[3]);
+    });
+
+}
+
 function chkoutForm() {
     var form = document.getElementById("checkoutForm");
     
@@ -50,6 +62,8 @@ function chkoutForm() {
 
     const dateInput = document.getElementById('orderDate');
     dateInput.value = `${year}-${month}-${day}`;
+
+    refreshForm();
 
     if (form.style.display === "none") {
         form.style.display = "block";
@@ -123,6 +137,18 @@ function createListItem(prodName, prodPrice, prodQty) {
     return listItem;
   }
 
+  function createInputItem(prodID, prodQty) {
+    const inputItem = document.createElement('input');
+  
+    inputItem.type = 'number';
+    inputItem.value = prodQty;
+    inputItem.name = 'productID[' + prodID +']';
+  
+    
+    document.querySelector(".order-inputs").appendChild(inputItem);
+    return inputItem;
+  }
+
 function hold(event) {
         let button = event.target.closest('.addToCart_btn');
         let btn_id = button.value;
@@ -153,6 +179,8 @@ function onHold(button) {
     displayAllArray();
     
 }
+
+
 
 var buttons = document.querySelectorAll('.addToCart_btn');
     buttons.forEach((button) => {
