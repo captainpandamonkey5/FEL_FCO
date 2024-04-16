@@ -28,49 +28,56 @@
   <body>
   <?php
     // Establish connection to the database
-    $conn_db = mysqli_connect("localhost", "root", "", "Account") or die("Could not connect to database");
+    $conn_db = mysqli_connect("localhost", "root", "", "ajcbikeshop_db") or die("Could not connect to database");
+
+    
 
     // Check if the form is submitted
-    if(isset($_POST['new_password'])) {
+    if(isset($_POST['change_password'])) {
+
         // Retrieve old and new passwords from the form
         $old_password = $_POST['old_password'];
         $new_password = $_POST['new_password'];
 
         // Query to fetch the old password hash from the database
-        $chg_pwd = mysqli_query($conn_db, "SELECT * FROM `change` WHERE id='1'") or die(mysqli_error($conn_db));
+        $chg_pwd = mysqli_query($conn_db, "SELECT * FROM `user` WHERE UserID='1'") or die(mysqli_error($conn_db));
         $chg_pwd1 = mysqli_fetch_array($chg_pwd);
-        $stored_hashed_password = $chg_pwd1['password'];
+        $stored_hashed_password = $chg_pwd1['Password'];
 
         // Verify if the old password matches the stored hashed password
         if(password_verify($old_password, $stored_hashed_password)) {
             // Hash the new password
-            $hashedPassword = password_hash($new_password, PASSWORD_BCRYPT);
+            $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
 
             // Update the password in the database
-            $update_pwd = mysqli_query($conn_db, "UPDATE `change` SET password='$hashedPassword' WHERE id='1'") or die(mysqli_error($conn_db));
+            $update_pwd = mysqli_query($conn_db, "UPDATE `user` SET Password='$hashedPassword' WHERE UserID='1' ") or die(mysqli_error($conn_db));
             // Display success message and redirect to Account.php
-            echo "<script>alert('Update Successfully'); window.location='Account.php'</script>";
+            echo "<script>alert('Update Successfully'); window.location='Account.php' </script>";
         } else {
             // Display error message if the old password is incorrect
-            echo "<script>alert('Your old password is wrong'); window.location='Account.php'</script>";
+            echo "<script>alert('Your old password is wrong'); window.location='Account.php' </script>";
         }
+
+
     }
 
-    if(isset($_POST['new_username'])) {
+    if(isset($_POST['change_username'])) {
         // Retrieve the new username from the form
         $newUsername = $_POST['new_username'];
     
         // Update the username in the database
-        $updateUsernameQuery = "UPDATE `change` SET username='$newUsername' WHERE id='1'";
+        $updateUsernameQuery = "UPDATE `user` SET UserName='$newUsername' WHERE UserID='1'";
         $updateUsernameResult = mysqli_query($conn_db, $updateUsernameQuery);
     
         if($updateUsernameResult) {
             // Display success message and redirect to Account.php
-            echo "<script>alert('Username updated successfully'); window.location='Account.php'</script>";
+            echo "<script>alert('Username updated successfully'); window.location='Account.php' </script>";
         } else {
             // Display error message if the update fails
-            echo "<script>alert('Failed to update username'); window.location='Account.php'</script>";
+            echo "<script>alert('Failed to update username'); window.location='Account.php' </script>";
         }
+        
+
     }
 ?>
     <!-- for modifies account settings-->
@@ -121,13 +128,12 @@
             <label for="password">Change Password</label>
             <input type="password" name="old_password" placeholder="Old Password" />
             <input type="password" name="new_password" placeholder="New Password" />
-
-            <button type="submit">Save Changes</button>
+            <button type="submit" name="change_password">Save Changes</button>
           </div>
           <div class="username_form">
             <label for="username">Change Username</label>
             <input type="text" name="new_username" placeholder="New Username" />
-            <button type="submit">Save Changes</button>
+            <button type="submit" name="change_username">Save Changes</button>
           </div>
         </form>
       </div>
