@@ -179,17 +179,8 @@ function onHold(button) {
 }
 
 
-document.getElementById('print-receipt-btn').addEventListener("click", e=>{
-    document.querySelector('.receipt').style.display = "none";
-    //some printing codes
-})
-
-document.getElementById('done-receipt-btn').addEventListener("click", e=>{
-    document.querySelector('.receipt').style.display = "none";
-})
 
 document.getElementById('checkoutOrder').addEventListener("click", e=>{
-    document.querySelector('.receipt').style.display = "block";
     document.getElementById("checkoutForm").style.display = "none";
     clearCart();
 })
