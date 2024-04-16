@@ -334,7 +334,7 @@ h3 {
   height: auto;
 }
 
-#checkoutForm button {
+#checkoutForm button, .receipt_btns button{
   background-color: #2C586E;
   color: white;
   padding: 10px 20px;
@@ -346,4 +346,39 @@ h3 {
   cursor: pointer;
   border: none;
   border-radius: 5px;
+}
+
+.receipt {
+  display:none;
+  position: fixed;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 5px 0px 20px #0000009c;
+  width: 400px;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 1.25rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  font-family: Courier New;
+}
+.receipt p {
+  margin: 0; /* Remove default margin for paragraphs */
+  display: block;
+}
+
+.receipt p span {
+  font-weight: bold; /* Example: make the content bold */
+}
+
+.receipt_btns{
+  display:flex;
+}
+.receipt_btns button{
+  flex:1;
+  margin:0.2rem;
 }

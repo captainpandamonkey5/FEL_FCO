@@ -43,6 +43,9 @@
             
 
             header("Location: ../POS.php");
+
+
+
             die();
 
         }catch(PDOException $e){

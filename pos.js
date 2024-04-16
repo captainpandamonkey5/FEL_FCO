@@ -72,20 +72,6 @@ function chkoutForm() {
     }
 }
 
-function chkout() {
-    let totalPrice = refreshCartDiv();
-
-    let paymentInput = parseFloat(document.getElementById("payment").value);
-    // Compare payment amount with total price
-    if (paymentInput >= totalPrice) {
-
-        return true;
-    } else {
-        // Payment is lower than total price, prevent form submission
-        alert("Insufficient payment amount! Please enter a valid payment amount");
-        return false;
-    }
-}
 
 function createListItem(prodName, prodPrice, prodQty) {
     // Create the list item element
@@ -137,7 +123,7 @@ function createListItem(prodName, prodPrice, prodQty) {
     return listItem;
   }
 
-  function createInputItem(prodID, prodQty) {
+function createInputItem(prodID, prodQty) {
     const inputItemID = document.createElement('input');
   
     inputItemID.type = 'hidden';
@@ -153,7 +139,13 @@ function createListItem(prodName, prodPrice, prodQty) {
     
     document.querySelector(".order-inputs").appendChild(inputItemID);
     document.querySelector(".order-inputs").appendChild(inputItemQty);
-  }
+}
+
+function clearCart(){
+    cartArray.splice (0,cartArray.length);
+    sessionStorage.setItem('cartArray', JSON.stringify(cartArray));
+    refreshCartDiv();
+}
 
 function hold(event) {
         let button = event.target.closest('.addToCart_btn');
@@ -187,6 +179,21 @@ function onHold(button) {
 }
 
 
+document.getElementById('print-receipt-btn').addEventListener("click", e=>{
+    document.querySelector('.receipt').style.display = "none";
+    //some printing codes
+})
+
+document.getElementById('done-receipt-btn').addEventListener("click", e=>{
+    document.querySelector('.receipt').style.display = "none";
+})
+
+document.getElementById('checkoutOrder').addEventListener("click", e=>{
+    document.querySelector('.receipt').style.display = "block";
+    document.getElementById("checkoutForm").style.display = "none";
+    clearCart();
+})
+
 
 var buttons = document.querySelectorAll('.addToCart_btn');
     buttons.forEach((button) => {
@@ -196,7 +203,6 @@ var buttons = document.querySelectorAll('.addToCart_btn');
     });
 
 document.getElementById("clr-cart-btn").addEventListener("click", e=>{
-    cartArray.splice (0,cartArray.length);
-    sessionStorage.setItem('cartArray', JSON.stringify(cartArray));
-    refreshCartDiv();
+    clearCart();
+    
 })

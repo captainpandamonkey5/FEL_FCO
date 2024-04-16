@@ -98,24 +98,20 @@
           </form>
 
           <form id="checkoutForm" style="display:none;" action="includes/checkout_db.php" method="POST">
-          <label for="customername">Customer Name:</label> <input type="text" id="customername" name="customername"><br><br>
-          <label for="orderDate">Order Date:</label> <input type="text" id="orderDate" name="orderDate" readonly><br><br>
-          <label for="totalcost">Total Cost:</label> <input type="number" id="totalcost" name="totalcost" readonly><br><br>
-          <label for="payment">Payment:</label> <input type="number" id="payment" name="payment"><br><br>
-          <label for="remarks">Remarks:</label> <textarea id="remarks" name="remarks"></textarea><br><br>
-          <input id="cashier" name="cashier" value="1" type="hidden">
-          <div class="order-inputs">
+            <label for="customername">Customer Name:</label> <input type="text" id="customername" name="customername"><br><br>
+            <label for="orderDate">Order Date:</label> <input type="text" id="orderDate" name="orderDate" readonly><br><br>
+            <label for="totalcost">Total Cost:</label> <input type="number" id="totalcost" name="totalcost" readonly><br><br>
+            <label for="payment">Payment:</label> <input type="number" id="payment" name="payment"><br><br>
+            <label for="remarks">Remarks:</label> <textarea id="remarks" name="remarks"></textarea><br><br>
+            <input id="cashier" name="cashier" value="1" type="hidden">
 
-          </div>
-          <button type="submit" name="checkoutOrder" > Checkout </button>    
+            <div class="order-inputs">
 
+            </div>
 
-          <!-- <script>
-            let cartArrayAccess = JSON.parse(sessionStorage.getItem('cartArray'));
-          </script>
-          -->
+            <button type="submit" name="checkoutOrder" id="checkoutOrder"> Checkout </button>    
 
-      </form>
+          </form>
 
         </div>
       </div>
@@ -168,13 +164,41 @@
 
       </ul>
 	
-	  <button class="confirm" onclick="chkoutForm()" type="button"> <span> </span> </button>
+	    <button class="confirm" onclick="chkoutForm()" type="button"> <span> </span> </button>
 
       
 
     </section>
+
+    <div class="receipt">
+      <p style="text-align: center;">AJC Bike Shop</p>
+      <p style="text-align: center;">(Address)</p>
+      <p style="text-align: center;" id="recepit_OrderNo">(Order No.)</p><br>
+      <p style="text-align: center;">------------------------------------</p><br>
+      <p>Customer Name: <span id="recepit_CustomerName">(Name)</span></p>
+      <p>List of Items: <span id="recepit_Order">(Items with quantity and price maybe)</span></p><br>
+      <p style="text-align: center;">------------------------------------</p><br>
+      <p>Total Cost: <span id="recepit_TotalCost">(Cost)</span></p><br>
+      <p>Payment: <span id="recepit_Payment">(Payment)</span></p><br>
+      <p>Change: <span id="recepit_Change">(Change)</span></p><br>
+      <p>Remaining Balance : <span id="recepit_Balance">(Balance)</span></p><br>
+      <p>Remarks: <span id="recepit_Remarks">(Remarks)</span></p><br>
+      <p style="text-align: center;">------------------------------------</p><br>
+      <p>Order Date: <span id="recepit_OrderDate">(Date)</span></p>
+      <p>Status: <span id="recepit_Status">(Status)</span></p>
+      <p>Cashier: <span id="recepit_Cashier">(Cashier)</span></p>
+      <br>
+
+      <div class="receipt_btns">
+        <button id="print-receipt-btn" > <span> PRINT </span> </button>
+        <button id="done-receipt-btn"> <span> DONE </span> </button>
+      </div>
+
+    </div>
   </div>
 	<script src="pos.js"></script>
   </body>
 
 </html>
+
+
