@@ -26,6 +26,18 @@
             $stmnt = $pdo -> prepare ($insertQuery);
             $stmnt->execute([$customername,$orderDate,$totalcost,$payment,$change,$balance,$status,$cashier,$remarks]);
 
+            $last_id = $pdo->lastInsertId();
+            $productID = $_POST["productID"];
+            $productQty = $_POST["productQty"];
+            $discount = 0;
+
+            for($i=0; $i < count($productID); $i++){
+                $insertQuery = "INSERT INTO `order` (OrderNo, ProductID, OrderQty,Discount ) VALUES (?,?,?,?)";
+
+                $stmnt = $pdo -> prepare ($insertQuery);
+                $stmnt->execute([$last_id,$productID[$i],$productQty[$i],$discount]);            
+            }
+
             $pdo=null;
             $stmnt=null;
             

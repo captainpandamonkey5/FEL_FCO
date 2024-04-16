@@ -138,15 +138,21 @@ function createListItem(prodName, prodPrice, prodQty) {
   }
 
   function createInputItem(prodID, prodQty) {
-    const inputItem = document.createElement('input');
+    const inputItemID = document.createElement('input');
   
-    inputItem.type = 'number';
-    inputItem.value = prodQty;
-    inputItem.name = 'productID[' + prodID +']';
+    inputItemID.type = 'hidden';
+    inputItemID.name = 'productID[]';
+    inputItemID.value = prodID;
+
+    const inputItemQty = document.createElement('input');
+  
+    inputItemQty.type = 'hidden';
+    inputItemQty.name = 'productQty[]';
+    inputItemQty.value = prodQty;
   
     
-    document.querySelector(".order-inputs").appendChild(inputItem);
-    return inputItem;
+    document.querySelector(".order-inputs").appendChild(inputItemID);
+    document.querySelector(".order-inputs").appendChild(inputItemQty);
   }
 
 function hold(event) {
