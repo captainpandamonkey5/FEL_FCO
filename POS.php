@@ -1,5 +1,8 @@
 <?php
 
+
+  session_start();
+
 	require_once('includes/main_db.php');
 	$query = "SELECT * FROM product";
 	$stmnt = $pdo -> prepare ($query);
@@ -23,7 +26,6 @@
 	$pdo=null;
   $stmnt=null;
 
-  session_start();
 
   
 ?>
@@ -109,7 +111,7 @@
 
             </div>
 
-            <button type="submit" name="checkoutOrder" id="checkoutOrder" onclick="window.open('Receipt.php','_blank')"> Checkout </button>    
+            <button type="submit" name="checkoutOrder" id="checkoutOrder" > Checkout </button>    
 
           </form>
 

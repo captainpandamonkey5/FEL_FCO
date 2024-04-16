@@ -147,6 +147,10 @@ function clearCart(){
     refreshCartDiv();
 }
 
+function openReceipt(){
+    window.open('Receipt.php');
+}
+
 function hold(event) {
         let button = event.target.closest('.addToCart_btn');
         let btn_id = button.value;
@@ -183,7 +187,9 @@ function onHold(button) {
 document.getElementById('checkoutOrder').addEventListener("click", e=>{
     document.getElementById("checkoutForm").style.display = "none";
     clearCart();
+    openReceipt();
 })
+
 
 
 var buttons = document.querySelectorAll('.addToCart_btn');

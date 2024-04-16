@@ -1,3 +1,26 @@
+<?php
+    session_start();
+
+	require_once('includes/main_db.php');
+
+    $last_ID=$_SESSION['last_id'];
+
+	$query = "SELECT * FROM customerorder WHERE OrderNo='$last_ID'";
+	$stmnt = $pdo -> prepare ($query);
+	$stmnt->execute();
+	$lastOrder = $stmnt -> fetch(); 
+
+    $query = "SELECT * FROM `order` WHERE OrderNo='$last_ID'";
+    $stmnt = $pdo -> prepare ($query);
+	$stmnt->execute();
+	$allOrder = $stmnt -> fetchAll(); 
+
+	$pdo=null;
+    $stmnt=null;
+
+  
+?>
+
 <html>
     <title>AJC Bike Shop MIS</title>
     <link rel="stylesheet" href="css/main_style.css">
@@ -55,28 +78,32 @@
     </head>
     <body>
         <div class="receipt">
-        <p style="text-align: center;">AJC Bike Shop</p>
-        <p style="text-align: center;">(Address)</p>
-        <p style="text-align: center;" id="recepit_OrderNo">(Order No.)</p><br>
-        <p style="text-align: center;">------------------------------------</p><br>
-        <p>Customer Name: <span id="recepit_CustomerName">(Name)</span></p>
-        <p>List of Items: <span id="recepit_Order">(Items with quantity and price maybe)</span></p><br>
-        <p style="text-align: center;">------------------------------------</p><br>
-        <p>Total Cost: <span id="recepit_TotalCost">(Cost)</span></p><br>
-        <p>Payment: <span id="recepit_Payment">(Payment)</span></p><br>
-        <p>Change: <span id="recepit_Change">(Change)</span></p><br>
-        <p>Remaining Balance : <span id="recepit_Balance">(Balance)</span></p><br>
-        <p>Remarks: <span id="recepit_Remarks">(Remarks)</span></p><br>
-        <p style="text-align: center;">------------------------------------</p><br>
-        <p>Order Date: <span id="recepit_OrderDate">(Date)</span></p>
-        <p>Status: <span id="recepit_Status">(Status)</span></p>
-        <p>Cashier: <span id="recepit_Cashier">(Cashier)</span></p>
-        <br>
+            <p style="text-align: center;">AJC Bike Shop</p>
+            <p style="text-align: center;">(Address)</p>
+            <p style="text-align: center;" id="recepit_OrderNo">Order No : <?php echo $lastOrder['OrderNo'];?></p><br>
+            <p style="text-align: center;">------------------------------------</p><br>
+            <p>Customer Name: <span id="recepit_CustomerName"><?php echo $lastOrder['CustomerName'];?></span></p>
+            <p>List of Items: <span id="recepit_Order"></span></p><br>
+            <?php foreach($allOrder as $ao){?>
+                <p> <span><?php echo $ao['ProductID'];?></span></p>
+                <p> <?php echo $ao['OrderQty'];?> PC : <span> P </span></p>
+            <?php }?>
+            <p style="text-align: center;">------------------------------------</p><br>
+            <p>Total Cost: <span id="recepit_TotalCost"><?php echo $lastOrder['TotalCost'];?></span></p><br>
+            <p>Payment: <span id="recepit_Payment"><?php echo $lastOrder['Payment'];?></span></p><br>
+            <p>Change: <span id="recepit_Change"><?php echo $lastOrder['Change'];?></span></p><br>
+            <p>Remaining Balance : <span id="recepit_Balance"><?php echo $lastOrder['Balance'];?></span></p><br>
+            <p>Remarks: <span id="recepit_Remarks"><?php echo $lastOrder['Remarks'];?></span></p><br>
+            <p style="text-align: center;">------------------------------------</p><br>
+            <p>Order Date: <span id="recepit_OrderDate"><?php echo $lastOrder['OrderDate'];?></span></p>
+            <p>Status: <span id="recepit_Status"><?php echo $lastOrder['Status'];?></span></p>
+            <p>Cashier: <span id="recepit_Cashier"><?php echo $lastOrder['Cashier'];?></span></p>
+            <br>
 
-        <div class="receipt_btns">
-            <button id="print-receipt-btn" > <span> PRINT </span> </button>
-            <button id="done-receipt-btn"> <span> DONE </span> </button>
-        </div>
+            <div class="receipt_btns">
+                <button id="print-receipt-btn" > <span> PRINT </span> </button>
+                <button id="done-receipt-btn"> <span> DONE </span> </button>
+            </div>
 
         <script>
             document.getElementById('print-receipt-btn').addEventListener("click", e=>{ 

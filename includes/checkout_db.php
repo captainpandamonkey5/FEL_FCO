@@ -1,9 +1,11 @@
 <?php
 
     require_once('main_db.php');
+    
 
     function checkoutOrder(){
         global $pdo;
+        global $last_id;
         try{
             $customername = $_POST["customername"];
             $orderDate = $_POST["orderDate"];
@@ -27,6 +29,9 @@
             $stmnt->execute([$customername,$orderDate,$totalcost,$payment,$change,$balance,$status,$cashier,$remarks]);
 
             $last_id = $pdo->lastInsertId();
+            session_start();
+            $_SESSION['last_id'] = $last_id;
+
             $productID = $_POST["productID"];
             $productQty = $_POST["productQty"];
             $discount = 0;
@@ -42,7 +47,7 @@
             $stmnt=null;
             
 
-            header("Location: ../POS.php");
+           header("Location: ../POS.php");
 
 
 
