@@ -116,7 +116,7 @@
                     if (mysqli_num_rows($query_run) > 0)
                     {
 
-                      foreach ($searchedUsers as $row) 
+                      foreach ($query_run as $row) 
                       {
                         ?>
                         <tr>
