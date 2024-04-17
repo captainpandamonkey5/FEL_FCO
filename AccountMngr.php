@@ -1,3 +1,15 @@
+<?php
+  include("includes/database.php");
+
+  if(isset($_GET["search"])){
+    $search = $_GET["search"];
+    $searchQuery = "SELECT * FROM user WHERE `UserID` LIKE '$search%' OR `UserName` LIKE '$search%' ";
+    $searchedUsers = mysqli_query($conn, $searchQuery);
+    $query_run = $searchedUsers;
+  }
+
+?>
+
 <html>
   <head>
     <title>AJC Bike Shop MIS</title>
@@ -72,7 +84,7 @@
         <h2>Account Manager</h2>
         <form class="admin_Form">
           <div class="adminSetting_Form">
-            <form action="search_user.php" method="POST">
+            <form action="search_user.php" method="GET">
               <label for="User Search">Search User</label>
               <input type="text" class="form-control" id="live_search" name="search" placeholder="Search" />
               <button type="submit">Search User</button>
@@ -99,10 +111,12 @@
                     $query = "SELECT * FROM user";
                     $query_run = mysqli_query($conn, $query);
 
+
+
                     if (mysqli_num_rows($query_run) > 0)
                     {
 
-                      foreach ($query_run as $row) 
+                      foreach ($searchedUsers as $row) 
                       {
                         ?>
                         <tr>
