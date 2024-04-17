@@ -1,8 +1,6 @@
-<context>
 <?php
 
     require_once('main_db.php');
-    global $selectedItem;
 
     function insertItem (){
         global $pdo;
@@ -43,11 +41,10 @@
             $pdo=null;
             $stmnt=null;
 
-            header("Location: ../FEL_FCO/Inventory.php");
+            header("Location: ../Inventory.php");
             die();
 
         }catch(PDOException $e){
-            echo $id ;
             die( "Delete failed " . $e->getMessage());
         }
     }
@@ -165,6 +162,7 @@
         
     if(isset($_GET["deleteItem"])){
         deleteItem();
+        echo "tite";
     }
      
     if($_SERVER["REQUEST_METHOD"] == "POST"){

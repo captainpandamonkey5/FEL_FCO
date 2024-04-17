@@ -1,3 +1,34 @@
+<?php
+
+
+  session_start();
+
+	require_once('includes/main_db.php');
+	$query = "SELECT * FROM product";
+	$stmnt = $pdo -> prepare ($query);
+	$stmnt->execute();
+	$allProductResults = $stmnt -> fetchAll(); 
+
+  require('includes/pos_db.php');
+  if(isset($_GET["productsearch"])){
+    $allProductResults = productSearch();
+  }
+  if(isset($_GET["categorysearch"])){
+    $allProductResults = categorySearch();
+  }
+	
+  $query = "SELECT DISTINCT Category FROM product";
+  $stmnt = $pdo -> prepare ($query);
+	$stmnt->execute();
+	$categoryResults = $stmnt -> fetchAll(PDO::FETCH_COLUMN); 
+
+
+	$pdo=null;
+  $stmnt=null;
+
+
+  
+?>
 <html>
     <head>
     
@@ -61,80 +92,54 @@
 
       <div class="pos-categories">
         <div class="btn-group">
-          <button class="button">All</button>
-          <button class="button">Bikes</button>
-          <button class="button">Accesories</button>
-          <button class="button">Bike Parts</button>
+
+          <form method="GET" action="">
+            <?php foreach ($categoryResults as $list){ ?>
+              <button type="submit" class="button" value="<?php echo $list?>" name="categorysearch"> <?php echo $list?> </button>
+            <?php } ?>
+          </form>
+
+          <form id="checkoutForm" style="display:none;" action="includes/checkout_db.php" method="POST">
+            <label for="customername">Customer Name:</label> <input type="text" id="customername" name="customername"><br><br>
+            <label for="orderDate">Order Date:</label> <input type="text" id="orderDate" name="orderDate" readonly><br><br>
+            <label for="totalcost">Total Cost:</label> <input type="number" id="totalcost" name="totalcost" readonly><br><br>
+            <label for="payment">Payment:</label> <input type="number" id="payment" name="payment"><br><br>
+            <label for="remarks">Remarks:</label> <textarea id="remarks" name="remarks"></textarea><br><br>
+            <input id="cashier" name="cashier" value="1" type="hidden">
+
+            <div class="order-inputs">
+
+            </div>
+
+            <button type="submit" name="checkoutOrder" id="checkoutOrder" > Checkout </button>    
+
+          </form>
+
         </div>
       </div>
 
-      <form class="pos-search">
-        <input type="search" placeholder="Search items">
+      <form class="pos-search" method="GET" action="">
+        <input id="search" type="text" name="productsearch" placeholder="Search items">
       </form>
     
       <ul class="pos-products-list">
-        <li>
-      
-          <button>
-            <figure><img src="https://www.tradeinn.com/f/14018/140182616/specialized-p.1-20-2023-bmx-bike.jpg" style="width:200px;height:200px;">
-              <h3>Specialized P.120 2023 BMX Bike </h3>
-            
-            </figure>
-            <div class="pos-product-price">
-              ₱40,660.00 <svg width="24" height="24" viewBox="0 0 24 24"><title>Add</title><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
-            </div>
-          </button>
-        </li>
 
-        <li>
-          <button>
-            <figure><img src="https://jbmultisports.com.ph/cdn/shop/products/Jari-satin-iron_470x509_crop_bottom.jpg?v=1639129503"style="width:200px;height:200px;" alt="">
-              <h3>Fuji Jari 2.5 Gravel Bike</h3>
-            </figure>
-            <div class="pos-product-price">
-              ₱62,300.00 <svg width="24" height="24" viewBox="0 0 24 24"><title>Add</title><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
-            </div>
-          </button>
-        </li>
+        <?php foreach ($allProductResults as $list){ ?>
 
-        <li>
-          <button>
-            <figure><img src="https://jbmultisports.com.ph/cdn/shop/products/Blackburn-DayBlazer65-1_470x509_crop_bottom.jpg?v=1642401586" style="width:200px;height:200px;"alt="">
+          <li>
+            <button value="<?php echo $list['ProductID']?>" class="addToCart_btn" name ="addToCart">
+              <figure><h2><?php echo $list["ProductID"] ?></h2>
+                <h3><?php echo $list["ProductName"] ?></h3>
+                <p><?php echo $list["Category"] ?></p>
+              
+              </figure>
+              <div class="pos-product-price">
+                ₱ <?php echo $list["Price"] ?> <svg width="24" height="24" viewBox="0 0 24 24"><title>Add</title><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
+              </div>
+            </button>
+          </li>
 
-              <h3> Dayblazer 65 RearLight</h3>
-            
-            </figure>
-            <div class="pos-product-price">
-              ₱1 750.00 <svg width="24" height="24" viewBox="0 0 24 24"><title>Add</title><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
-            </div>
-          </button>
-        </li>
-      
-        <li>
-          <button>
-            <figure><img src="https://jbmultisports.com.ph/cdn/shop/products/Blackburn-DayBlazer65-1_470x509_crop_bottom.jpg?v=1642401586" style="width:200px;height:200px;"alt="">
-
-              <h3> Dayblazer 65 RearLight</h3>
-            
-            </figure>
-            <div class="pos-product-price">
-              ₱1 750.00 <svg width="24" height="24" viewBox="0 0 24 24"><title>Add</title><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
-            </div>
-          </button>
-        </li>
-
-        <li>
-          <button>
-            <figure><img src="https://jbmultisports.com.ph/cdn/shop/products/Blackburn-DayBlazer65-1_470x509_crop_bottom.jpg?v=1642401586" style="width:200px;height:200px;"alt="">
-
-              <h3> Dayblazer 65 RearLight</h3>
-            
-            </figure>
-            <div class="pos-product-price">
-              ₱1 750.00 <svg width="24" height="24" viewBox="0 0 24 24"><title>Add</title><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
-            </div>
-          </button>
-        </li>
+        <?php } ?>
       
       </ul>
 
@@ -143,62 +148,35 @@
     <section class="pos-cart">
       <header>
         <h2>Current order </h2>
-              <span><button><svg width="30" height="30" viewBox="0 0 24 24"><path d="M6 12c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3zm9 0c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3zm9 0c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z"/></svg></button></span>
+              <span>
+                <button id="clr-cart-btn">
+                  <b>CLR</b>
+                </button>
+              </span>
+              
       </header>
 
-      <ul>
+      <ul class="pos-cart-list-ul">
         <li>
-          <figure><img src="https://www.tradeinn.com/f/13638/136386882/galfer-wave-fixed-6b-system-brake-disc.jpg"  alt=""></figure>
+          <figure></figure>
           <span>
-            <h3>Brake</h3>
-          <small>Quantity: 1</small>
-        
           </span>
-          <b>₱1,275.49</b>
+          <button type="submit" name="deleteItem"> </button>	
         </li>
-
-        <li >
-          <figure><img src="https://www.tradeinn.com/f/13600/136003677/sram-gxp-bsa-team-bottom-bracket-cup.jpg" alt=""></figure>
-          <span>
-            <h3>Bottom Bracket</h3>
-            <small>Quantity: 2</small>
-          </span>
-          <b>₱1,778.99</b>
-        </li>
-
-        <li>
-          <figure><img src="https://www.tradeinn.com/f/13725/137257600/shimano-xt-m8100-mtb-chain.jpg" alt=""></figure>
-          <span>
-            <h3>Chain</h3>
-            <small>Quantity: 1</small>
-          </span>
-          <b>₱2036.99</b>
-        </li>
-
-        <li>
-          <figure><img src="https://www.tradeinn.com/f/13725/137257600/shimano-xt-m8100-mtb-chain.jpg" alt=""></figure>
-          <span>
-            <h3>Chain</h3>
-            <small>Quantity: 1</small>
-          </span>
-          <b>₱2036.99</b>
-        </li>
-
-        <li>
-          <figure><img src="https://www.tradeinn.com/f/13725/137257600/shimano-xt-m8100-mtb-chain.jpg" alt=""></figure>
-          <span>
-            <h3>Chain</h3>
-            <small>Quantity: 1</small>
-          </span>
-          <b>₱2036.99</b>
-        </li>
-
 
       </ul>
+	
+	    <button class="confirm" onclick="chkoutForm()" type="button"> ₱  <span> </span> </button>
+
       
-      <button class="confirm"><span>₱6,870.46</span> </button>
+
     </section>
+
+    
   </div>
+	<script src="pos.js"></script>
   </body>
 
 </html>
+
+

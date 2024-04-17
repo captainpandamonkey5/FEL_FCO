@@ -19,13 +19,24 @@ body{
 path, svg, rect{
 	pointer-events: none;
 }
+button:hover{
+	background-color: #e6e6e6;
+}
+button{
+	border-radius: 7px;
+    color: rgb(41, 41, 41);
+    text-decoration: none;
+    transition: .3s ease;
+	background-color: white;
+	border: 0px;
+}
 
 /*Navigation Bar*/
 .nav_bar{
 	background-color:white;
 	display:block;
 	float:left;
-	width:21vw;
+	flex:1;
 	max-width: 340px;
 	min-width: 240px;
 	height: 100vh;
@@ -73,7 +84,7 @@ path, svg, rect{
 .main_section{
 	position: relative;
 	height: 100vh;
-	width: 79vw;
+	flex: 2;
 	/* background-color: #8da1af; */
 }
 
