@@ -95,7 +95,7 @@
 
                 <tbody>
                   <?php
-                    include("database.php");
+                    include("includes/database.php");
                     $query = "SELECT * FROM user";
                     $query_run = mysqli_query($conn, $query);
 
@@ -120,12 +120,12 @@
                             ?>
                           </td>
                           <td>
-                              <form action="add_admin.php" method="POST">
+                              <form action="includes/add_admin.php" method="POST">
                                 <button name="add_admin" value="<?= $row['UserID']; ?>" class="button_container">Add Admin</button>
                               </form>
                           </td>
                           <td>
-                              <form action="delete_user.php" method="POST">
+                              <form action="includes/delete_user.php" method="POST">
                                 <button type="submit" name="delete_user" value="<?= $row['UserID']; ?>" class="button_container">Delete</button>
                               </form>
                           </td>

@@ -41,7 +41,7 @@ if (isset($_SESSION["user"])) {
         if (isset($_POST["login"])) {
            $username = $_POST["username"];
            $password = $_POST["password"];
-            require_once "database.php";
+            require_once "includes/database.php";
             $sql = "SELECT * FROM user WHERE username = '$username'";
             $result = mysqli_query($conn, $sql);
             $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
