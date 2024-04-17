@@ -9,7 +9,7 @@
         try{
             $customername = $_POST["customername"];
             $orderDate = $_POST["orderDate"];
-            $totalcost = (float)$_POST["totalcost"];
+            $totalcost = $_POST["totalcost"];
             $payment = (float)$_POST["payment"];
             $remarks = $_POST["remarks"];
             $cashier = $_POST["cashier"];
@@ -46,8 +46,7 @@
             $pdo=null;
             $stmnt=null;
             
-
-           header("Location: ../POS.php");
+            echo"<script>window.open('../Receipt.php'); window.location.href = '../POS.php';</script>";
 
 
 

@@ -35,9 +35,7 @@ function refreshCartDiv(){
 	totalPrice += element[2] * element[3];
     });
 
-    document.querySelector(".confirm span").textContent = "₱ " + totalPrice;
-
-    document.getElementById("totalcost").value = totalPrice;
+    document.querySelector(".confirm span").textContent =  totalPrice;
 
     return totalPrice;
 }
@@ -63,6 +61,8 @@ function chkoutForm() {
     const dateInput = document.getElementById('orderDate');
     dateInput.value = `${year}-${month}-${day}`;
 
+    console.log(document.querySelector(".confirm span").textContent);
+    document.getElementById("totalcost").value =  parseFloat(document.querySelector(".confirm span").textContent);
     refreshForm();
 
     if (form.style.display === "none") {
@@ -187,7 +187,8 @@ function onHold(button) {
 document.getElementById('checkoutOrder').addEventListener("click", e=>{
     document.getElementById("checkoutForm").style.display = "none";
     clearCart();
-    openReceipt();
+    //openReceipt();
+    
 })
 
 

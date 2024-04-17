@@ -166,7 +166,7 @@
 
       </ul>
 	
-	    <button class="confirm" onclick="chkoutForm()" type="button"> <span> </span> </button>
+	    <button class="confirm" onclick="chkoutForm()" type="button"> ₱  <span> </span> </button>
 
       
 

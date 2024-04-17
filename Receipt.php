@@ -10,10 +10,12 @@
 	$stmnt->execute();
 	$lastOrder = $stmnt -> fetch(); 
 
-    $query = "SELECT * FROM `order` WHERE OrderNo='$last_ID'";
+    $query = "SELECT OrderNo, product.ProductName, product.Price, OrderQty, Discount FROM `order` JOIN product ON product.ProductID = `order`.ProductID WHERE OrderNo='$last_ID'";
     $stmnt = $pdo -> prepare ($query);
 	$stmnt->execute();
 	$allOrder = $stmnt -> fetchAll(); 
+
+    //var_dump($allOrder);
 
 	$pdo=null;
     $stmnt=null;
@@ -79,20 +81,20 @@
     <body>
         <div class="receipt">
             <p style="text-align: center;">AJC Bike Shop</p>
-            <p style="text-align: center;">(Address)</p>
+            <p style="text-align: center;">122(A) Estrella St. Sto. Rosario City of Malolos Bulacan<br>09169596101</p>
             <p style="text-align: center;" id="recepit_OrderNo">Order No : <?php echo $lastOrder['OrderNo'];?></p><br>
             <p style="text-align: center;">------------------------------------</p><br>
-            <p>Customer Name: <span id="recepit_CustomerName"><?php echo $lastOrder['CustomerName'];?></span></p>
+            <p>Customer Name: <span id="recepit_CustomerName"><?php echo $lastOrder['CustomerName']; ?></span></p>
             <p>List of Items: <span id="recepit_Order"></span></p><br>
             <?php foreach($allOrder as $ao){?>
-                <p> <span><?php echo $ao['ProductID'];?></span></p>
-                <p> <?php echo $ao['OrderQty'];?> PC : <span> P </span></p>
+                <p> <span><?php echo $ao['ProductName'];?></span></p>
+                <p> <?php echo $ao['OrderQty'];?> PC : &nbsp &nbsp <span> PHP  <?php echo ($ao['Price']*$ao['OrderQty']);?></span></p>
             <?php }?>
             <p style="text-align: center;">------------------------------------</p><br>
-            <p>Total Cost: <span id="recepit_TotalCost"><?php echo $lastOrder['TotalCost'];?></span></p><br>
-            <p>Payment: <span id="recepit_Payment"><?php echo $lastOrder['Payment'];?></span></p><br>
-            <p>Change: <span id="recepit_Change"><?php echo $lastOrder['Change'];?></span></p><br>
-            <p>Remaining Balance : <span id="recepit_Balance"><?php echo $lastOrder['Balance'];?></span></p><br>
+            <p>Total Cost: <span id="recepit_TotalCost">PHP <?php echo $lastOrder['TotalCost'];?></span></p><br>
+            <p>Payment: <span id="recepit_Payment">PHP <?php echo $lastOrder['Payment'];?></span></p><br>
+            <p>Change: <span id="recepit_Change">PHP <?php echo $lastOrder['Change'];?></span></p><br>
+            <p>Remaining Balance : <span id="recepit_Balance">PHP <?php echo $lastOrder['Balance'];?></span></p><br>
             <p>Remarks: <span id="recepit_Remarks"><?php echo $lastOrder['Remarks'];?></span></p><br>
             <p style="text-align: center;">------------------------------------</p><br>
             <p>Order Date: <span id="recepit_OrderDate"><?php echo $lastOrder['OrderDate'];?></span></p>
