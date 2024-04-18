@@ -16,6 +16,25 @@
             $change=0;
             $balance=0;
             $status=false;
+            $productID = $_POST["productID"];
+            $productQty = $_POST["productQty"];
+            $discount = 0;
+
+            for($i=0; $i < count($productID); $i++){
+                            
+                $query = "SELECT Quantity FROM product WHERE `ProductID` = $productID[$i] ";
+                $stmnt = $pdo -> prepare ($query);
+                $stmnt->execute();
+                $productResult = $stmnt -> fetch(); 
+                
+                if($productResult["Quantity"] < $productQty[$i]){
+                    echo"<script>window.alert('Quantity not satisfied'); window.location.href = '../POS.php';</script>";
+                    print("kulang");
+                    die();
+                }
+
+            }
+
             if($payment>=$totalcost){
                 $change = $payment-$totalcost;
                 $status = true;
@@ -32,23 +51,27 @@
             session_start();
             $_SESSION['last_id'] = $last_id;
 
-            $productID = $_POST["productID"];
-            $productQty = $_POST["productQty"];
-            $discount = 0;
-
             for($i=0; $i < count($productID); $i++){
                 $insertQuery = "INSERT INTO `order` (OrderNo, ProductID, OrderQty,Discount ) VALUES (?,?,?,?)";
-
                 $stmnt = $pdo -> prepare ($insertQuery);
-                $stmnt->execute([$last_id,$productID[$i],$productQty[$i],$discount]);            
+                $stmnt->execute([$last_id,$productID[$i],$productQty[$i],$discount]);      
+
+                $query = "SELECT Quantity FROM product WHERE ProductID = $productID[$i]";
+                $stmnt = $pdo->prepare($query);
+                $stmnt->execute();
+                $currentQty = $stmnt->fetchColumn();
+
+                $newQty = $currentQty - $productQty[$i];
+                
+                $updateQuery = "UPDATE product SET Quantity = $newQty WHERE ProductID = $productID[$i]";
+                $stmnt = $pdo->prepare($updateQuery);
+                $stmnt->execute();
             }
 
             $pdo=null;
             $stmnt=null;
             
             echo"<script>window.open('../Receipt.php'); window.location.href = '../POS.php';</script>";
-
-
 
             die();
 

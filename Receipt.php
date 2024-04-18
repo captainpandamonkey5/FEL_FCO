@@ -15,10 +15,21 @@
 	$stmnt->execute();
 	$allOrder = $stmnt -> fetchAll(); 
 
+    $statusString = "Pending Balance *";
+    if ($lastOrder['Status'] == 1){
+        $statusString = "No Pending Balance";
+    }
+
+    $query = "SELECT Username FROM `user` WHERE UserID = {$lastOrder['Cashier']} ";
+    $stmnt = $pdo->prepare($query);
+    $stmnt->execute();
+    $cashierName = $stmnt->fetchColumn();
+    
+    $pdo=null;
+    $stmnt=null;
+
     //var_dump($allOrder);
 
-	$pdo=null;
-    $stmnt=null;
 
   
 ?>
@@ -90,16 +101,17 @@
                 <p> <span><?php echo $ao['ProductName'];?></span></p>
                 <p> <?php echo $ao['OrderQty'];?> PC : &nbsp &nbsp <span> PHP  <?php echo ($ao['Price']*$ao['OrderQty']);?></span></p>
             <?php }?>
+            <br>
             <p style="text-align: center;">------------------------------------</p><br>
-            <p>Total Cost: <span id="recepit_TotalCost">PHP <?php echo $lastOrder['TotalCost'];?></span></p><br>
-            <p>Payment: <span id="recepit_Payment">PHP <?php echo $lastOrder['Payment'];?></span></p><br>
-            <p>Change: <span id="recepit_Change">PHP <?php echo $lastOrder['Change'];?></span></p><br>
-            <p>Remaining Balance : <span id="recepit_Balance">PHP <?php echo $lastOrder['Balance'];?></span></p><br>
+            <p>Total Cost: <span id="recepit_TotalCost">PHP <?php echo $lastOrder['TotalCost'];?></span></p>
+            <p>Payment: <span id="recepit_Payment">PHP <?php echo $lastOrder['Payment'];?></span></p>
+            <p>Change: <span id="recepit_Change">PHP <?php echo $lastOrder['Change'];?></span></p>
+            <p>Remaining Balance : <span id="recepit_Balance">PHP <?php echo $lastOrder['Balance'];?></span></p>
             <p>Remarks: <span id="recepit_Remarks"><?php echo $lastOrder['Remarks'];?></span></p><br>
             <p style="text-align: center;">------------------------------------</p><br>
             <p>Order Date: <span id="recepit_OrderDate"><?php echo $lastOrder['OrderDate'];?></span></p>
-            <p>Status: <span id="recepit_Status"><?php echo $lastOrder['Status'];?></span></p>
-            <p>Cashier: <span id="recepit_Cashier"><?php echo $lastOrder['Cashier'];?></span></p>
+            <p>Status: <span id="recepit_Status"><?php echo $statusString;?></span></p>
+            <p>Cashier: <span id="recepit_Cashier"><?php echo $cashierName;?></span></p>
             <br>
 
             <div class="receipt_btns">

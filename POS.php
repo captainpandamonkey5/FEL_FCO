@@ -94,6 +94,7 @@
         <div class="btn-group">
 
           <form method="GET" action="">
+          <button type="submit" class="button" value="" name="productsearch"> ALL </button>
             <?php foreach ($categoryResults as $list){ ?>
               <button type="submit" class="button" value="<?php echo $list?>" name="categorysearch"> <?php echo $list?> </button>
             <?php } ?>

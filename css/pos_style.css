@@ -36,28 +36,20 @@ h3 {
 
 
 .pos-categories {
-  position: fixed;
-  z-index: 99;
-  width: fit-content;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 4;
+  width: auto;
   display: flex;
   align-items: stretch;
 }
 
-.pos-categories button.top {
+.pos-categories button.button {
   flex: 10 10 auto;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-
-.pos-categories button.top.active {
-  color: #8da1af;
-  background-color: rgba(115, 81, 22, 0.95);
+  margin:0.25rem 0;
 }
 
 .pos-search {
-  margin-bottom: 10px;
-  margin-top: 40px;
+  margin:10px 0;
 }
 
 .pos-search input {
