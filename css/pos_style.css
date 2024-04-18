@@ -134,6 +134,10 @@ h3 {
   margin-top:8px;
   display: flex;
   align-items: center;
+  border-bottom: #e2e2e2;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: 8px;
 }
 
 
@@ -340,3 +344,24 @@ h3 {
   border-radius: 5px;
 }
 
+.discountPrice{
+  width:5rem;
+  display: block;
+  border-radius: 5px;
+  padding: 0.2rem;
+  border-color: #bed0db;
+  border-width: 1px;
+}
+
+.rightpartSpan{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: end;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -95,6 +95,22 @@ function createListItem(prodName, prodPrice, prodQty) {
     const priceElement = document.createElement('b');
     priceElement.textContent = `₱ ${prodPrice}`;
     listItem.appendChild(priceElement);
+
+    // Create the input element
+    const inputElement = document.createElement('input');
+    inputElement.type = 'number';
+    inputElement.value = "";
+    inputElement.placeholder = "discount";
+    inputElement.className = "discountPrice";
+    inputElement.removeAttribute('step');
+    listItem.appendChild(inputElement);
+    
+    // Add  to the span element
+    const span2 = document.createElement('span');
+    span2.className = "rightpartSpan";
+    span2.appendChild(priceElement);
+    span2.appendChild(inputElement);
+    listItem.appendChild(span2);
   
     // Create the delete button
     const deleteButton = document.createElement('button');
@@ -115,6 +131,9 @@ function createListItem(prodName, prodPrice, prodQty) {
         	refreshCartDiv();
     	    }
     });
+
+
+
 
     listItem.appendChild(deleteButton);
   
@@ -175,7 +194,7 @@ function release(event) {
 function onHold(button) {
     release();
     let quantity = prompt("Enter quantity:");
-    if(quantity!=null && quantity!=""){
+    if(quantity!=null && quantity!="" && quantity>1){
         addToCartByArray(button.value,0,0, quantity-1);
     }
     displayAllArray();
