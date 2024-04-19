@@ -85,6 +85,7 @@ h3 {
   background: #fff;
   display: grid;
   height: 100vh;
+  grid-template-rows: 20% 60% 10% 10%;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
@@ -128,6 +129,7 @@ h3 {
   margin: 0;
   padding: 10px;
   height: 100%;
+  grid:75%;
 }
 
 .pos-cart li {
@@ -166,7 +168,7 @@ h3 {
   color: #fff;
   font-size: 1.5rem;
   padding: 10px;
-  line-height: 1;
+  height: auto;
 }
 
 .pos-cart button.confirm::after {
@@ -345,12 +347,14 @@ h3 {
 }
 
 .discountPrice{
-  width:5rem;
-  display: block;
   border-radius: 5px;
   padding: 0.2rem;
   border-color: #bed0db;
   border-width: 1px;
+  height: 2rem;
+  margin:0.5rem 2rem;
+  font-size: 16px;
+  align-self: end;
 }
 
 .rightpartSpan{

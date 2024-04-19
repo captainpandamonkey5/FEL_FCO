@@ -47,6 +47,13 @@ function refreshForm(){
         createInputItem(element[0],element[3]);
     });
 
+    let discVal = document.querySelector(".discountPrice").value;
+    if(discVal == null || discVal == "" || discVal <= 0  ){
+        discVal = 0;
+    }
+    
+    createInputItemForDiscount(discVal)
+
 }
 
 function chkoutForm() {
@@ -96,20 +103,12 @@ function createListItem(prodName, prodPrice, prodQty) {
     priceElement.textContent = `₱ ${prodPrice}`;
     listItem.appendChild(priceElement);
 
-    // Create the input element
-    const inputElement = document.createElement('input');
-    inputElement.type = 'number';
-    inputElement.value = "";
-    inputElement.placeholder = "discount";
-    inputElement.className = "discountPrice";
-    inputElement.removeAttribute('step');
-    listItem.appendChild(inputElement);
+    
     
     // Add  to the span element
     const span2 = document.createElement('span');
     span2.className = "rightpartSpan";
     span2.appendChild(priceElement);
-    span2.appendChild(inputElement);
     listItem.appendChild(span2);
   
     // Create the delete button
@@ -158,6 +157,16 @@ function createInputItem(prodID, prodQty) {
     
     document.querySelector(".order-inputs").appendChild(inputItemID);
     document.querySelector(".order-inputs").appendChild(inputItemQty);
+}
+
+function createInputItemForDiscount(disc) {
+    const inputItemDsic = document.createElement('input');
+  
+    inputItemDsic.type = 'number';
+    inputItemDsic.name = 'discount';
+    inputItemDsic.value = disc;
+
+    document.querySelector(".order-inputs").appendChild(inputItemDsic);
 }
 
 function clearCart(){

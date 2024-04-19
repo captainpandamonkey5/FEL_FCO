@@ -167,6 +167,7 @@
 
       </ul>
 	
+      <input class="discountPrice" placeholder="discount">
 	    <button class="confirm" onclick="chkoutForm()" type="button"> ₱  <span> </span> </button>
 
       

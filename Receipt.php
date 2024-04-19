@@ -10,7 +10,7 @@
 	$stmnt->execute();
 	$lastOrder = $stmnt -> fetch(); 
 
-    $query = "SELECT OrderNo, product.ProductName, product.Price, OrderQty, Discount FROM `order` JOIN product ON product.ProductID = `order`.ProductID WHERE OrderNo='$last_ID'";
+    $query = "SELECT OrderNo, product.ProductName, product.Price, OrderQty FROM `order` JOIN product ON product.ProductID = `order`.ProductID WHERE OrderNo='$last_ID'";
     $stmnt = $pdo -> prepare ($query);
 	$stmnt->execute();
 	$allOrder = $stmnt -> fetchAll(); 
@@ -104,6 +104,11 @@
             <br>
             <p style="text-align: center;">------------------------------------</p><br>
             <p>Total Cost: <span id="recepit_TotalCost">PHP <?php echo $lastOrder['TotalCost'];?></span></p>
+            <?php
+                if($lastOrder['Discount'] != 0){ ?>
+                    <p>&nbsp Discount: <span id="recepit_Discount">PHP <?php echo $lastOrder['Discount'];?></span></p>
+                    <p>&nbsp Discounted Cost: <span id="recepit_DiscountCost">PHP <?php echo $lastOrder['TotalCost']-$lastOrder['Discount'];?></span></p>
+            <?php }?>
             <p>Payment: <span id="recepit_Payment">PHP <?php echo $lastOrder['Payment'];?></span></p>
             <p>Change: <span id="recepit_Change">PHP <?php echo $lastOrder['Change'];?></span></p>
             <p>Remaining Balance : <span id="recepit_Balance">PHP <?php echo $lastOrder['Balance'];?></span></p>
