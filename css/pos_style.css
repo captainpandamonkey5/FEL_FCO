@@ -130,6 +130,7 @@ h3 {
   padding: 10px;
   height: 100%;
   grid:75%;
+  overflow: auto;
 }
 
 .pos-cart li {
@@ -352,9 +353,11 @@ h3 {
   border-color: #bed0db;
   border-width: 1px;
   height: 2rem;
+  width: auto;
   margin:0.5rem 2rem;
   font-size: 16px;
   align-self: end;
+  background-color: white;
 }
 
 .rightpartSpan{

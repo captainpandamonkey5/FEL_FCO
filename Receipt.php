@@ -106,7 +106,7 @@
             <p>Total Cost: <span id="recepit_TotalCost">PHP <?php echo $lastOrder['TotalCost'];?></span></p>
             <?php
                 if($lastOrder['Discount'] != 0){ ?>
-                    <p>&nbsp Discount: <span id="recepit_Discount">PHP <?php echo $lastOrder['Discount'];?></span></p>
+                    <p>&nbsp Discount: <span id="recepit_Discount">-PHP <?php echo $lastOrder['Discount'];?></span></p>
                     <p>&nbsp Discounted Cost: <span id="recepit_DiscountCost">PHP <?php echo $lastOrder['TotalCost']-$lastOrder['Discount'];?></span></p>
             <?php }?>
             <p>Payment: <span id="recepit_Payment">PHP <?php echo $lastOrder['Payment'];?></span></p>

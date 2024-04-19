@@ -47,36 +47,43 @@ function refreshForm(){
         createInputItem(element[0],element[3]);
     });
 
-    let discVal = document.querySelector(".discountPrice").value;
+    let discVal = document.querySelector("#discountPrice").value;
     if(discVal == null || discVal == "" || discVal <= 0  ){
         discVal = 0;
     }
     
-    createInputItemForDiscount(discVal)
+    document.querySelector("#discount").value = discVal;
 
 }
 
 function chkoutForm() {
-    var form = document.getElementById("checkoutForm");
     
-    const today = new Date();
-
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0'); 
-    const day = String(today.getDate()).padStart(2, '0');
-
-    const dateInput = document.getElementById('orderDate');
-    dateInput.value = `${year}-${month}-${day}`;
-
-    console.log(document.querySelector(".confirm span").textContent);
-    document.getElementById("totalcost").value =  parseFloat(document.querySelector(".confirm span").textContent);
-    refreshForm();
-
-    if (form.style.display === "none") {
-        form.style.display = "block";
-    } else {
-        form.style.display = "none";
+    if(cartArray.length == 0){
+        alert("Cart is empty");
+        return;
+    }else{
+        var form = document.getElementById("checkoutForm");
+    
+        const today = new Date();
+    
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); 
+        const day = String(today.getDate()).padStart(2, '0');
+    
+        const dateInput = document.getElementById('orderDate');
+        dateInput.value = `${year}-${month}-${day}`;
+    
+        console.log(document.querySelector(".confirm span").textContent);
+        document.getElementById("totalcost").value =  parseFloat(document.querySelector(".confirm span").textContent);
+        refreshForm();
+    
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
     }
+    
 }
 
 
@@ -213,7 +220,7 @@ function onHold(button) {
 
 
 document.getElementById('checkoutOrder').addEventListener("click", e=>{
-    document.getElementById("checkoutForm").style.display = "none";
+    //document.getElementById("checkoutForm").style.display = "none";
     clearCart();
     //openReceipt();
     
@@ -232,3 +239,19 @@ document.getElementById("clr-cart-btn").addEventListener("click", e=>{
     clearCart();
     
 })
+
+document.getElementById("discountPrice").addEventListener("input", e => {
+    let discVal = parseFloat(document.getElementById("discountPrice").value);
+    let totVal = (parseFloat(document.querySelector(".confirm span").textContent)).toFixed(2)
+
+    
+    console.log(discVal);
+    console.log(totVal);
+
+    if(discVal > totVal){
+        document.getElementById("discountPrice").value = totVal;
+        alert ("discount greater than totalcost");
+    }
+
+    
+});

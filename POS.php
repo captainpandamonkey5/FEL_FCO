@@ -104,6 +104,7 @@
             <label for="customername">Customer Name:</label> <input type="text" id="customername" name="customername"><br><br>
             <label for="orderDate">Order Date:</label> <input type="text" id="orderDate" name="orderDate" readonly><br><br>
             <label for="totalcost">Total Cost:</label> <input type="number" id="totalcost" name="totalcost" readonly><br><br>
+            <label for="discount">Discount:</label> <input type="number" id="discount" name="discount" readonly><br><br>
             <label for="payment">Payment <font color="red">*</font>:</label> <input type="number" id="payment" name="payment" required><br><br>
             <label for="remarks">Remarks:</label> <textarea id="remarks" name="remarks"></textarea><br><br>
             <input id="cashier" name="cashier" value="1" type="hidden">
@@ -167,7 +168,7 @@
 
       </ul>
 	
-      <input class="discountPrice" placeholder="discount">
+      <span class="discountPrice"><label for="discountPrice">Discount : </label> <input name="discountPrice" class="discountPrice" id="discountPrice" placeholder="0.00"></span>
 	    <button class="confirm" onclick="chkoutForm()" type="button"> ₱  <span> </span> </button>
 
       
