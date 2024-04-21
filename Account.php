@@ -1,4 +1,15 @@
+<?php
+session_start();
+include("includes/database.php");
 
+if (isset($_GET["search"])) {
+    $search = $_GET["search"];
+    $searchQuery = "SELECT * FROM user WHERE `AccountType` LIKE '$search%' OR `UserName` LIKE '$search%'";
+    $searchedUsers = mysqli_query($conn, $searchQuery);
+    $query_run = $searchedUsers;
+}
+
+?>
 <html>
   <head>
     <title>AJC Bike Shop MIS</title>
@@ -28,6 +39,7 @@
   <body>
   <?php
     // Establish connection to the database
+   
     $conn_db = mysqli_connect("localhost", "root", "", "ajcbikeshop_db") or die("Could not connect to database");
 
     
@@ -137,9 +149,22 @@
           </div>
         </form>
       </div>
+
       <div class="accountmngr_directory">
-        <a href="AccountMngr.php"> Account Manager </a>
-      </div>
+<?php
+    // Retrieve the logged-in user's account type from the session
+    $loggedInAccountType = $_SESSION['AccountType'];
+    // var_dump($loggedInAccountType);
+
+    if ($loggedInAccountType == '1') {
+        echo '<a href="AccountMngr.php">Account Manager</a>';
+    } elseif ($loggedInAccountType == 'user') {
+        echo '<a href="#">Account Manager</a>';
+    } else {
+        echo '<span class="disabled-link">Invalid account type</span>';
+    }
+?>
+</div>
     </div>
   </body>
 </html>
