@@ -124,7 +124,7 @@
 				</table>
 			</div>
 			<div class="report_table_footer"> 
-				<p> Showing <?php echo count($allResults)?> Orders</p>
+				<p> Showing <?php echo count($allResults)?> Results</p>
 			</div>
 		</div>
         
