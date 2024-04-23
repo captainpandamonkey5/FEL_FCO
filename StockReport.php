@@ -1,3 +1,31 @@
+<?php
+
+	require_once('includes/main_db.php');
+
+
+	$query = "SELECT *,product.ProductName FROM supplierorder JOIN product ON product.ProductID = supplierorder.ProductOrdered ORDER BY OrderNo ASC;";
+	$stmnt = $pdo -> prepare ($query);
+	$stmnt->execute();
+	$allResults = $stmnt -> fetchAll(); 
+
+    if(isset($_GET["searchResult"])){
+		$dateSearch = $_GET["dateSearch"];
+		$idSearch = $_GET["idSearch"];
+		$query = "SELECT * FROM supplierorder JOIN product ON product.ProductID = supplierorder.ProductOrdered WHERE `OrderNo` LIKE '$idSearch' OR `OrderDate` LIKE '$dateSearch' OR `ProductName` LIKE '$idSearch%' ORDER BY OrderNo ASC";
+		$stmnt = $pdo -> prepare ($query);
+		$stmnt->execute();
+		$allResults = $stmnt -> fetchAll(); 
+	}
+
+    $pdo=null;
+    $stmnt=null;
+
+    //var_dump(count($allStockOrder));
+
+
+  
+?>
+
 <html>
     <head>
 		
@@ -59,9 +87,11 @@
 			</div>
 			<div class="report_search">
 				<p>Stock History</p>
-				<input type="date" id = "dateSearch" name="dateSearch">
-				<input type="text" id = "idSearch" name="idSearch" placeholder="Search for Order No.">
-				<button id="search_btn"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" id="search"><path d="M46.599 40.236L36.054 29.691C37.89 26.718 39 23.25 39 19.5 39 8.73 30.27 0 19.5 0S0 8.73 0 19.5 8.73 39 19.5 39c3.75 0 7.218-1.11 10.188-2.943l10.548 10.545a4.501 4.501 0 0 0 6.363-6.366zM19.5 33C12.045 33 6 26.955 6 19.5S12.045 6 19.5 6 33 12.045 33 19.5 26.955 33 19.5 33z"></path></svg></button>
+				<form method="GET" action="">
+					<input type="date" id = "dateSearch" name="dateSearch">
+					<input type="text" id = "idSearch" name="idSearch" placeholder="Search">
+					<button type="submit" id="search_btn" name="searchResult" ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" id="search"><path d="M46.599 40.236L36.054 29.691C37.89 26.718 39 23.25 39 19.5 39 8.73 30.27 0 19.5 0S0 8.73 0 19.5 8.73 39 19.5 39c3.75 0 7.218-1.11 10.188-2.943l10.548 10.545a4.501 4.501 0 0 0 6.363-6.366zM19.5 33C12.045 33 6 26.955 6 19.5S12.045 6 19.5 6 33 12.045 33 19.5 26.955 33 19.5 33z"></path></svg></button>
+				</form>
 			</div>
 			<div class="report_table"> 
 				<table cellspacing="0">
@@ -74,28 +104,27 @@
 						<th>CostPerUnit</th>
 						<th>TotalCost</th>
 					</tr>
-					<tr>
-						<td>ewggggweg</td>
-						<td>sdfsdfsdfsdfs</td>
-						<td>sdfsdf</td>
-						<td>ggsd</td>
-						<td>sadg asd</td>
-						<td>sadgas </td>
-						<td>sdag</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td> </td>
-						<td></td>
-						<td> </td>
-						<td> </td>
-						<td></td>
-					</tr>
+
+					<?php
+						foreach ($allResults as $row){
+					?>
+						<tr>
+							<td><?php echo $row["OrderNo"] ?></td>
+							<td>[<?php echo $row["ProductOrdered"] ?>] - <?php echo $row["ProductName"] ?></td>
+							<td><?php echo $row["SupplierName"] ?></td>
+							<td ><?php echo $row["OrderDate"] ?></td>
+							<td><?php echo $row["QuantityOrdered"] ?></td>
+							<td ><?php echo $row["CostPerUnit"] ?></td>
+							<td ><?php echo $row["TotalCost"] ?></td>
+						</tr>
+
+					<?php
+						}
+					?>
 				</table>
 			</div>
 			<div class="report_table_footer"> 
-				<p>Showing XXX Orders</p>
+				<p> Showing <?php echo count($allResults)?> Orders</p>
 			</div>
 		</div>
         
