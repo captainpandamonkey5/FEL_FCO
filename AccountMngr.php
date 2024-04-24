@@ -1,5 +1,8 @@
 <?php
   include("includes/database.php");
+  
+  $query = "SELECT * FROM user";
+  $query_run = mysqli_query($conn, $query);
 
   if(isset($_GET["search"])){
     $search = $_GET["search"];
@@ -107,9 +110,6 @@
 
                 <tbody>
                   <?php
-                    include("includes/database.php");
-                    $query = "SELECT * FROM user";
-                    $query_run = mysqli_query($conn, $query);
 
 
 
