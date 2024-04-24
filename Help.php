@@ -53,34 +53,37 @@
 				</a>
 			</ul>
 		</div>
-		<div>
    
 
+		
+	<div class="main_section">
 		<div class="header">
-        <h1>Help Center</h1>
-    </div>
-    <div class="container">
-        <div id="POS" class="content">
-            <h2>Point of Sale</h2>
-            <p>A Point of Sale (POS) is where customers pay for goods/services and taxes. POS systems enhance operations, reducing wait times, speeding up scanning and payments, delivering better service.</p>
-        </div>
-        <div id="Inventory" class="content">
-            <h2>Inventory</h2>
-            <p>Inventory refers to tangible goods or services offered to customers, managed through a catalog system. Includes raw materials, goods in production, and finished products.</p>
-        </div>
-        <div id="Reports" class="content">
-            <h2>Reports</h2>
-            <p>These reports offer vital insights for enhancing customer satisfaction and operational performance, aiding in optimal decision-making and maximizing ROI.</p>
-        </div>
-        <div id="Accounts" class="content">
-            <h2>Accounts</h2>
-            <p>Account enables you to build a more meaningful and interactive relationship with the retailer(us). They enable personalization through learning preferences and offering tailored recommendations based on browsing history and on the reviews.</p>
-        </div>
+			<h1>Help Center</h1>
+		</div>
+		<div class="container">
+			<div id="POS" class="content">
+				<h2>Point of Sale</h2>
+				<p>A Point of Sale (POS) is where customers pay for goods/services and taxes. POS systems enhance operations, reducing wait times, speeding up scanning and payments, delivering better service.</p>
+			</div>
+			<div id="Inventory" class="content">
+				<h2>Inventory</h2>
+				<p>Inventory refers to tangible goods or services offered to customers, managed through a catalog system. Includes raw materials, goods in production, and finished products.</p>
+			</div>
+			<div id="Reports" class="content">
+				<h2>Reports</h2>
+				<p>These reports offer vital insights for enhancing customer satisfaction and operational performance, aiding in optimal decision-making and maximizing ROI.</p>
+			</div>
+			<div id="Accounts" class="content">
+				<h2>Accounts</h2>
+				<p>Account enables you to build a more meaningful and interactive relationship with the retailer(us). They enable personalization through learning preferences and offering tailored recommendations based on browsing history and on the reviews.</p>
+			</div>
 
-    </div>
-    <div class="footer">
-        <p>&copy; 2024 Help Center. All rights reserved.</p>
-    </div>
+		</div>
+		<div class="footer">
+			<p>&copy; 2024 Help Center. All rights reserved.</p>
+		</div>
+	</div>
+    
 </body>
 </html>
 

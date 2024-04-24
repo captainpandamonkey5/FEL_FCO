@@ -82,6 +82,7 @@ button{
 
 /*Main Section*/
 .main_section{
+	overflow: auto;
 	position: relative;
 	height: 100vh;
 	flex: 2;

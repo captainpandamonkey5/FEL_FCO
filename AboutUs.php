@@ -55,7 +55,7 @@
 
 		<div class="container">
   <h1>About Us</h1></br>
-  <p>This system was made in the school year 2023-2024, 2nd semester of Bulacan State University. The developers made the system for the partial fulfillment of their course subject.It is a MIS system that was made for the business AJC Bike Shop based on their interview with the shop in hopes of helping them automate their transactions with their customers. And the system was made with the combination of CSS, HTML, and Java coding.</p></br>
+  <p>&nbsp This system was made in the school year 2023-2024, 2nd semester of Bulacan State University. The developers made the system for the partial fulfillment of their course subject.It is a MIS system that was made for the business AJC Bike Shop based on their interview with the shop in hopes of helping them automate their transactions with their customers. And the system was made with the combination of CSS, HTML, and Java coding.</p></br>
   
    <h2>Our Team:</h2></br>
   <div class="team-member">
@@ -70,7 +70,7 @@
   <div class="team-member">
     <img src="images\Bryan.jpg" alt="Team Member 2">
     <div>
-      <h3>Brayn Jett Calulo</h3>
+      <h3>Bryan Jett Calulo</h3>
       <p>Position: Group Leader</p></br>
       <p>bryanjett.calulo.t@bulsu.edu.ph</p>
     </div>
