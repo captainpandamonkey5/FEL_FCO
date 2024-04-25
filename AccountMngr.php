@@ -103,7 +103,7 @@
                     <th><label for="User ID">User ID</label></th>
                     <th><label for="Username">Username</label></th>
                     <th><label for="Role">Role</label></th>
-                    <th>Edit Role</th>
+                    <th style="text-align: center;">Edit Role</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
@@ -134,9 +134,14 @@
                             ?>
                           </td>
                           <td>
+                            <div style="display: flex; gap: 10px;">
                               <form action="includes/add_admin.php" method="POST">
                                 <button name="add_admin" value="<?= $row['UserID']; ?>" class="button_container">Add Admin</button>
                               </form>
+                              <form action="includes/remove_admin.php" method="POST">
+                                <button name="remove_admin" value="<?= $row['UserID']; ?>" class="button_container">Remove Admin</button>
+                              </form>
+                            </div>
                           </td>
                           <td>
                               <form action="includes/delete_user.php" method="POST">
