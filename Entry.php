@@ -53,6 +53,9 @@ if (isset($_POST["login"])) {
             // Set other session variables if needed
 
             $_SESSION["user"] = "yes";
+            $_SESSION['UserID'] = $user['UserID'];
+            $_SESSION['Password'] = $user['password'];
+            $_SESSION['Username'] = $user['username'];
             header("Location: Home.php");
             die();
         } else {
