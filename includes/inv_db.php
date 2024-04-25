@@ -115,50 +115,50 @@
                 }
         }
 
-        function decQty() {
-            global $pdo;
-                try {
-                    $id = $_POST["prodId"];
-                    $prodSuppName = null;
-                    $prodDate = $_POST["prodDate"];
-                    $prodQty = $_POST["prodQty"] * -1;
-                    $prodCost = null;
-                    $prodTotalCost = null;
-        
-                    $query = "SELECT Quantity FROM product WHERE ProductID = :id";
-                    $stmnt = $pdo->prepare($query);
-                    $stmnt->bindParam(':id', $id);
-                    $stmnt->execute();
-                    $currentQty = $stmnt->fetchColumn();
-    
-                    $newQty = $currentQty + $prodQty;
-    
-                    $updateQuery = "UPDATE product SET Quantity = :newQty WHERE ProductID = :id";
-                    $updateStmnt = $pdo->prepare($updateQuery);
-                    $updateStmnt->bindParam(':newQty', $newQty);
-                    $updateStmnt->bindParam(':id', $id);
-                    $updateStmnt->execute();
-    
-                    $insertQuery = "INSERT INTO supplierorder ( ProductOrdered, SupplierName, OrderDate, QuantityOrdered, CostPerUnit, TotalCost) VALUES (?,?,?,?,?,?)";
-                    $stmnt = $pdo -> prepare ($insertQuery);
-                    $stmnt->execute([$id,$prodSuppName, $prodDate, $prodQty, $prodCost, $prodTotalCost]);
-    
-            
-                    $pdo = null;
-                    $stmnt = null;
-        
-        
-                    header("Location: ../Inventory.php");
-                    die();
-        
-                      } catch(PDOException $e) {
-                    die("Update failed: " . $e->getMessage());
-                    }
-            }
+	function decQty() {
+    	    global $pdo;
+    		try {
+        	    $id = $_POST["prodId"];
+        	    $prodSuppName = null;
+            	    $prodDate = $_POST["prodDate"];
+        	    $prodQty = $_POST["prodQty"] * -1;
+       	 	    $prodCost = null;
+        	    $prodTotalCost = null;
 
-    
+        	    $query = "SELECT Quantity FROM product WHERE ProductID = :id";
+        	    $stmnt = $pdo->prepare($query);
+        	    $stmnt->bindParam(':id', $id);
+        	    $stmnt->execute();
+        	    $currentQty = $stmnt->fetchColumn();
 
-    
+        	    $newQty = $currentQty + $prodQty;
+
+        	    if ($newQty < 0) {
+            	        echo "<script>alert('Insufficient quantity!');</script>";
+            		echo "<script>window.location.href = '../Inventory.php';</script>";
+            		exit; // Stop execution
+        	    }
+
+        	    $updateQuery = "UPDATE product SET Quantity = :newQty WHERE ProductID = :id";
+        	    $updateStmnt = $pdo->prepare($updateQuery);
+        	    $updateStmnt->bindParam(':newQty', $newQty);
+        	    $updateStmnt->bindParam(':id', $id);
+        	    $updateStmnt->execute();
+
+       	 	    $insertQuery = "INSERT INTO supplierorder ( ProductOrdered, SupplierName, OrderDate, QuantityOrdered, CostPerUnit, TotalCost) VALUES (?,?,?,?,?,?)";
+        	    $stmnt = $pdo->prepare($insertQuery);
+        	    $stmnt->execute([$id, $prodSuppName, $prodDate, $prodQty, $prodCost, $prodTotalCost]);
+
+        	    $pdo = null;
+        	    $stmnt = null;
+
+        	    header("Location: ../Inventory.php");
+        	    die();
+
+    		} catch(PDOException $e) {
+        	die("Update failed: " . $e->getMessage());
+    		}
+	}
         
     if(isset($_GET["deleteItem"])){
         deleteItem();

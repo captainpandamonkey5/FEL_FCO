@@ -98,3 +98,11 @@ document.addEventListener("click", e => {
             document.querySelector(".decQty_form").style.display = "none";
     }
 })
+
+function confirmDelete() {
+    if (confirm("Are you sure you want to delete this item?")) {
+        document.querySelector('form').submit();
+    } else {
+        window.location.href = 'Inventory.php';
+    }
+}
