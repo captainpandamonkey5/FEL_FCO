@@ -51,8 +51,11 @@ if (isset($_GET["search"])) {
         $old_password = $_POST['old_password'];
         $new_password = $_POST['new_password'];
 
+        // Retrieve the user ID of the currently logged-in user
+        $user_id = $_SESSION['user_id'];
+
         // Query to fetch the old password hash from the database
-        $chg_pwd = mysqli_query($conn_db, "SELECT * FROM `user` WHERE UserID='1'") or die(mysqli_error($conn_db));
+        $chg_pwd = mysqli_query($conn_db, "SELECT * FROM `user` WHERE UserID = '$user_id") or die(mysqli_error($conn_db));
         $chg_pwd1 = mysqli_fetch_array($chg_pwd);
         $stored_hashed_password = $chg_pwd1['Password'];
 
@@ -62,7 +65,7 @@ if (isset($_GET["search"])) {
             $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
 
             // Update the password in the database
-            $update_pwd = mysqli_query($conn_db, "UPDATE `user` SET Password='$hashedPassword' WHERE UserID='1' ") or die(mysqli_error($conn_db));
+            $update_pwd = mysqli_query($conn_db, "UPDATE `user` SET Password='$hashedPassword' WHERE UserID='$user_id' ") or die(mysqli_error($conn_db));
             // Display success message and redirect to Account.php
             echo "<script>alert('Update Successfully'); window.location='Account.php' </script>";
         } else {
@@ -76,9 +79,12 @@ if (isset($_GET["search"])) {
     if(isset($_POST['change_username'])) {
         // Retrieve the new username from the form
         $newUsername = $_POST['new_username'];
-    
+
+        // Retrieve the user ID of the currently logged-in user (assuming it's stored in a session variable)
+        $userId = $_SESSION['user_id'];
+
         // Update the username in the database
-        $updateUsernameQuery = "UPDATE `user` SET UserName='$newUsername' WHERE UserID='1'";
+        $updateUsernameQuery = "UPDATE `user` SET UserName='$newUsername' WHERE UserID='$user_id'";
         $updateUsernameResult = mysqli_query($conn_db, $updateUsernameQuery);
     
         if($updateUsernameResult) {
