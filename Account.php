@@ -38,59 +38,96 @@ if (isset($_GET["search"])) {
   </head>
   <body>
   <?php
+  
     // Establish connection to the database
-   
     $conn_db = mysqli_connect("localhost", "root", "", "ajcbikeshop_db") or die("Could not connect to database");
 
+// Check if the user is logged in
+// if (isset($_SESSION['UserID'])) {
+  // Output the UserID
+  //echo "Logged-in UserID: " . $_SESSION['UserID'];
+//} else {
+  // User is not logged in
+  //echo "User not logged in";
+//}
+
+// Check if the form is submitted
+if (isset($_POST['change_password'])) {
+
+  // Retrieve old and new passwords from the form
+  $old_password = $_POST['old_password'];
+  $new_password = $_POST['new_password'];
+
+  // Retrieve the user ID of the currently logged-in user
+  $user_id = $_SESSION['UserID'];
+
+// Query to fetch the old password hash from the database
+$stmt = mysqli_prepare($conn_db, "SELECT Password FROM `user` WHERE `UserID` = ?");
+mysqli_stmt_bind_param($stmt, "s", $user_id);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_store_result($stmt);
+
+// Check if any rows are returned from the query
+if (mysqli_stmt_num_rows($stmt) > 0) {
+    mysqli_stmt_bind_result($stmt, $stored_password_hash);
+    mysqli_stmt_fetch($stmt);
     
-
-    // Check if the form is submitted
-    if(isset($_POST['change_password'])) {
-
-        // Retrieve old and new passwords from the form
-        $old_password = $_POST['old_password'];
-        $new_password = $_POST['new_password'];
-
-        // Query to fetch the old password hash from the database
-        $chg_pwd = mysqli_query($conn_db, "SELECT * FROM `user` WHERE UserID='1'") or die(mysqli_error($conn_db));
-        $chg_pwd1 = mysqli_fetch_array($chg_pwd);
-        $stored_hashed_password = $chg_pwd1['Password'];
-
-        // Verify if the old password matches the stored hashed password
-        if(password_verify($old_password, $stored_hashed_password)) {
-            // Hash the new password
-            $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
-
-            // Update the password in the database
-            $update_pwd = mysqli_query($conn_db, "UPDATE `user` SET Password='$hashedPassword' WHERE UserID='1' ") or die(mysqli_error($conn_db));
-            // Display success message and redirect to Account.php
-            echo "<script>alert('Update Successfully'); window.location='Account.php' </script>";
-        } else {
-            // Display error message if the old password is incorrect
-            echo "<script>alert('Your old password is wrong'); window.location='Account.php' </script>";
-        }
-
-
-    }
-
-    if(isset($_POST['change_username'])) {
-        // Retrieve the new username from the form
-        $newUsername = $_POST['new_username'];
-    
-        // Update the username in the database
-        $updateUsernameQuery = "UPDATE `user` SET UserName='$newUsername' WHERE UserID='1'";
-        $updateUsernameResult = mysqli_query($conn_db, $updateUsernameQuery);
-    
-        if($updateUsernameResult) {
-            // Display success message and redirect to Account.php
-            echo "<script>alert('Username updated successfully'); window.location='Account.php' </script>";
-        } else {
-            // Display error message if the update fails
-            echo "<script>alert('Failed to update username'); window.location='Account.php' </script>";
-        }
+    // Verify if the old password matches the stored hashed password
+    if (password_verify($old_password, $stored_password_hash)) {
+        // Hash the new password
+        $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
         
+        // Update the password in the database
+        $update_stmt = mysqli_prepare($conn_db, "UPDATE `user` SET `Password` = ? WHERE `UserID` = ?");
+        mysqli_stmt_bind_param($update_stmt, "ss", $hashedPassword, $user_id);
+        mysqli_stmt_execute($update_stmt);
 
-    }
+          if (mysqli_stmt_affected_rows($update_stmt) > 0) {
+              // Password updated successfully
+              echo "<script>alert('Password updated successfully'); window.location='Account.php'</script>";
+          } else {
+              // Failed to update the password
+              echo "<script>alert('Failed to update password. Please try again.'); window.location='Account.php'</script>";
+          }
+      } else {
+          // Display error message if the old password is incorrect
+          echo "<script>alert('Your old password is wrong'); window.location='Account.php'</script>";
+      }
+  } else {
+      // Handle the case when no rows are returned from the query
+      echo "<script>alert('Error: User not found'); window.location='Account.php'</script>";
+  }
+
+  // Close the statements
+  mysqli_stmt_close($stmt);
+  mysqli_stmt_close($update_stmt);
+}
+
+if (isset($_POST['change_username'])) {
+  // Retrieve the new username from the form
+  $newUsername = $_POST['new_username'];
+
+  // Retrieve the user ID of the currently logged-in user
+  $user_id = $_SESSION['UserID'];
+
+  // Update the username in the database using prepared statements
+  $updateUsernameQuery = "UPDATE `user` SET UserName = ? WHERE UserID = ?";
+  $stmt = mysqli_prepare($conn_db, $updateUsernameQuery);
+  mysqli_stmt_bind_param($stmt, "ss", $newUsername, $user_id);
+  $updateUsernameResult = mysqli_stmt_execute($stmt);
+
+  if ($updateUsernameResult) {
+      // Display success message and redirect to Account.php
+      echo "<script>alert('Username updated successfully'); window.location='Account.php'</script>";
+  } else {
+      // Display error message if the update fails
+      echo "<script>alert('Failed to update username'); window.location='Account.php'</script>";
+  }
+
+  // Close the statement
+  mysqli_stmt_close($stmt);
+}
+
 ?>
     <!-- for modifies account settings-->
 
