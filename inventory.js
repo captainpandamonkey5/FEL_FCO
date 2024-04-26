@@ -13,12 +13,29 @@ document.addEventListener("click",e => {
 document.querySelectorAll(".editItem_btn").forEach((button) => {
     button.addEventListener("click", function() {
         let itemID = button.value;
-        document.getElementById("edit_prod_id").setAttribute('value',itemID);
+
+        fetch(`/api/product/${itemID}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("edit_prod_name").value = data.ProductName;
+                document.getElementById("edit_category").value = data.Category;
+                document.getElementById("edit_price").value = data.Price;
+                document.getElementById("edit_description").value = data.ProductDesc;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+
+        document.getElementById("edit_prod_id").value = itemID;
 
         document.querySelector(".editItem_form").style.display = "flex";
-    })
-    
-})
+    });
+});
 
 document.addEventListener("click", e => {
     if(!document.querySelector(".editItem_form").contains(e.target) && !e.target.matches(".editItem_btn")){
@@ -103,6 +120,6 @@ function confirmDelete() {
     if (confirm("Are you sure you want to delete this item?")) {
         document.querySelector('form').submit();
     } else {
-        window.location.href = 'Inventory.php';
+        window.location.href = "Inventory.php";
     }
 }
