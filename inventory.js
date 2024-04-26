@@ -14,7 +14,7 @@ document.querySelectorAll(".editItem_btn").forEach((button) => {
     button.addEventListener("click", function() {
         let itemID = button.value;
 
-        fetch(`/api/product/${itemID}`)
+        fetch(`/get_item.php?productID=${itemID}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

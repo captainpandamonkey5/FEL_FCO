@@ -49,6 +49,25 @@
         }
     }
 
+    function getItem() {
+    	global $pdo;
+	$id = $_GET["productID"];
+    	try {
+
+            $getquery = "SELECT ProductName, Category, Price, ProductDesc FROM product WHERE ProductID = ?";
+
+            $stmnt = $pdo->prepare($getquery);
+            $stmnt->execute([$id]);
+
+            $productDetails = $stmnt->fetch(PDO::FETCH_ASSOC);
+
+            return $productDetails;
+
+	    } catch(PDOException $e) {
+                die("Error retrieving product details: " . $e->getMessage());
+    	    }
+    }
+
     function updateItem() {
 	global $pdo;
     	try {
@@ -163,6 +182,16 @@
     if(isset($_GET["deleteItem"])){
         deleteItem();
         echo "tite";
+    } else if(isset($_GET["productID"])) {
+    $id = $_GET["productID"];
+    $productDetails = getItem($id);
+    // Return product details as JSON
+    header('Content-Type: application/json');
+    echo json_encode($productDetails);
+    } else {
+        // No id provided in the request
+        http_response_code(400); // Bad Request
+        echo json_encode(array("message" => "Product ID (id) is required"));
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
