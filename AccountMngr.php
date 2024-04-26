@@ -1,4 +1,6 @@
 <?php
+  session_start();
+
   include("includes/database.php");
   
   $query = "SELECT * FROM user";
@@ -134,19 +136,27 @@
                             ?>
                           </td>
                           <td>
-                            <div style="display: flex; gap: 10px;">
-                              <form action="includes/add_admin.php" method="POST">
-                                <button name="add_admin" value="<?= $row['UserID']; ?>" class="button_container">Add Admin</button>
-                              </form>
-                              <form action="includes/remove_admin.php" method="POST">
-                                <button name="remove_admin" value="<?= $row['UserID']; ?>" class="button_container">Remove Admin</button>
-                              </form>
-                            </div>
+                            <?php
+                            $logged_user_id = $_SESSION['UserID'];
+                            if($logged_user_id != $row['UserID']){ ?>
+                              <div style="display: flex; gap: 10px;">
+                                <form action="includes/add_admin.php" method="POST">
+                                  <button name="add_admin" value="<?= $row['UserID']; ?>" class="button_container">Add Admin</button>
+                                </form>
+                                <form action="includes/remove_admin.php" method="POST">
+                                  <button name="remove_admin" value="<?= $row['UserID']; ?>" class="button_container">Remove Admin</button>
+                                </form>
+                              </div>
+                              <?php }?>
+                            
                           </td>
                           <td>
+                            <?php if($logged_user_id != $row['UserID']){ ?>
                               <form action="includes/delete_user.php" method="POST">
                                 <button type="submit" name="delete_user" value="<?= $row['UserID']; ?>" class="button_container">Delete</button>
                               </form>
+                            <?php }?>
+
                           </td>
                         </tr>
                         <?php

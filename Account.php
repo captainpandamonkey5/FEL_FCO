@@ -188,21 +188,24 @@ if (isset($_POST['change_username'])) {
       </div>
 
       <div class="accountmngr_directory">
-<?php
-    // Retrieve the logged-in user's account type from the session
-    $loggedInAccountType = $_SESSION['AccountType'];
-    // var_dump($loggedInAccountType);
+        <div class="accdiv">
+          <?php
+              // Retrieve the logged-in user's account type from the session
+              $loggedInAccountType = $_SESSION['AccountType'];
+              // var_dump($loggedInAccountType);
 
-    if ($loggedInAccountType == '1') {
-        echo '<a href="AccountMngr.php">Account Manager</a>';
-    } elseif ($loggedInAccountType == 'user') {
-        echo '<a href="#">Account Manager</a>';
-    } else {
-        echo '<span class="disabled-link">Invalid account type</span>';
-    }
-?>
-</div>
+              if ($loggedInAccountType == '1') {
+                  echo '<a href="AccountMngr.php">Account Manager</a>';
+              }  
+          ?>
+        </div>
+        <form>
+          <button type="submit" name="logout" formaction="includes/logout.php"><b>Logout</b></button>
+        </form>
+      </div>
+
     </div>
+
   </body>
 </html>
 
