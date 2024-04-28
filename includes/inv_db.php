@@ -30,21 +30,27 @@
     function deleteItem (){
         global $pdo;
         $id = $_GET["id"];
-        try{
-            
+        try {
 
-            $delQuery = "DELETE FROM product WHERE ProductID = ? ";
+            $checkQuery = "SELECT Quantity FROM product WHERE ProductID = ?";
+            $checkStmt = $pdo->prepare($checkQuery);
+            $checkStmt->execute([$id]);
+            $row = $checkStmt->fetch(PDO::FETCH_ASSOC);
+            if (!$row || $row['Quantity'] > 0) {
+                echo "<script>alert('Cannot delete item because there is still an amount in the database.');</script>";
+                return;
+            }
 
-            $stmnt = $pdo -> prepare ($delQuery);
+            $delQuery = "DELETE FROM product WHERE ProductID = ?";
+            $stmnt = $pdo->prepare($delQuery);
             $stmnt->execute([$id]);
 
-            $pdo=null;
-            $stmnt=null;
+            $pdo = null;
+            $stmnt = null;
 
             header("Location: ../Inventory.php");
             die();
-
-        }catch(PDOException $e){
+        } catch(PDOException $e){
             die( "Delete failed " . $e->getMessage());
         }
     }
@@ -181,7 +187,7 @@
         
     if(isset($_GET["deleteItem"])){
         deleteItem();
-        echo "tite";
+        header("Location: ../Inventory.php");
     } else if(isset($_GET["productID"])) {
     $id = $_GET["productID"];
     $productDetails = getItem($id);

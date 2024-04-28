@@ -80,8 +80,8 @@
 			<div class="inventory_section">
 				<table>
 							<tr>
-								<th style="width:7%">ProductID</th>
-								<th>Name </th> 
+								<th style="width:10%">ProductID</th>
+								<th>Name</th> 
 								<th style="width:10%">Category </th> 
 								<th>Price</th>
 								<th>Description</th>
@@ -102,11 +102,11 @@
 										
 									</td>
 									<td>
-										<p><?php echo $row["ProductDesc"] ?></p>
+									    <p><?php echo $row["ProductDesc"] ?></p>
 									</td>
-									<td ><p><?php echo $row["Quantity"] ?></p>
-										<button class="decQty_btn" value="<?php echo $row['ProductID']?>" >-</button>
-										<button class="addQty_btn" value="<?php echo $row['ProductID']?>" >+</button>
+									<td><p style="<?php echo ($row["Quantity"] == 0) ? 'color: red; font-weight: bold;' : 'color: green; font-weight: bold;'; ?>"><?php echo $row["Quantity"]; ?></p>
+										<button class="decQty_btn" value="<?php echo $row['ProductID']?>" style="background-color: rgba(255, 0, 0, 0.8);">-</button>
+										<button class="addQty_btn" value="<?php echo $row['ProductID']?>" style="background-color: rgba(0, 128, 0, 0.8);">+</button>
 									</td>
 									<td>
 										<form action="includes/inv_db.php" method="get">
@@ -116,7 +116,8 @@
 												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pencil"><path d="M8.661 19.113 3 21l1.887-5.661ZM20.386 7.388a2.1 2.1 0 0 0 0-2.965l-.809-.809a2.1 2.1 0 0 0-2.965 0L6.571 13.655l3.774 3.774Z"></path></svg>			
 											</button>	
 											<button type="submit" name="deleteItem" onclick="confirmDelete()">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" id="delete"><path fill="#000" d="M15 3a1 1 0 0 1 1 1h2a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2h2a1 1 0 0 1 1-1h6Z"></path><path fill="#000" fill-rule="evenodd" d="M6 7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Zm3.5 2a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Zm5 0a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Z" clip-rule="evenodd"></path></svg>								</button>	
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" id="delete"><path fill="#000" d="M15 3a1 1 0 0 1 1 1h2a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2h2a1 1 0 0 1 1-1h6Z"></path><path fill="#000" fill-rule="evenodd" d="M6 7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Zm3.5 2a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Zm5 0a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Z" clip-rule="evenodd"></path></svg>
+											</button>	
 										</form>
 									</td>
 								</tr>

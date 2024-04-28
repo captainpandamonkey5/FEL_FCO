@@ -58,10 +58,9 @@
     width: 2em;
     fill: #00141f;
 }   
-.main_section path, .main_section svg,  .main_section rect{
+.main_section path, .main_section svg, .main_section rect{
     fill:#2c586e;
 }
-
 button.decQty_btn , button.addQty_btn,  button.decQty_btn, #addItem_btn, button.submitItem_btn {
 	border-radius: 7px;
     color: #ffffff;
