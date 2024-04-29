@@ -174,7 +174,8 @@
 					<?php?>
     				<h2>Add Quantity</h2>
     				<form action="includes/inv_db.php" method="post" id="addProductForm">
-        				<input type="number" name="prodId" id="add_prod_id" value="" readonly>
+        				<input type="hidden" name="prodId" id="add_prod_id" value="" >
+						<input type="text" name="prodName" id="add_prod_name" value="" readonly>
 						<input type="date" name="prodDate" id="add_prod_date" value="" readonly>
 						<input type="text" name="prodSuppName" id="add_prod_suppname" value="" placeholder="Supplier Name">
 						<input type="number" name="prodQty" id="add_prod_qty" value="" placeholder="Quantity" step="1" required>
@@ -188,7 +189,8 @@
 					<?php?>
     				<h2>Deduct Quantity</h2>
     				<form action="includes/inv_db.php" method="post" id="decProductForm">
-        				<input type="number" name="prodId" id="dec_prod_id" value="" readonly>
+        				<input type="hidden" name="prodId" id="dec_prod_id" value="" >
+						<input type="text" name="prodName" id="dec_prod_name" value="" readonly>
 						<input type="date" name="prodDate" id="dec_prod_date" value="" readonly>
 						<input type="number" name="prodQty" id="dec_prod_qty" value="" placeholder="Quantity" step="1" required>
         				<button class="submitItem_btn" type="submit" name="decQty">Deduce</button>

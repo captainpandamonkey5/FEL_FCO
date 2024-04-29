@@ -14,7 +14,7 @@ document.querySelectorAll(".editItem_btn").forEach((button) => {
     button.addEventListener("click", function() {
         let itemID = button.value;
 
-        fetch(`/get_item.php?productID=${itemID}`)
+        fetch(`includes/inv_db.php?productID=${itemID}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -23,9 +23,9 @@ document.querySelectorAll(".editItem_btn").forEach((button) => {
             })
             .then(data => {
                 document.getElementById("edit_prod_name").value = data.ProductName;
-                document.getElementById("edit_category").value = data.Category;
-                document.getElementById("edit_price").value = data.Price;
-                document.getElementById("edit_description").value = data.ProductDesc;
+                document.getElementById("edit_prod_category").value = data.Category;
+                document.getElementById("edit_prod_price").value = data.Price;
+                document.getElementById("edit_prod_description").value = data.ProductDesc;
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
@@ -62,6 +62,21 @@ document.querySelectorAll(".addQty_btn").forEach((button) => {
         document.getElementById("add_prod_id").setAttribute('value',itemID);
 
         document.querySelector(".addQty_form").style.display = "flex";
+
+        fetch(`includes/inv_db.php?productID=${itemID}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("add_prod_name").value = data.ProductName;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+
     })
     
 })
@@ -106,6 +121,20 @@ document.querySelectorAll(".decQty_btn").forEach((button) => {
         document.getElementById("dec_prod_id").setAttribute('value',itemID);
 
         document.querySelector(".decQty_form").style.display = "flex";
+
+        fetch(`includes/inv_db.php?productID=${itemID}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("dec_prod_name").value = data.ProductName;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
     })
     
 })
