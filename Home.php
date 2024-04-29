@@ -48,14 +48,142 @@
 			</ul>
 		</div>
 
-		<div class="main_section">
-				<div class="img_container">
-					<img class="img1" src="images/Bike Shop.jpg" alt="Bike Shop">
-				</div>
-				<h1>AJC Bike Shop</h1>
-				<p>Management Information System</p>
-		</div>
-        
-    </body>
+		 <!-- carousel -->
+		 <div class="carousel">
+        <!-- list item -->
+        <div class="list">
+            <div class="item">
+                <img src="images/img1.jpg">
+                <div class="content">
+                    
+                    <div class="title">AJC BIKE SHOP</div>
+                    <h1>Management Information System</h1>
+                    
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/img2.jpg">
+                <div class="content">
+                   
+                    <div class="title">AJC BIKE SHOP</div>
+                    <h1>Management Information System</h1>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/img3.jpg">
+                <div class="content">
+                   
+                    <div class="title">AJC BIKE SHOP</div>
+                    <h1>Management Information System</h1>
+                      
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/img4.jpg">
+                <div class="content">
+                    
+                    <div class="title">AJC BIKE SHOP</div>
+                    <h1>Management Information System</h1>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- list thumnail -->
+        <div class="thumbnail">
+            <div class="item">
+                <img src="images/img1.jpg">
+                <div class="content">
+                    
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/img2.jpg">
+                <div class="content">
+                   
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/img3.jpg">
+                <div class="content">
+                   
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/img4.jpg">
+                <div class="content">
+                    
+                </div>
+            </div>
+        </div>
+        <!-- next prev -->
 
+        <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <!-- time running -->
+        <div class="time"></div>
+    </div>
+
+    
+    <script>
+         document.addEventListener('DOMContentLoaded', function () {
+    // Step 1: Get DOM
+    let nextDom = document.getElementById('next');
+    let prevDom = document.getElementById('prev');
+
+    let carouselDom = document.querySelector('.carousel');
+    let sliderDom = carouselDom.querySelector('.list');
+    let thumbnailBorderDom = document.querySelector('.thumbnail');
+    let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
+    let timeDom = document.querySelector('.time');
+
+    thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+
+    let timeRunning = 3000;
+    let timeAutoNext = 7000;
+
+    nextDom.onclick = function () {
+        showSlider('next');
+    }
+
+    prevDom.onclick = function () {
+        showSlider('prev');
+    }
+
+    let runTimeOut;
+    let runNextAuto = setTimeout(() => {
+        nextDom.click();
+    }, timeAutoNext);
+
+    function showSlider(type) {
+        let sliderItemsDom = sliderDom.querySelectorAll('.item');
+
+        if (type === 'next') {
+            sliderDom.appendChild(sliderItemsDom[0]);
+            thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+            carouselDom.classList.add('next');
+        } else {
+            sliderDom.insertBefore(sliderItemsDom[sliderItemsDom.length - 1], sliderItemsDom[0]);
+            thumbnailBorderDom.insertBefore(thumbnailItemsDom[thumbnailItemsDom.length - 1], thumbnailItemsDom[0]);
+            carouselDom.classList.add('prev');
+        }
+
+        clearTimeout(runTimeOut);
+        runTimeOut = setTimeout(() => {
+            carouselDom.classList.remove('next');
+            carouselDom.classList.remove('prev');
+        }, timeRunning);
+
+        clearTimeout(runNextAuto);
+        runNextAuto = setTimeout(() => {
+            nextDom.click();
+        }, timeAutoNext);
+    }
+});
+
+
+
+    </script>
+	</body>
 </html>
