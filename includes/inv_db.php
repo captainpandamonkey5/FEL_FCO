@@ -2,6 +2,27 @@
 
     require_once('main_db.php');
 
+    function productSearch(){
+        global $pdo;
+        if(isset($_GET["productsearch"])) {
+            $productSearch = $_GET["productsearch"];
+            try {
+                $searchQuery = "SELECT * FROM product WHERE `ProductID` LIKE :productsearch OR `ProductName` LIKE :productsearch OR `Category` LIKE :productsearch";
+                $stmt = $pdo->prepare($searchQuery);
+                $productSearch = '%' . $productSearch . '%'; // Add wildcards to search for partial matches
+                $stmt->bindParam(':productsearch', $productSearch, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $results;
+            } catch(PDOException $e) {
+                die("Search failed " . $e->getMessage());
+            }
+        }
+        return [];
+    }
+
+    $productresults = productSearch();
+
     function insertItem (){
         global $pdo;
         try{

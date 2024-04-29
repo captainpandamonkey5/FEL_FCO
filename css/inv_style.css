@@ -1,20 +1,50 @@
 .main_section {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	box-shadow: 1px 1px 1px 1px grey;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 1px 1px grey;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
 }
 
-.inv_misc{
-	height: 80%;
+.search_bar {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 90%; /* Adjust as needed */
 }
 
-.inventory_section{
-	height: 80%;
-	width: 80%;
-	overflow-y: auto;
+.search_bar input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    font-size: inherit;
+    border: none;
+    border-radius: 5px;
+    background-color: #ddd;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.search_bar input:focus,
+.search_bar input:active {
+    background-color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%; /* Adjust as needed */
+    height: 80%; /* Adjust as needed */
+}
+
+.inv_misc {
+    width: 6.20%; /* Adjust as needed */
+}
+
+.inventory_section {
+    width: 92.75%; /* Adjust as needed */
+    overflow-y: auto;
 }
 
 .inventory_section table {

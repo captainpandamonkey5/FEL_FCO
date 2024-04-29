@@ -72,6 +72,14 @@
 
 		<div class="main_section">
 
+			<div class="search_bar">
+   				<form action="" method="GET">
+        				<input type="text" name="productsearch" id="searchInput" placeholder="Search items">
+    				</form>
+			</div>
+
+			<div class="container">
+
 			<div class="inv_misc">
 				<button id="addItem_btn">
 					<svg class="add-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="add">
