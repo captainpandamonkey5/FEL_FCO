@@ -74,7 +74,12 @@
 
 			<div class="inv_misc">
 				<button id="addItem_btn">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="add"><g data-name="20. Add"><path d="M17 8a8.94 8.94 0 0 1 5 1.52V4a4 4 0 0 0-4-4H4a4 4 0 0 0-4 4v14a4 4 0 0 0 4 4h5.52A9 9 0 0 1 17 8Z"></path><path d="M17 10a7 7 0 1 0 7 7 7.008 7.008 0 0 0-7-7Zm2 8h-1v1a1 1 0 0 1-2 0v-1h-1a1 1 0 0 1 0-2h1v-1a1 1 0 0 1 2 0v1h1a1 1 0 0 1 0 2Z"></path></g></svg>
+					<svg class="add-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="add">
+        				<g data-name="20. Add">
+            				<path d="M17 8a8.94 8.94 0 0 1 5 1.52V4a4 4 0 0 0-4-4H4a4 4 0 0 0-4 4v14a4 4 0 0 0 4 4h5.52A9 9 0 0 1 17 8Z"></path>
+            				<path d="M17 10a7 7 0 1 0 7 7 7.008 7.008 0 0 0-7-7Zm2 8h-1v1a1 1 0 0 1-2 0v-1h-1a1 1 0 0 1 0-2h1v-1a1 1 0 0 1 2 0v1h1a1 1 0 0 1 0 2Z"></path>
+        				</g>
+   					</svg>
 				</button>
 			</div>
 			<div class="inventory_section">
@@ -104,19 +109,25 @@
 									<td>
 									    <p><?php echo $row["ProductDesc"] ?></p>
 									</td>
-									<td><p style="<?php echo ($row["Quantity"] == 0) ? 'color: red; font-weight: bold;' : 'color: green; font-weight: bold;'; ?>"><?php echo $row["Quantity"]; ?></p>
-										<button class="decQty_btn" value="<?php echo $row['ProductID']?>" style="background-color: rgba(255, 0, 0, 0.8);">-</button>
-										<button class="addQty_btn" value="<?php echo $row['ProductID']?>" style="background-color: rgba(0, 128, 0, 0.8);">+</button>
+									<td><p style="<?php echo ($row["Quantity"] == 0) ? 'color: red; font-weight: bold;' : 'color: black; font-weight: bold;'; ?>"><?php echo $row["Quantity"]; ?></p>
+										<button class="decQty_btn" value="<?php echo $row['ProductID']?>" style="background-color: rgba(255, 0, 0, 0.9);">-</button>
+										<button class="addQty_btn" value="<?php echo $row['ProductID']?>" style="background-color: rgba(0, 128, 0, 0.9);">+</button>
 									</td>
 									<td>
 										<form action="includes/inv_db.php" method="get">
 											<input type="hidden" name ="id" value="<?php echo $row['ProductID']?>">
 											
 											<button type="button" class="editItem_btn" name ="passItem" value="<?php echo $row['ProductID']?>">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pencil"><path d="M8.661 19.113 3 21l1.887-5.661ZM20.386 7.388a2.1 2.1 0 0 0 0-2.965l-.809-.809a2.1 2.1 0 0 0-2.965 0L6.571 13.655l3.774 3.774Z"></path></svg>			
-											</button>	
+												<svg class="edit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pencil">
+        											<path d="M8.661 19.113 3 21l1.887-5.661ZM20.386 7.388a2.1 2.1 0 0 0 0-2.965l-.809-.809a2.1 2.1 0 0 0-2.965 0L6.571 13.655l3.774 3.774Z"></path>
+    												</svg>
+											</button>
+
 											<button type="submit" name="deleteItem" onclick="confirmDelete()">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" id="delete"><path fill="#000" d="M15 3a1 1 0 0 1 1 1h2a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2h2a1 1 0 0 1 1-1h6Z"></path><path fill="#000" fill-rule="evenodd" d="M6 7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Zm3.5 2a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Zm5 0a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Z" clip-rule="evenodd"></path></svg>
+												<svg class="delete-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" id="delete">
+        											<path fill="#000" d="M15 3a1 1 0 0 1 1 1h2a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2h2a1 1 0 0 1 1-1h6Z"></path>
+        											<path fill="#000" fill-rule="evenodd" d="M6 7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Zm3.5 2a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Zm5 0a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 1 0v-9a.5.5 0 0 0-.5-.5Z" clip-rule="evenodd"></path>
+    												</svg>
 											</button>	
 										</form>
 									</td>
