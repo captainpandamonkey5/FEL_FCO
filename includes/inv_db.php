@@ -21,8 +21,6 @@
         return [];
     }
 
-    $productresults = productSearch();
-
     function insertItem (){
         global $pdo;
         try{
@@ -210,15 +208,15 @@
         deleteItem();
         header("Location: ../Inventory.php");
     } else if(isset($_GET["productID"])) {
-    $id = $_GET["productID"];
-    $productDetails = getItem($id);
-    // Return product details as JSON
-    header('Content-Type: application/json');
-    echo json_encode($productDetails);
+        $id = $_GET["productID"];
+        $productDetails = getItem($id);
+        // Return product details as JSON
+        header('Content-Type: application/json');
+        echo json_encode($productDetails);
     } else {
         // No id provided in the request
-        http_response_code(400); // Bad Request
-        echo json_encode(array("message" => "Product ID (id) is required"));
+        //http_response_code(400); // Bad Request
+        //echo json_encode(array("message" => "Product ID (id) is required"));
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){

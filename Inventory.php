@@ -5,6 +5,11 @@
 	$stmnt = $pdo -> prepare ($selectAllQuery);
 	$stmnt->execute();
 	$results = $stmnt -> fetchAll(); 
+
+	require_once('includes/inv_db.php');
+	if(isset($_GET["productsearch"])){
+		$results = productSearch();
+	}
 	
 	$pdo=null;
     $stmnt=null;
@@ -74,8 +79,8 @@
 
 			<div class="search_bar">
    				<form action="" method="GET">
-        				<input type="text" name="productsearch" id="searchInput" placeholder="Search items">
-    				</form>
+					<input type="text" name="productsearch" id="searchInput" placeholder="Search items">
+				</form>
 			</div>
 
 			<div class="container">
