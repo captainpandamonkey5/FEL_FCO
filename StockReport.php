@@ -11,6 +11,8 @@
     if(isset($_GET["searchResult"])){
 		$dateSearch = $_GET["dateSearch"];
 		$idSearch = $_GET["idSearch"];
+		if ($idSearch == "")
+			$idSearch = '#';
 		$query = "SELECT * FROM supplierorder JOIN product ON product.ProductID = supplierorder.ProductOrdered WHERE `OrderNo` LIKE '$idSearch' OR `OrderDate` LIKE '$dateSearch' OR `ProductName` LIKE '$idSearch%' ORDER BY OrderNo ASC";
 		$stmnt = $pdo -> prepare ($query);
 		$stmnt->execute();
@@ -19,9 +21,29 @@
 
 	if(isset($_GET["deleteAll"])){
 		
-		$query = "SELECT DISTINCT OrderDate FROM customerorder WHERE `OrderDate` LIKE '$dateSearch' ";
+		//SAVE AS CSV FIRST
+		$query = "SELECT *,product.ProductName FROM supplierorder JOIN product ON product.ProductID = supplierorder.ProductOrdered ORDER BY OrderNo ASC;";
 		$stmnt = $pdo -> prepare ($query);
 		$stmnt->execute();
+		$allResults = $stmnt -> fetchAll(); 
+
+		$filename = "data/stock_history_". date('Y-m-d_H-i-s'). ".csv";
+		$file = fopen($filename, 'w');
+
+		fputcsv($file, array('OrderNo', 'ProductOrdered', 'SupplierName', 'OrderDate', 'QuantityOrdered', 'CostPerUnit', 'TotalCost'));
+
+		foreach ($allResults as $row) {
+			fputcsv($file, array($row["OrderNo"], $row["ProductOrdered"], $row["SupplierName"], $row["OrderDate"], $row["QuantityOrdered"], $row["CostPerUnit"], $row["TotalCost"]));
+		}
+
+		fclose($file);
+
+		//THEN DELETE
+		$query = "DELETE FROM supplierorder;";
+		$stmnt = $pdo -> prepare ($query);
+		$stmnt->execute();
+
+		header('Location: StockReport.php');
 
 	}
 

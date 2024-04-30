@@ -1,0 +1,13 @@
+OrderNo,CustomerName,OrderDate,Order,TotalCost,Discount,CostPerUnit,Payment,Balance,Status,Cashier,Remarks
+1,"bryan nigga",2024-04-19,"nigers - 3 PC : 80000 PHP 240000_",240000,0,,250,239750,0,1,op
+2,2,2024-04-19,"nigers - 1 PC : 80000 PHP 80000_",80000,125,,4321,75554,0,1,fdqwffqf
+3,,2024-04-19,"wq rwqe rwqe qtw qwtq qwtsgd qwe - 1 PC : 3444 PHP 3444_",3444,4000,,10000,0,1,1,
+4,,2024-04-19,"electric fan 6000mah - 1 PC : 250 PHP 250_qwe4 ++ - 1 PC : 12 PHP 12_",262,1333330,,212,0,1,1,
+5,,2024-04-19,"minecraft zzz - 2 PC : 123 PHP 246_nigers - 1 PC : 80000 PHP 80000_electric fan 6000mah - 1 PC : 250 PHP 250_",80496,50,,455555,0,1,1,
+6,mmmmm,2024-04-19,"wq rwqe rwqe qtw qwtq qwtsgd qwe - 2 PC : 3444 PHP 6888_",6888,6887,,10,0,1,1,mura
+7,asd,2024-04-19,"POCO X6 PRo - 1 PC : 5000 PHP 5000_nigers - 1 PC : 80000 PHP 80000_minecraft zzz - 1 PC : 123 PHP 123_wq rwqe rwqe qtw qwtq qwtsgd qwe - 1 PC : 3444 PHP 3444_d - 1 PC : 2 PHP 2_phoenix - 1 PC : 8000 PHP 8000_qwe4 ++ - 2 PC : 12 PHP 24_electric fan 6000mah - 1 PC : 250 PHP 250_Sumipe - 1 PC : 25000 PHP 25000_",121843,0,,23,121820,0,1,
+8,,2024-04-19,"electric fan 6000mah - 20 PC : 250 PHP 5000_",5000,2000,,3000,0,1,1,hreh
+9,asd,2024-04-19,"minecraft zzz - 1 PC : 123 PHP 123_",123,123,,123,0,1,1,
+10,reyna,2024-04-23,"phoenix - 1 PC : 8000 PHP 8000_",8000,20,,8000,0,1,1,"may e"
+11,blez,2024-04-23,"minecraft zzz - 1 PC : 123 PHP 123_wq rwqe rwqe qtw qwtq qwtsgd qwe - 1 PC : 3444 PHP 3444_electric fan 6000mah - 2 PC : 250 PHP 500_qwe4 ++ - 2 PC : 12 PHP 24_phoenix - 3 PC : 8000 PHP 24000_",28091,0,,30000,0,1,1,mmmm
+12,jakol,2024-04-30,"wq rwqe rwqe qtw qwtq qwtsgd qwe - 1 PC : 3444 PHP 3444_electric fan 6000mah - 1 PC : 250 PHP 250_phoenix - 1 PC : 8000 PHP 8000_",11694,20,,5000,6674,0,1,

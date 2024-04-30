@@ -17,6 +17,59 @@
 		$allResults = $stmnt -> fetchAll(); 
 	}
 
+	if(isset($_GET["deleteAll"])){
+		
+		//SAVE AS CSV FIRST
+		$query = "SELECT * FROM customerorder;";
+		$stmnt = $pdo -> prepare ($query);
+		$stmnt->execute();
+		$allResults = $stmnt -> fetchAll(); 
+
+		$filename = "data/order_report_". date('Y-m-d_H-i-s'). ".csv";
+		$file = fopen($filename, 'w');
+
+		fputcsv($file, array('OrderNo', 'CustomerName', 'OrderDate','Order', 'TotalCost', 'Discount', 'Payment', 'Balance', 'Status', 'Cashier', 'Remarks'));
+
+		
+
+		foreach ($allResults as $row) {
+
+			$last_ID=$row["OrderNo"];
+
+			$query = "SELECT OrderNo, product.ProductID, product.ProductName, product.Price, OrderQty FROM `order` JOIN product ON product.ProductID = `order`.ProductID WHERE OrderNo='$last_ID'";
+			$stmnt = $pdo -> prepare ($query);
+			$stmnt->execute();
+			$allOrder = $stmnt -> fetchAll(); 
+
+			$custAllOrder = "";
+
+			foreach($allOrder as $ao){
+				$custOrder = $ao['ProductName'] . " - " . $ao['OrderQty'] . " PC : " . $ao['Price'] . " PHP " . ($ao['Price']*$ao['OrderQty']);
+
+				$custAllOrder = $custAllOrder . $custOrder . "_";
+		   	}
+
+			
+			fputcsv($file, array($row["OrderNo"], $row["CustomerName"], $row["OrderDate"], $custAllOrder, $row["TotalCost"], $row["Discount"], $row["Payment"], $row["Balance"], $row["Status"], $row["Cashier"], $row["Remarks"]));
+
+
+		}
+
+		fclose($file);
+
+		//THEN DELETE
+		$query = "DELETE FROM `order`;";
+		$stmnt = $pdo -> prepare ($query);
+		$stmnt->execute();
+
+		$query = "DELETE FROM customerorder;";
+		$stmnt = $pdo -> prepare ($query);
+		$stmnt->execute();
+
+		 header('Location: OrderReport.php');
+
+	}
+
 
     //var_dump(count($allStockOrder));
 
@@ -151,6 +204,9 @@
 				</table>
 			</div>
 			<div class="report_table_footer"> 
+				<form action="" method="GET">
+					<button type="submit" name="deleteAll">Save and Delete</button>
+				</form>
 				<p>Showing <?php echo count($allResults)?> Results</p>
 			</div>
 		</div>
