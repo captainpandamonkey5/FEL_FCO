@@ -122,9 +122,10 @@
 									<td>
 									    <p><?php echo $row["ProductDesc"] ?></p>
 									</td>
-									<td><p style="<?php echo ($row["Quantity"] == 0) ? 'color: red; font-weight: bold;' : 'color: black; font-weight: bold;'; ?>"><?php echo $row["Quantity"]; ?></p>
-										<button class="decQty_btn" value="<?php echo $row['ProductID']?>" style="background-color: rgba(255, 0, 0, 0.9);">-</button>
-										<button class="addQty_btn" value="<?php echo $row['ProductID']?>" style="background-color: rgba(0, 128, 0, 0.9);">+</button>
+									<td class="qtyDiv">
+										<p style="<?php echo ($row["Quantity"] == 0) ? 'color: red; font-weight: bold;' : 'color: black; font-weight: bold; '; ?>"><?php echo $row["Quantity"]; ?></p>
+										<button class="decQty_btn" value="<?php echo $row['ProductID']?>" >-</button>
+										<button class="addQty_btn" value="<?php echo $row['ProductID']?>">+</button>
 									</td>
 									<td>
 										<form action="includes/inv_db.php" method="get">

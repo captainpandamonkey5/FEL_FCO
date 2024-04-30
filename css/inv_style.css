@@ -1,179 +1,190 @@
 .main_section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 1px 1px 1px 1px grey;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 1px 1px grey;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
 }
 
 .search_bar {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    width: 90%; /* Adjust as needed */
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 90%; /* Adjust as needed */
 }
 
 .search_bar input {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 10px;
-    font-size: inherit;
-    border: none;
-    border-radius: 5px;
-    background-color: #ddd;
-    transition: background-color 0.3s ease; /* Smooth transition */
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  font-size: inherit;
+  border: none;
+  border-radius: 5px;
+  background-color: #ddd;
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .search_bar input:focus,
 .search_bar input:active {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 90%; /* Adjust as needed */
-    height: 80%; /* Adjust as needed */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%; /* Adjust as needed */
+  height: 80%; /* Adjust as needed */
 }
 
 .inv_misc {
-    width: 6.20%; /* Adjust as needed */
+  width: 6.2%; /* Adjust as needed */
 }
 
 .inventory_section {
-    width: 92.75%; /* Adjust as needed */
-    overflow-y: auto;
+  width: 92.75%; /* Adjust as needed */
+  overflow-y: auto;
 }
 
 .inventory_section table {
-	border-collapse: collapse;
-	width: 100%;
-	table-layout:fixed;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
 }
 
-.inventory_section th{
-	background-color: 8DA1AF;
-	border: 1px solid black;
-	padding: 10px;
-	text-align: center;
+.inventory_section th {
+  background-color: 8DA1AF;
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
 }
 
-.inventory_section td{
-	background-color: white;
-	border: 1px solid black;
-	padding: 7px;
-	text-align: center;
-	overflow:auto;
+.inventory_section td {
+  background-color: white;
+  border: 1px solid black;
+  padding: 7px;
+  text-align: center;
+  overflow: auto;
 }
-.inventory_section td p{
-	margin: 3;
-	height: 100%;
-	width: 100%;
+.inventory_section td p {
+  margin: 3;
+  height: 100%;
 }
 
-
-
-.main_section button{
-	border-radius: 7px;
-    color: rgb(41, 41, 41);
-    text-decoration: none;
-    transition: .3s ease;
-	background-color: white;
-	border: 0px;
+.main_section button {
+  border-radius: 7px;
+  color: rgb(41, 41, 41);
+  text-decoration: none;
+  transition: 0.3s ease;
+  background-color: white;
+  border: 0px;
 }
-.main_section svg{
-    height: 2em;
-    width: 2em;
-    fill: #00141f;
-}   
-.main_section path, .main_section svg, .main_section rect{
-    fill:#2c586e;
+.main_section svg {
+  height: 2em;
+  width: 2em;
+  fill: #00141f;
+}
+.main_section path,
+.main_section svg,
+.main_section rect {
+  fill: #2c586e;
 }
 
 .add-icon path {
-    fill: rgba(0, 128, 0, 0.9);
-}
-
-.edit-icon path {
-    fill: rgba(0, 0, 128, 0.8);
+  fill: #dd9f52;
 }
 
 .delete-icon path {
-    fill: #ff0000;
+  fill: #ff4f4f;
 }
 
-button.decQty_btn , button.addQty_btn,  button.decQty_btn, #addItem_btn, button.submitItem_btn {
-	border-radius: 7px;
-    color: #ffffff;
-    background: #2C586E;
-    padding: 0.7rem;
-	width: auto;
-	height: 2em;
-    text-decoration: none;
-	font-family: 'Lucida Console';
-	font-weight: bolder;
+button.decQty_btn,
+button.addQty_btn,
+button.decQty_btn,
+#addItem_btn,
+button.submitItem_btn {
+  border-radius: 7px;
+  color: #ffffff;
+  background: #2c586e;
+  padding: 0.7rem;
+  width: auto;
+  height: 2em;
+  text-decoration: none;
+  font-family: "Lucida Console";
+  font-weight: bolder;
 }
-#addItem_btn svg{
-	height: 3em;
-    width: 3em;
+#addItem_btn svg {
+  height: 3em;
+  width: 3em;
 }
-#addItem_btn{
-	position: relative;
-	width: fit-content;
-	height:  fit-content;
-	margin-top: 0;
-	background: transparent;
+#addItem_btn {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  margin-top: 0;
+  background: transparent;
 }
 
 .main_section button:hover,
 button.decQty_btn:hover,
-button.addQty_btn:hover
-button.decQty_btn:hover,
+button.addQty_btn:hover button.decQty_btn:hover,
 #addItem_btn:hover,
-button.submitItem_btn:hover{
-    background-color: #e6e6e6;
+button.submitItem_btn:hover {
+  background-color: #e6e6e6;
 }
 
-.addItem_form, .editItem_form, .addQty_form, .decQty_form{
-	position: fixed;
-	display: none;
-	z-index: 2;
-	background-color: white;
-	box-shadow: 5px 0px 20px #0000009c;
-	width: fit-content;
-	height: fit-content;
-	justify-content: center;
-	align-items: center;
-	padding: 1rem;
-	border-radius: 1.25rem;
-
+.addItem_form,
+.editItem_form,
+.addQty_form,
+.decQty_form {
+  position: fixed;
+  display: none;
+  z-index: 2;
+  background-color: white;
+  box-shadow: 5px 0px 20px #0000009c;
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 1.25rem;
 }
-.addItem_form input,  .editItem_form input, .addQty_form input, .decQty_form input{
-	border: 2px solid #ebebeb;
-	font-family: inherit;
-	font-size: 18px;
-	border-radius: 1.25rem;
-	transition: all 0.4s;
-	display: block;
-	padding: 1rem;
-	margin: 0.5rem;
+.addItem_form input,
+.editItem_form input,
+.addQty_form input,
+.decQty_form input {
+  border: 2px solid #ebebeb;
+  font-family: inherit;
+  font-size: 18px;
+  border-radius: 1.25rem;
+  transition: all 0.4s;
+  display: block;
+  padding: 1rem;
+  margin: 0.5rem;
 }
-.addItem_form h2,  .editItem_form h2, .addQty_form h2, .decQty_form h2{
-	display: block;
-	margin: 0.5rem;
+.addItem_form h2,
+.editItem_form h2,
+.addQty_form h2,
+.decQty_form h2 {
+  display: block;
+  margin: 0.5rem;
 }
-.addItem_form button,  .editItem_form button, .addQty_form button, .decQty_form button{
-	font-size: 18px;
-	margin: 1rem;
+.addItem_form button,
+.editItem_form button,
+.addQty_form button,
+.decQty_form button {
+  font-size: 18px;
+  margin: 1rem;
 }
-
-
-
 
 @media screen and (max-width: 768px) {
-	.inventory_section table {
-		width: 100%;
-	}
+  .inventory_section table {
+    width: 100%;
+  }
+}
+
+.qtyDiv p {
+  display: inline-block;
+  width: 5rem;
 }
