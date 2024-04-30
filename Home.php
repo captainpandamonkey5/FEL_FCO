@@ -48,82 +48,84 @@
 			</ul>
 		</div>
 
-		 <!-- carousel -->
-		 <div class="carousel">
-        <!-- list item -->
-        <div class="list">
-            <div class="item">
-                <img src="images/img1.jpg">
-                <div class="content">
-                    
-                    <div class="title">AJC BIKE SHOP</div>
-                    <h1>Management Information System</h1>
-                    
+        <div class="main_section">
+            <!-- carousel -->
+            <div class="carousel">
+                <!-- list item -->
+                <div class="list">
+                    <div class="item">
+                        <img src="images/img1.jpg">
+                        <div class="content">
+                            
+                            <div class="title">AJC BIKE SHOP</div>
+                            <h1>Management Information System</h1>
+                            
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="images/img2.jpg">
+                        <div class="content">
+                        
+                            <div class="title">AJC BIKE SHOP</div>
+                            <h1>Management Information System</h1>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="images/img3.jpg">
+                        <div class="content">
+                        
+                            <div class="title">AJC BIKE SHOP</div>
+                            <h1>Management Information System</h1>
+                            
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="images/img4.jpg">
+                        <div class="content">
+                            
+                            <div class="title">AJC BIKE SHOP</div>
+                            <h1>Management Information System</h1>
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="item">
-                <img src="images/img2.jpg">
-                <div class="content">
-                   
-                    <div class="title">AJC BIKE SHOP</div>
-                    <h1>Management Information System</h1>
+                <!-- list thumnail -->
+                <div class="thumbnail">
+                    <div class="item">
+                        <img src="images/img1.jpg">
+                        <div class="content">
+                            
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="images/img2.jpg">
+                        <div class="content">
+                        
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="images/img3.jpg">
+                        <div class="content">
+                        
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="images/img4.jpg">
+                        <div class="content">
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="item">
-                <img src="images/img3.jpg">
-                <div class="content">
-                   
-                    <div class="title">AJC BIKE SHOP</div>
-                    <h1>Management Information System</h1>
-                      
-                </div>
-            </div>
-            <div class="item">
-                <img src="images/img4.jpg">
-                <div class="content">
-                    
-                    <div class="title">AJC BIKE SHOP</div>
-                    <h1>Management Information System</h1>
-                    
-                </div>
-            </div>
-        </div>
-        <!-- list thumnail -->
-        <div class="thumbnail">
-            <div class="item">
-                <img src="images/img1.jpg">
-                <div class="content">
-                    
-                </div>
-            </div>
-            <div class="item">
-                <img src="images/img2.jpg">
-                <div class="content">
-                   
-                </div>
-            </div>
-            <div class="item">
-                <img src="images/img3.jpg">
-                <div class="content">
-                   
-                </div>
-            </div>
-            <div class="item">
-                <img src="images/img4.jpg">
-                <div class="content">
-                    
-                </div>
-            </div>
-        </div>
-        <!-- next prev -->
+                <!-- next prev -->
 
-        <div class="arrows">
-            <button id="prev"><</button>
-            <button id="next">></button>
+                <div class="arrows">
+                    <button id="prev"><</button>
+                    <button id="next">></button>
+                </div>
+                <!-- time running -->
+                <div class="time"></div>
+            </div>
         </div>
-        <!-- time running -->
-        <div class="time"></div>
-    </div>
 
     
     <script>
