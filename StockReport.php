@@ -17,6 +17,14 @@
 		$allResults = $stmnt -> fetchAll(); 
 	}
 
+	if(isset($_GET["deleteAll"])){
+		
+		$query = "SELECT DISTINCT OrderDate FROM customerorder WHERE `OrderDate` LIKE '$dateSearch' ";
+		$stmnt = $pdo -> prepare ($query);
+		$stmnt->execute();
+
+	}
+
     $pdo=null;
     $stmnt=null;
 
@@ -124,6 +132,9 @@
 				</table>
 			</div>
 			<div class="report_table_footer"> 
+				<form action="" method="GET">
+					<button type="submit" name="deleteAll">Save and Delete</button>
+				</form>
 				<p> Showing <?php echo count($allResults)?> Results</p>
 			</div>
 		</div>
