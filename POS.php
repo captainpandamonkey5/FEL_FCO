@@ -107,7 +107,7 @@
             <label for="discount">Discount:</label> <input type="number" id="discount" name="discount" readonly><br><br>
             <label for="payment">Payment <font color="red">*</font>:</label> <input type="number" id="payment" name="payment" required><br><br>
             <label for="remarks">Remarks:</label> <textarea id="remarks" name="remarks"></textarea><br><br>
-            <input id="cashier" name="cashier" value="1" type="hidden">
+            <input id="cashier" name="cashier" value="<?php echo $_SESSION['UserID']?>" type="hidden">
 
             <div class="order-inputs">
 

@@ -1,4 +1,5 @@
 <?php
+	session_start();
 
 	require_once('includes/main_db.php');
 
@@ -28,7 +29,7 @@
 		$filename = "data/order_report_". date('Y-m-d_H-i-s'). ".csv";
 		$file = fopen($filename, 'w');
 
-		fputcsv($file, array('OrderNo', 'CustomerName', 'OrderDate','Order', 'TotalCost', 'Discount', 'Payment', 'Balance', 'Status', 'Cashier', 'Remarks'));
+		fputcsv($file, array('OrderNo', 'CustomerName', 'OrderDate','Order', 'TotalCost', 'Discount', 'Payment', 'Change', 'Balance', 'Status', 'Cashier', 'Remarks'));
 
 		
 
@@ -50,7 +51,7 @@
 		   	}
 
 			
-			fputcsv($file, array($row["OrderNo"], $row["CustomerName"], $row["OrderDate"], $custAllOrder, $row["TotalCost"], $row["Discount"], $row["Payment"], $row["Balance"], $row["Status"], $row["Cashier"], $row["Remarks"]));
+			fputcsv($file, array($row["OrderNo"], $row["CustomerName"], $row["OrderDate"], $custAllOrder, $row["TotalCost"], $row["Discount"], $row["Payment"], $row["Change"], $row["Balance"], $row["Status"], $row["Cashier"], $row["Remarks"]));
 
 
 		}
@@ -154,6 +155,7 @@
 						<th>TotalCost</th>
 						<th>Discount</th>
 						<th>Payment</th>
+						<th>Change</th>
 						<th>Balance</th>
 						<th>Status</th>
 						<th>Cashier</th>
@@ -185,6 +187,7 @@
 							<td ><?php echo $row["TotalCost"] ?></td>
 							<td ><?php echo $row["Discount"] ?></td>
 							<td><?php echo $row["Payment"] ?></td>
+							<td><?php echo $row["Change"] ?></td>
 							<td ><?php echo $row["Balance"] ?></td>
 							<td ><?php
 
@@ -203,10 +206,15 @@
 					?>
 				</table>
 			</div>
-			<div class="report_table_footer"> 
-				<form action="" method="GET">
-					<button type="submit" name="deleteAll">Save and Delete</button>
-				</form>
+			<div class="report_table_footer">
+				<?php
+				if ( $_SESSION['AccountType'] == '1') { ?>
+					<form action="" method="GET">
+						<button type="submit" name="deleteAll">Save and Delete</button>
+					</form>
+				<?php }?>
+						
+				
 				<p>Showing <?php echo count($allResults)?> Results</p>
 			</div>
 		</div>
