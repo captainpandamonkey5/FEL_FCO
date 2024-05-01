@@ -38,26 +38,34 @@ if (isset($_SESSION["user"])) {
 <!-- 1st screen to be seen, for login / signup-->
 <div id="login_Body">
 <?php
-        if (isset($_POST["login"])) {
-           $username = $_POST["username"];
-           $password = $_POST["password"];
-            require_once "includes/database.php";
-            $sql = "SELECT * FROM user WHERE username = '$username'";
-            $result = mysqli_query($conn, $sql);
-            $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            if ($user) {
-                if (password_verify($password, $user["Password"])) {
-                    $_SESSION["user"] = "yes";
-                    header("Location: Home.php");
-                    die();
-                }else{
-                    echo "<div class='alert alert-danger'>Password does not match</div>";
-                }
-            }else{
-                echo "<div class='alert alert-danger'>Username does not match</div>";
-            }
+if (isset($_POST["login"])) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    require_once "includes/database.php";
+    $sql = "SELECT * FROM user WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql);
+    $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    if ($user) {
+        if (password_verify($password, $user["Password"])) {
+            // Set the 'AccountType' session variable
+            $_SESSION['AccountType'] = $user['AccountType'];
+
+            // Set other session variables if needed
+
+            $_SESSION["user"] = "yes";
+            $_SESSION['UserID'] = $user['UserID'];
+            $_SESSION['Password'] = $user['password'];
+            $_SESSION['Username'] = $user['username'];
+            header("Location: Home.php");
+            die();
+        } else {
+            echo "<div class='alert alert-danger'>Password does not match</div>";
         }
-        ?>
+    } else {
+        echo "<div class='alert alert-danger'>Username does not match</div>";
+    }
+}
+?>
     <h1>AJC Bike Shop</h1>
     <h2>Log In</h2>
     <form class="login_Form" method="POST" action="">
