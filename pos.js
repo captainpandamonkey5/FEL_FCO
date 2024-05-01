@@ -47,29 +47,43 @@ function refreshForm(){
         createInputItem(element[0],element[3]);
     });
 
+    let discVal = document.querySelector("#discountPrice").value;
+    if(discVal == null || discVal == "" || discVal <= 0  ){
+        discVal = 0;
+    }
+    
+    document.querySelector("#discount").value = discVal;
+
 }
 
 function chkoutForm() {
-    var form = document.getElementById("checkoutForm");
     
-    const today = new Date();
-
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0'); 
-    const day = String(today.getDate()).padStart(2, '0');
-
-    const dateInput = document.getElementById('orderDate');
-    dateInput.value = `${year}-${month}-${day}`;
-
-    console.log(document.querySelector(".confirm span").textContent);
-    document.getElementById("totalcost").value =  parseFloat(document.querySelector(".confirm span").textContent);
-    refreshForm();
-
-    if (form.style.display === "none") {
-        form.style.display = "block";
-    } else {
-        form.style.display = "none";
+    if(cartArray.length == 0){
+        alert("Cart is empty");
+        return;
+    }else{
+        var form = document.getElementById("checkoutForm");
+    
+        const today = new Date();
+    
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); 
+        const day = String(today.getDate()).padStart(2, '0');
+    
+        const dateInput = document.getElementById('orderDate');
+        dateInput.value = `${year}-${month}-${day}`;
+    
+        console.log(document.querySelector(".confirm span").textContent);
+        document.getElementById("totalcost").value =  parseFloat(document.querySelector(".confirm span").textContent);
+        refreshForm();
+    
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
     }
+    
 }
 
 
@@ -95,6 +109,14 @@ function createListItem(prodName, prodPrice, prodQty) {
     const priceElement = document.createElement('b');
     priceElement.textContent = `₱ ${prodPrice}`;
     listItem.appendChild(priceElement);
+
+    
+    
+    // Add  to the span element
+    const span2 = document.createElement('span');
+    span2.className = "rightpartSpan";
+    span2.appendChild(priceElement);
+    listItem.appendChild(span2);
   
     // Create the delete button
     const deleteButton = document.createElement('button');
@@ -115,6 +137,9 @@ function createListItem(prodName, prodPrice, prodQty) {
         	refreshCartDiv();
     	    }
     });
+
+
+
 
     listItem.appendChild(deleteButton);
   
@@ -139,6 +164,16 @@ function createInputItem(prodID, prodQty) {
     
     document.querySelector(".order-inputs").appendChild(inputItemID);
     document.querySelector(".order-inputs").appendChild(inputItemQty);
+}
+
+function createInputItemForDiscount(disc) {
+    const inputItemDsic = document.createElement('input');
+  
+    inputItemDsic.type = 'number';
+    inputItemDsic.name = 'discount';
+    inputItemDsic.value = disc;
+
+    document.querySelector(".order-inputs").appendChild(inputItemDsic);
 }
 
 function clearCart(){
@@ -175,7 +210,7 @@ function release(event) {
 function onHold(button) {
     release();
     let quantity = prompt("Enter quantity:");
-    if(quantity!=null && quantity!=""){
+    if(quantity!=null && quantity!="" && quantity>1){
         addToCartByArray(button.value,0,0, quantity-1);
     }
     displayAllArray();
@@ -185,7 +220,7 @@ function onHold(button) {
 
 
 document.getElementById('checkoutOrder').addEventListener("click", e=>{
-    document.getElementById("checkoutForm").style.display = "none";
+    //document.getElementById("checkoutForm").style.display = "none";
     clearCart();
     //openReceipt();
     
@@ -204,3 +239,19 @@ document.getElementById("clr-cart-btn").addEventListener("click", e=>{
     clearCart();
     
 })
+
+document.getElementById("discountPrice").addEventListener("input", e => {
+    let discVal = parseFloat(document.getElementById("discountPrice").value);
+    let totVal = (parseFloat(document.querySelector(".confirm span").textContent)).toFixed(2)
+
+    
+    console.log(discVal);
+    console.log(totVal);
+
+    if(discVal > totVal){
+        document.getElementById("discountPrice").value = totVal;
+        alert ("discount greater than totalcost");
+    }
+
+    
+});

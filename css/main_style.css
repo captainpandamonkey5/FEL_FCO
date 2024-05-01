@@ -31,6 +31,29 @@ button{
 	border: 0px;
 }
 
+/*for scrollbar*/
+*::-webkit-scrollbar {
+	height: 7px;
+	width: 7px;
+  }
+  *::-webkit-scrollbar-track {
+	border-radius: 5px;
+	background-color: #DFE9EB;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+	border-radius: 14px;
+	background-color: #2c586e;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+	background-color: #557180;
+  }
+  
+  *::-webkit-scrollbar-thumb:active {
+	background-color: #2c586e;
+  }
+
 /*Navigation Bar*/
 .nav_bar{
 	background-color:white;

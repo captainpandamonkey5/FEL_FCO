@@ -1,3 +1,81 @@
+<?php
+
+	require_once('includes/main_db.php');
+
+
+	$query = "SELECT * FROM customerorder ";
+	$stmnt = $pdo -> prepare ($query);
+	$stmnt->execute();
+	$allResults = $stmnt -> fetchAll(); 
+
+    if(isset($_GET["searchResult"])){
+		$dateSearch = $_GET["dateSearch"];
+		$idSearch = $_GET["idSearch"];
+		$query = "SELECT * FROM customerorder WHERE `OrderNo` LIKE '$idSearch' OR `OrderDate` LIKE '$dateSearch' OR `CustomerName` LIKE '$idSearch%' ORDER BY OrderNo ASC";
+		$stmnt = $pdo -> prepare ($query);
+		$stmnt->execute();
+		$allResults = $stmnt -> fetchAll(); 
+	}
+
+	if(isset($_GET["deleteAll"])){
+		
+		//SAVE AS CSV FIRST
+		$query = "SELECT * FROM customerorder;";
+		$stmnt = $pdo -> prepare ($query);
+		$stmnt->execute();
+		$allResults = $stmnt -> fetchAll(); 
+
+		$filename = "data/order_report_". date('Y-m-d_H-i-s'). ".csv";
+		$file = fopen($filename, 'w');
+
+		fputcsv($file, array('OrderNo', 'CustomerName', 'OrderDate','Order', 'TotalCost', 'Discount', 'Payment', 'Balance', 'Status', 'Cashier', 'Remarks'));
+
+		
+
+		foreach ($allResults as $row) {
+
+			$last_ID=$row["OrderNo"];
+
+			$query = "SELECT OrderNo, product.ProductID, product.ProductName, product.Price, OrderQty FROM `order` JOIN product ON product.ProductID = `order`.ProductID WHERE OrderNo='$last_ID'";
+			$stmnt = $pdo -> prepare ($query);
+			$stmnt->execute();
+			$allOrder = $stmnt -> fetchAll(); 
+
+			$custAllOrder = "";
+
+			foreach($allOrder as $ao){
+				$custOrder = $ao['ProductName'] . " - " . $ao['OrderQty'] . " PC : " . $ao['Price'] . " PHP " . ($ao['Price']*$ao['OrderQty']);
+
+				$custAllOrder = $custAllOrder . $custOrder . "_";
+		   	}
+
+			
+			fputcsv($file, array($row["OrderNo"], $row["CustomerName"], $row["OrderDate"], $custAllOrder, $row["TotalCost"], $row["Discount"], $row["Payment"], $row["Balance"], $row["Status"], $row["Cashier"], $row["Remarks"]));
+
+
+		}
+
+		fclose($file);
+
+		//THEN DELETE
+		$query = "DELETE FROM `order`;";
+		$stmnt = $pdo -> prepare ($query);
+		$stmnt->execute();
+
+		$query = "DELETE FROM customerorder;";
+		$stmnt = $pdo -> prepare ($query);
+		$stmnt->execute();
+
+		 header('Location: OrderReport.php');
+
+	}
+
+
+    //var_dump(count($allStockOrder));
+
+
+  
+?>
 <html>
 
     <head>
@@ -60,9 +138,11 @@
 			</div>
 			<div class="report_search">
 				<p>Order History</p>
-				<input type="date" id = "dateSearch" name="dateSearch">
-				<input type="text" id = "idSearch" name="idSearch" placeholder="Search for Order ID">
-				<button id="search_btn"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" id="search"><path d="M46.599 40.236L36.054 29.691C37.89 26.718 39 23.25 39 19.5 39 8.73 30.27 0 19.5 0S0 8.73 0 19.5 8.73 39 19.5 39c3.75 0 7.218-1.11 10.188-2.943l10.548 10.545a4.501 4.501 0 0 0 6.363-6.366zM19.5 33C12.045 33 6 26.955 6 19.5S12.045 6 19.5 6 33 12.045 33 19.5 26.955 33 19.5 33z"></path></svg></button>
+				<form method="GET" action="">
+					<input type="date" id = "dateSearch" name="dateSearch">
+					<input type="text" id = "idSearch" name="idSearch" placeholder="Search">
+					<button type="submit" id="search_btn" name="searchResult" ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" id="search"><path d="M46.599 40.236L36.054 29.691C37.89 26.718 39 23.25 39 19.5 39 8.73 30.27 0 19.5 0S0 8.73 0 19.5 8.73 39 19.5 39c3.75 0 7.218-1.11 10.188-2.943l10.548 10.545a4.501 4.501 0 0 0 6.363-6.366zM19.5 33C12.045 33 6 26.955 6 19.5S12.045 6 19.5 6 33 12.045 33 19.5 26.955 33 19.5 33z"></path></svg></button>
+				</form>
 			</div>
 			<div class="report_table"> 
 				<table cellspacing="0">
@@ -72,40 +152,62 @@
 						<th>OrderDate</th>
 						<th style="width:100%; min-width: 200px;">Order</th>
 						<th>TotalCost</th>
+						<th>Discount</th>
 						<th>Payment</th>
 						<th>Balance</th>
 						<th>Status</th>
 						<th>Cashier</th>
 						<th>Remarks</th>
 					</tr>
-					<tr>
-						<td>ewggggweg</td>
-						<td>sdfsdfsdfsdfs</td>
-						<td>sdfsdf</td>
-						<td>sdfsdfagd gsdg asgsd gsadg</td>
-						<td>ggsd</td>
-						<td>sadg asd</td>
-						<td>sadgas </td>
-						<td>sdag</td>
-						<td>sadg</td>
-						<td>sadg</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td> </td>
-						<td></td>
-						<td> </td>
-						<td> </td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
+					<?php
+						foreach ($allResults as $row){
+					?>
+						<tr>
+							<td><?php echo $row["OrderNo"] ?></td>
+							<td><?php echo $row["CustomerName"] ?></td>
+							<td><?php echo $row["OrderDate"] ?></td>
+							<td >
+								<?php 
+
+								$last_ID=$row["OrderNo"];
+
+								$query = "SELECT OrderNo, product.ProductID, product.ProductName, product.Price, OrderQty FROM `order` JOIN product ON product.ProductID = `order`.ProductID WHERE OrderNo='$last_ID'";
+								$stmnt = $pdo -> prepare ($query);
+								$stmnt->execute();
+								$allOrder = $stmnt -> fetchAll(); 
+								
+								foreach($allOrder as $ao){?>
+									[<?php echo $ao["ProductID"] ?>]- <?php echo $ao['ProductName'];?> <br>
+									<?php echo $ao['OrderQty'];?> PC : &nbsp &nbsp PHP  <?php echo ($ao['Price']*$ao['OrderQty']);?> <br>
+								<?php }?>
+						
+							</td>
+							<td ><?php echo $row["TotalCost"] ?></td>
+							<td ><?php echo $row["Discount"] ?></td>
+							<td><?php echo $row["Payment"] ?></td>
+							<td ><?php echo $row["Balance"] ?></td>
+							<td ><?php
+
+							$statusString = "[0] - Pending Balance ";
+							if ($row['Status'] == 1){
+								$statusString = "[1] - No Pending Balance";
+							}
+							
+							echo $statusString ?></td>
+							<td ><?php echo $row["Cashier"] ?></td>
+							<td ><?php echo $row["Remarks"] ?></td>
+						</tr>
+
+					<?php
+						}
+					?>
 				</table>
 			</div>
 			<div class="report_table_footer"> 
-				<p>Showing XXX Orders</p>
+				<form action="" method="GET">
+					<button type="submit" name="deleteAll">Save and Delete</button>
+				</form>
+				<p>Showing <?php echo count($allResults)?> Results</p>
 			</div>
 		</div>
         

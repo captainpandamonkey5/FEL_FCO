@@ -1,3 +1,30 @@
+<?php
+
+	require_once('includes/main_db.php');
+
+
+	$query = "SELECT DISTINCT OrderDate FROM customerorder ";
+	$stmnt = $pdo -> prepare ($query);
+	$stmnt->execute();
+	$allResults = $stmnt -> fetchAll(); 
+
+    if(isset($_GET["searchResult"])){
+		$dateSearch = $_GET["dateSearch"];
+		$query = "SELECT DISTINCT OrderDate FROM customerorder WHERE `OrderDate` LIKE '$dateSearch' ";
+		$stmnt = $pdo -> prepare ($query);
+		$stmnt->execute();
+		$allResults = $stmnt -> fetchAll(); 
+	}
+
+	
+
+
+    //var_dump(count($allStockOrder));
+
+
+  
+?>
+
 <html>
     <head>
 		
@@ -59,37 +86,46 @@
 			</div>
 			<div class="report_search">
 				<p>Sales Report</p>
-				<input type="date" id = "dateSearch" name="dateSearch">
-				<input type="text" id = "idSearch" name="idSearch" placeholder="Search for Sale No.">
-				<button id="search_btn"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" id="search"><path d="M46.599 40.236L36.054 29.691C37.89 26.718 39 23.25 39 19.5 39 8.73 30.27 0 19.5 0S0 8.73 0 19.5 8.73 39 19.5 39c3.75 0 7.218-1.11 10.188-2.943l10.548 10.545a4.501 4.501 0 0 0 6.363-6.366zM19.5 33C12.045 33 6 26.955 6 19.5S12.045 6 19.5 6 33 12.045 33 19.5 26.955 33 19.5 33z"></path></svg></button>
+				<form method="GET" action="">
+					<input type="date" id = "dateSearch" name="dateSearch" style="margin-right:100px;">
+					<button type="submit" id="search_btn" name="searchResult" ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" id="search"><path d="M46.599 40.236L36.054 29.691C37.89 26.718 39 23.25 39 19.5 39 8.73 30.27 0 19.5 0S0 8.73 0 19.5 8.73 39 19.5 39c3.75 0 7.218-1.11 10.188-2.943l10.548 10.545a4.501 4.501 0 0 0 6.363-6.366zM19.5 33C12.045 33 6 26.955 6 19.5S12.045 6 19.5 6 33 12.045 33 19.5 26.955 33 19.5 33z"></path></svg></button>
+				</form>
 			</div>
 			<div class="report_table"> 
 				<table cellspacing="0">
 					<tr>
-						<th>SalesNo</th>
-						<th>SaleDateByDay</th>
+						<th>Sale Date By Day</th>
 						<th>Cash</th>
-						<th>Excess</th>
+						<th>Discounts</th>
 						<th>Total</th>
 					</tr>
-					<tr>
-						<td>ewggggweg</td>
-						<td>sdfsdfsdfsdfs</td>
-						<td>sdfsdf</td>
-						<td>ggsd</td>
-						<td>sadg asd</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td> </td>
-						<td></td>
-						<td> </td>
-					</tr>
+
+					<?php
+						foreach ($allResults as $row){
+
+						$last_date=$row["OrderDate"];
+
+						$query = "SELECT SUM(TotalCost) AS TotalCosts, SUM(Discount) AS Discounts FROM customerorder WHERE OrderDate LIKE '$last_date'" ;
+						$stmnt = $pdo -> prepare ($query);
+						$stmnt->execute();
+						$allOrder = $stmnt -> fetchAll(); 
+
+
+					?>
+						<tr>
+							<td><?php echo $last_date ?></td>
+							<td><?php echo $allOrder[0]["TotalCosts"] ?></td>
+							<td><?php echo $allOrder[0]["Discounts"] ?></td>
+							<td ><?php echo $allOrder[0]["TotalCosts"] - $allOrder[0]["Discounts"] ?></td>
+						</tr>
+
+					<?php
+						}
+					?>
 				</table>
 			</div>
 			<div class="report_table_footer"> 
-				<p>Showing XXX Orders</p>
+				<p>Showing <?php echo count($allResults)?> Results</p>
 			</div>
 		</div>
         

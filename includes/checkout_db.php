@@ -16,39 +16,62 @@
             $change=0;
             $balance=0;
             $status=false;
-            if($payment>=$totalcost){
-                $change = $payment-$totalcost;
+            $productID = $_POST["productID"];
+            $productQty = $_POST["productQty"];
+            $discount = $_POST["discount"];
+
+            for($i=0; $i < count($productID); $i++){
+                            
+                $query = "SELECT Quantity FROM product WHERE `ProductID` = $productID[$i] ";
+                $stmnt = $pdo -> prepare ($query);
+                $stmnt->execute();
+                $productResult = $stmnt -> fetch(); 
+                
+                if($productResult["Quantity"] < $productQty[$i]){
+                    echo"<script>window.alert('Quantity not satisfied'); window.location.href = '../POS.php';</script>";
+                    print("kulang");
+                    die();
+                }
+
+            }
+
+            if($payment>=($totalcost-$discount)){
+                $change = $payment - ($totalcost-$discount);
                 $status = true;
             }
             else
-                $balance = $totalcost-$payment;
+                $balance = ($totalcost-$discount) - $payment;
 
-            $insertQuery = "INSERT INTO customerorder ( CustomerName, OrderDate, TotalCost, Payment, `Change`, Balance, Status, Cashier, Remarks) VALUES (?,?,?,?,?,?,?,?,?)";
+            $insertQuery = "INSERT INTO customerorder ( CustomerName, OrderDate, TotalCost, Discount, Payment, `Change`, Balance, Status, Cashier, Remarks) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
             $stmnt = $pdo -> prepare ($insertQuery);
-            $stmnt->execute([$customername,$orderDate,$totalcost,$payment,$change,$balance,$status,$cashier,$remarks]);
+            $stmnt->execute([$customername,$orderDate,$totalcost,$discount,$payment,$change,$balance,$status,$cashier,$remarks]);
 
             $last_id = $pdo->lastInsertId();
             session_start();
             $_SESSION['last_id'] = $last_id;
 
-            $productID = $_POST["productID"];
-            $productQty = $_POST["productQty"];
-            $discount = 0;
-
             for($i=0; $i < count($productID); $i++){
-                $insertQuery = "INSERT INTO `order` (OrderNo, ProductID, OrderQty,Discount ) VALUES (?,?,?,?)";
-
+                $insertQuery = "INSERT INTO `order` (OrderNo, ProductID, OrderQty ) VALUES (?,?,?)";
                 $stmnt = $pdo -> prepare ($insertQuery);
-                $stmnt->execute([$last_id,$productID[$i],$productQty[$i],$discount]);            
+                $stmnt->execute([$last_id,$productID[$i],$productQty[$i]]);      
+
+                $query = "SELECT Quantity FROM product WHERE ProductID = $productID[$i]";
+                $stmnt = $pdo->prepare($query);
+                $stmnt->execute();
+                $currentQty = $stmnt->fetchColumn();
+
+                $newQty = $currentQty - $productQty[$i];
+                
+                $updateQuery = "UPDATE product SET Quantity = $newQty WHERE ProductID = $productID[$i]";
+                $stmnt = $pdo->prepare($updateQuery);
+                $stmnt->execute();
             }
 
             $pdo=null;
             $stmnt=null;
             
             echo"<script>window.open('../Receipt.php'); window.location.href = '../POS.php';</script>";
-
-
 
             die();
 
