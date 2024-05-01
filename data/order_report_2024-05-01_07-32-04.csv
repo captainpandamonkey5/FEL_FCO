@@ -1,4 +1,0 @@
-OrderNo,CustomerName,OrderDate,Order,TotalCost,Discount,Payment,Balance,Status,Cashier,Remarks
-13,blez,2024-05-01,"nigers - 1 PC : 70000 PHP 70000_",70000,0,1,69999,0,1,111
-14,fff,2024-05-01,"nigers - 1 PC : 70000 PHP 70000_POCO X6 PRo - 1 PC : 5000 PHP 5000_",75000,0,223,74777,0,1,
-15,,2024-05-01,"nigers - 1 PC : 70000 PHP 70000_",70000,0,1,69999,0,9,
