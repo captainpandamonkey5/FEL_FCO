@@ -3,7 +3,7 @@
 		
 		<title>AJC Bike Shop MIS</title>
 		<link rel="stylesheet" href="css/main_style.css">
-		<link rel="stylesheet" href="css/devs_style.css">
+		<link rel="stylesheet" href="css/AboutUs_styles.css">
 		<style>
             #info_btn{
                 background-color: rgb(41, 41, 41);
@@ -53,46 +53,49 @@
 			</ul>
 		</div>
 
-		<div class="main_section">
-			<div class="left_section">
-				<div class="developer_card">
-					<div class="developer_card_desc">
-						<h1>Aina Jane Franco</h1> 
-						<p>ainajane.franco.c@bulsu.edu.ph</p>
-					</div>
-					<img src="images/Neil.jpg" alt="Lovely" class="developers_img" />
-				</div>
-				<div class="developer_card">
-					<div class="developer_card_desc">
-						<h1>Bryan Jett Calulo</h1> 
-						<p>bryanjett.calulo.t@bulsu.edu.ph</p>
-					</div>
-					<img src="images/Neil.jpg" alt="Lovely" class="developers_img" />
-				</div>
-				<div class="developer_card">
-					<div class="developer_card_desc">
-						<h1>Lovely Angeline Cunanan</h1> 
-						<p>lovelyangeline.cunanan.o@bulsu.edu.ph</p>
-					</div>
-					<img src="images/Neil.jpg" alt="Lovely" class="developers_img" />
-				</div>
-				<div class="developer_card">
-					<div class="developer_card_desc">
-						<h1>Neil Allen H. San Diego</h1> 
-						<p>neilallen.sandiego.h@bulsu.edu.ph</p>
-					</div>
-					<img src="images/Neil.jpg" alt="Lovely" class="developers_img" />
-				</div>
-			</div>
-		
-			<div class="right_side">
-					<p>This system was made in the school year 2023-2024, 2nd semester of Bulacan State University. The developers made the system for the partial fulfillment of their course subject.It is a MIS system that was made for the business AJC Bike Shop based on their interview with the shop in hopes of helping them automate their transactions with their customers. And the system was made with the combination of CSS, HTML, and Java coding.</p>
- 			</div>
-		</div>
+		<div class="container">
+  <h1>About Us</h1></br>
+  <p>&nbsp This system was made in the school year 2023-2024, 2nd semester of Bulacan State University. The developers made the system for the partial fulfillment of their course subject.It is a MIS system that was made for the business AJC Bike Shop based on their interview with the shop in hopes of helping them automate their transactions with their customers. And the system was made with the combination of CSS, HTML, and Java coding.</p></br>
+  
+   <h2>Our Team:</h2></br>
+  <div class="team-member">
+    <img src="images\Aina.jpg" alt="Team Member 1">
+    <div>
+      <h3>Aina Jane Franco</h3>
+      <p>Position: Member</p></br>
+      <p>ainajane.franco.c@bulsu.edu.ph</p>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div class="team-member">
+    <img src="images\Bryan.jpg" alt="Team Member 2">
+    <div>
+      <h3>Bryan Jett Calulo</h3>
+      <p>Position: Group Leader</p></br>
+      <p>bryanjett.calulo.t@bulsu.edu.ph</p>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+ <div class="team-member">
+    <img src="images\Lovely.jpg" alt="Team Member 2">
+    <div>
+      <h3>Lovely Angeline Cunanan</h3>
+      <p>Position: Member</p></br>
+      <p>lovelyangeline.cunanan.o@bulsu.edu.ph</p>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+<div class="team-member">
+    <img src="images\Neil.jpg" alt="Team Member 2">
+    <div>
+      <h3>Neil Allen San Diego</h3>
+      <p>Position: Member</p></br>
+      <p>neilallen.sandiego.h@bulsu.edu.ph</p>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
 
-
-
-
-    </body>
-
+ 
+  
+</body>
 </html>

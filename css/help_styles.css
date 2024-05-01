@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Center align all content */
+}
+
+.header {
+    background-color: #2C586E;
+    color: #fff;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px;
+}
+
+.content {
+    background-color: #DBE9FA;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.footer {
+    background-color: #2C586E;
+    color: #fff;
+    padding: 30px 0;
+}

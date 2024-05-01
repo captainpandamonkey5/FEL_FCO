@@ -4,7 +4,7 @@
 
 <title>AJC Bike Shop MIS</title>
 		<link rel="stylesheet" href="css/main_style.css">
-		<link rel="stylesheet" href="css/help_style.css">
+		<link rel="stylesheet" href="css/help_styles.css">
 		<style>
             #help_btn{
                 background-color: rgb(41, 41, 41);
@@ -53,29 +53,40 @@
 				</a>
 			</ul>
 		</div>
-		<div>
    
 
-<div class="main_section">
-  <div class="help_title">
-    <h2>Help Center</h2>
-  </div>
-    
-    <div class="help_box">
-        <h4>Point of Sale</h4>
-        <p> A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable.POS system helps us improve our operations for our customers. This includes reducing waiting time, faster scanning of items, quicker payments, etc. With these operational improvements, our customers will get better service.</p><br>
+		
+	<div class="main_section">
+		<div class="header">
+			<h1>Help Center</h1>
+		</div>
+		<div class="container">
+			<div id="POS" class="content">
+				<h2>Point of Sale</h2>
+				<p>A Point of Sale (POS) is where customers pay for goods/services and taxes. POS systems enhance operations, reducing wait times, speeding up scanning and payments, delivering better service.</p>
+			</div>
+			<div id="Inventory" class="content">
+				<h2>Inventory</h2>
+				<p>Inventory refers to tangible goods or services offered to customers, managed through a catalog system. Includes raw materials, goods in production, and finished products.</p>
+			</div>
+			<div id="Reports" class="content">
+				<h2>Reports</h2>
+				<p>These reports offer vital insights for enhancing customer satisfaction and operational performance, aiding in optimal decision-making and maximizing ROI.</p>
+			</div>
+			<div id="Accounts" class="content">
+				<h2>Accounts</h2>
+				<p>Account enables you to build a more meaningful and interactive relationship with the retailer(us). They enable personalization through learning preferences and offering tailored recommendations based on browsing history and on the reviews.</p>
+			</div>
 
-        <h4>Inventory</h4>
-        <p>Inventory is the amount of tangible goods, products or services we offer to our customers. These goods are itemized and catalogued into an inventory management system. The goods that are recorded in a catalog can be either raw materials, goods that are in production or finished products.</p><br>
-
-        <h4>Report</h4>
-        <p>These reports provide the most important insights to our business for us to improve customer satisfaction and operational performance, which can help us make the best business decisions and maximize our ROI.</p><br>
-
-
-         <h4>Account</h4>
-         <p>Account enables you to build a more meaningful and interactive relationship with the retailer(us). Customer accounts allow online retailers to learn your unique preferences and personalize the on-site experience by providing tailored recommendations and a record of previously browsed products.</p><br>
+		</div>
+		<div class="footer">
+			<p>&copy; 2024 Help Center. All rights reserved.</p>
+		</div>
 	</div>
-</div>
-
-   
+    
 </body>
+</html>
+
+</body>
+</html>
+
