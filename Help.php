@@ -63,19 +63,22 @@
 		<div class="container">
 			<div id="POS" class="content">
 				<h2>Point of Sale</h2>
-				<p>A Point of Sale (POS) is where customers pay for goods/services and taxes. POS systems enhance operations, reducing wait times, speeding up scanning and payments, delivering better service.</p>
+				<p style="text-align:left">A Point of Sale (POS) is where customers pay for goods/services and taxes. Using Point of Sale (POS) for customer: <br>First you have to select the item. <br>Second is you can add your item to your cart or you can Buy it already but before adding to cart or buying it out you have to specify and items quantity. <br>Third check your order details and information. <br>Lastly you can check it out.</p>
 			</div>
 			<div id="Inventory" class="content">
 				<h2>Inventory</h2>
-				<p>Inventory refers to tangible goods or services offered to customers, managed through a catalog system. Includes raw materials, goods in production, and finished products.</p>
+				<p>Inventory refers to tangible goods or services offered to customers, managed through a catalog system. Includes raw materials, goods in production, and finished products. Here’s how you can use the Inventory: <br>1. Check Availability you can search for the items name or code to check its availability. <br>2. View details or item information such as: price, quantity, and description.
+				<br>So, while the Point of Sale (POS) system handles the customer-facing aspects of selecting, purchasing, and paying for items, the Inventory management system works behind the scenes to ensure that the items are available, their details are accurate, and stock levels are updated accordingly.
+</p>
 			</div>
 			<div id="Reports" class="content">
 				<h2>Reports</h2>
-				<p>These reports offer vital insights for enhancing customer satisfaction and operational performance, aiding in optimal decision-making and maximizing ROI.</p>
+				<p>These reports offer vital insights for enhancing customer satisfaction and operational performance. From here you can: <br>Access Reports or view reports provided by the store, <br>Understand Insights by Checking the details on customer satisfaction and operational performance, <br>And Lastly Regularly check the report for more information.
+</p>
 			</div>
 			<div id="Accounts" class="content">
 				<h2>Accounts</h2>
-				<p>Account enables you to build a more meaningful and interactive relationship with the retailer(us). They enable personalization through learning preferences and offering tailored recommendations based on browsing history and on the reviews.</p>
+				<p>To create an account for cashier: <br>First you have to Navigate to Sign-Up Page, Fill in Details, Verify Account (If required), <br>Second you can Set Up Permissions (If Applicable), <br>Review Terms and Conditions, Complete Registration, Confirmation, <br>and lastly you have to Log In.</p>
 			</div>
 
 		</div>
