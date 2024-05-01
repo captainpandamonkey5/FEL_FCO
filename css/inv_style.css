@@ -47,8 +47,11 @@
 
 .inventory_section {
   width: 92.75%; /* Adjust as needed */
+  height: 95%;
   overflow-y: auto;
   align-self: start;
+  box-shadow: 0px 0px 10px #dbdbdb;
+  border: #ddd 2px solid;
 }
 
 .inventory_section table {
