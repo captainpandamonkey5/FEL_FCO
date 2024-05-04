@@ -162,7 +162,7 @@
 					<input type="text" name="prodName" placeholder="Product Name">
 					<input type="text" name="prodCategory" placeholder="Category">
 					<input type="number" step="0.01" name="prodPrice" placeholder="Price">
-					<input type="text" name="prodDescription" placeholder="Descripition">
+					<textarea type="text" name="prodDescription" placeholder="Descripition"></textarea>
 					<button class="submitItem_btn" type="submit" name="insertItem">Submit</button>
 				</form>	
 			</div>
@@ -175,7 +175,7 @@
         				<input type="text" name="prodName" id="edit_prod_name" value="" placeholder="Product Name">
         				<input type="text" name="prodCategory" id="edit_prod_category" value="" placeholder="Category">
         				<input type="number" step="0.01" name="prodPrice" id="edit_prod_price" value="" placeholder="Price">
-        				<input type="text" name="prodDescription" id="edit_prod_description" value="" placeholder="Descripition">
+        				<textarea type="text" name="prodDescription" id="edit_prod_description" value="" placeholder="Descripition"></textarea>
         				<button class="submitItem_btn" type="submit" name="updateItem">Update</button>
    				</form>
 			</div>

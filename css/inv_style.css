@@ -163,8 +163,12 @@ button.submitItem_btn:hover {
 .addItem_form input,
 .editItem_form input,
 .addQty_form input,
-.decQty_form input {
+.decQty_form input,
+.addItem_form textarea,
+.editItem_form textarea {
   border: 2px solid #ebebeb;
+  width: 90%;
+  resize: vertical;
   font-family: inherit;
   font-size: 18px;
   border-radius: 1.25rem;
